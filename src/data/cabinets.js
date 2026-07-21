@@ -39,6 +39,9 @@ import {
 let cabinetListCache = null;
 let cabinetBySlugCache = null;
 let cabinetsLoadPromise = null;
+/** Epoch ms of last successful list load; used for warm-cache TTL. */
+let cabinetsCacheAt = 0;
+const CABINETS_CACHE_TTL_MS = 60_000;
 
 function addressFromRecord(record) {
   if (!record) return { address: "", zipCity: "", country: "" };
@@ -60,9 +63,20 @@ function addressFromRecord(record) {
 
 /**
  * Load cabinets from API and populate the cache.
+ * Warm cache within TTL skips the network (unless `force`).
+ * @param {{ force?: boolean }} [opts]
  * @returns {Promise<void>}
  */
-export async function loadCabinetsFromApi() {
+export async function loadCabinetsFromApi(opts = {}) {
+  const force = opts.force === true;
+  if (
+    !force &&
+    Array.isArray(cabinetListCache) &&
+    cabinetListCache.length > 0 &&
+    Date.now() - cabinetsCacheAt < CABINETS_CACHE_TTL_MS
+  ) {
+    return;
+  }
   if (cabinetsLoadPromise) return cabinetsLoadPromise;
 
   cabinetsLoadPromise = (async () => {
@@ -79,6 +93,7 @@ export async function loadCabinetsFromApi() {
       cabinetBySlugCache = new Map(
         cabinets.map((c) => [String(c.slug ?? c.id), c])
       );
+      cabinetsCacheAt = Date.now();
     } catch (e) {
       console.error("Cabinets API load failed:", e);
       // Keep a prior successful cache (e.g. transient 429). Only clear if empty.
@@ -102,6 +117,7 @@ export function invalidateCabinetCache() {
   cabinetListCache = null;
   cabinetBySlugCache = null;
   cabinetsLoadPromise = null;
+  cabinetsCacheAt = 0;
 }
 
 function upsertCabinetRecord(record) {

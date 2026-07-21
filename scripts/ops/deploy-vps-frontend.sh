@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build CRM SPA and publish to nginx web root on the VPS.
-# Run on the server from repo root: bash scripts/deploy-vps-frontend.sh
+# Run on the server from repo root: bash scripts/ops/deploy-vps-frontend.sh
 #
 # Case docs are same-origin `/data/uploads/...` via the API.
 # Optional: VITE_DOCS_BASE_URL=https://crm.example.com for absolute asset URLs.

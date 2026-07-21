@@ -12,7 +12,7 @@
 #
 # Example:
 #   export VPS_HOST=… VPS_USER=… VPS_REPO=… VPS_WEB_ROOT=…
-#   bash scripts/push-vps-from-local.sh
+#   bash scripts/ops/push-vps-from-local.sh
 
 set -euo pipefail
 

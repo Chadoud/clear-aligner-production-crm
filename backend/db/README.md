@@ -2,11 +2,11 @@
 
 Owned SQL for local evaluation and CI.
 
-| File | Purpose |
-| --- | --- |
-| `001_core_schema.sql` | Core tables the API expects to already exist |
-| `002_runtime_tables.sql` | Satellite tables (also auto-created by the API) |
-| `seed/001_demo_seed.sql` | Anonymized demo cabinets, users, cases, quotes |
+| File                     | Purpose                                                                                            |
+| ------------------------ | -------------------------------------------------------------------------------------------------- |
+| `001_core_schema.sql`    | Core tables the API expects to already exist                                                       |
+| `002_runtime_tables.sql` | Satellite tables (also auto-created by the API)                                                    |
+| `seed/001_demo_seed.sql` | Anonymized demo cabinets, users, cases (incl. beware/delivered), chat/suivi, quotes + paid invoice |
 
 ## Commands (from repo root)
 
@@ -19,10 +19,10 @@ npm run db:reset              # drop/recreate database, then setup
 
 ## Demo logins
 
-| Email | Password | Role |
-| --- | --- | --- |
-| `lab@example.com` | `Doctor123!` | Lab (`company`) — full nav (no `user_rights` rows) |
-| `doctor@example.com` | `Doctor123!` | Doctor — overview + case rights |
+| Email                | Password     | Role                                               |
+| -------------------- | ------------ | -------------------------------------------------- |
+| `lab@example.com`    | `Doctor123!` | Lab (`company`) — full nav (no `user_rights` rows) |
+| `doctor@example.com` | `Doctor123!` | Doctor — overview + case rights                    |
 
 `tbl_sidebar.sidebar_name_en` values must match `rightName` strings in `src/components/Dashboard/Sidebar/config/navSections.js`. Wrong names + non-empty `user_rights` hide the entire sidebar.
 

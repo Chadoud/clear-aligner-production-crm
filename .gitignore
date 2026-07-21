@@ -70,3 +70,5 @@ backend/.env.*
 *.sql.gz
 db-dump*
 backend/data/
+test-results/
+playwright-report/

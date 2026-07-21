@@ -89,7 +89,13 @@ INSERT INTO tbl_case (
    'Demo case study', 2800.00, 'CHF', NOW() - INTERVAL 7 DAY, 0),
   (1003, 'DEMO-1003', 2, 1, 'Casey', 'Dupont',
    '1995-02-20', 'casey.dupont@example.com', '5 Example Lane', '+41 79 000 00 03', 4,
-   'Demo awaiting acceptance', 3500.00, 'CHF', NOW() - INTERVAL 2 DAY, 1)
+   'Demo awaiting acceptance', 3500.00, 'CHF', NOW() - INTERVAL 2 DAY, 1),
+  (1004, 'DEMO-1004', 2, 2, 'Riley', 'Moreau',
+   '1992-07-08', 'riley.moreau@example.com', '8 Demo Close', '+41 79 000 00 04', 2,
+   'Demo beware — doctor follow-up needed', 2400.00, 'CHF', NOW() - INTERVAL 4 DAY, 2),
+  (1005, 'DEMO-1005', 2, 1, 'Avery', 'Keller',
+   '1987-01-15', 'avery.keller@example.com', '3 Sample Way', '+41 79 000 00 05', 7,
+   'Demo delivered case', 4000.00, 'CHF', NOW() - INTERVAL 60 DAY, 0)
 ON DUPLICATE KEY UPDATE
   case_status = VALUES(case_status),
   case_comments = VALUES(case_comments);
@@ -97,22 +103,56 @@ ON DUPLICATE KEY UPDATE
 INSERT INTO tbl_traitements (case_idx, traitements_type) VALUES
   (1001, 1), (1001, 2),
   (1002, 1),
-  (1003, 1), (1003, 3)
+  (1003, 1), (1003, 3),
+  (1004, 1),
+  (1005, 1), (1005, 2)
 ON DUPLICATE KEY UPDATE traitements_type = VALUES(traitements_type);
 
 INSERT INTO tbl_reply (reply_id, case_idx, user_idx, reply_text, reply_type, reply_created)
 VALUES
   (1, 1001, 1, 'Welcome to the demo discussion thread for DEMO-1001.', 0, NOW() - INTERVAL 10 DAY),
   (2, 1001, 2, 'Thanks — patient records look good to proceed.', 0, NOW() - INTERVAL 9 DAY),
-  (3, 1003, 1, 'Quote ready for review.', 4, NOW() - INTERVAL 1 DAY)
+  (3, 1003, 1, 'Quote ready for review.', 4, NOW() - INTERVAL 1 DAY),
+  (4, 1004, 2, 'Patient reports tightness on upper right — please advise.', 0, NOW() - INTERVAL 3 DAY)
 ON DUPLICATE KEY UPDATE reply_text = VALUES(reply_text);
+
+INSERT INTO tbl_chat (chat_id, case_idx, user_idx, cabinet_idx, chat_text, chat_created)
+VALUES
+  (1, 1001, 1, 1, 'Internal note: aligners batch scheduled for Thursday.', NOW() - INTERVAL 8 DAY)
+ON DUPLICATE KEY UPDATE chat_text = VALUES(chat_text);
 
 INSERT INTO tbl_suivi (
   suivi_id, case_idx, user_idx, cabinet_idx, suivi_text, suivi_type, suivi_created
 ) VALUES
   (1, 1001, 1, 1, 'Fabrication started for upper/lower aligners.', 0, NOW() - INTERVAL 12 DAY),
-  (2, 1002, 1, 1, 'Case study checklist opened.', 0, NOW() - INTERVAL 6 DAY)
+  (2, 1002, 1, 1, 'Case study checklist opened.', 0, NOW() - INTERVAL 6 DAY),
+  (3, 1005, 1, 1, 'Final delivery confirmed with clinic.', 0, NOW() - INTERVAL 55 DAY)
 ON DUPLICATE KEY UPDATE suivi_text = VALUES(suivi_text);
+
+INSERT INTO tbl_events (
+  ev_id, case_idx, ev_title, ev_start_date, ev_start_time, ev_end_date, ev_end_time,
+  ev_all_day, ev_status, ev_created_at, ev_created_by
+) VALUES
+  (1, 1001, 'Open box — DEMO-1001', CURDATE() + INTERVAL 3 DAY, '09:00:00',
+   CURDATE() + INTERVAL 3 DAY, '09:00:00', 1, 1, NOW(), 1),
+  (2, 1005, 'Delivered — DEMO-1005', CURDATE() - INTERVAL 50 DAY, '00:00:00',
+   CURDATE() - INTERVAL 50 DAY, '00:00:00', 1, 1, NOW() - INTERVAL 50 DAY, 1)
+ON DUPLICATE KEY UPDATE ev_title = VALUES(ev_title);
+
+INSERT INTO case_docs (docs_id, case_idx, docs_type, docs_name, docs_size, docs_title)
+VALUES
+  (1, 1001, 'documents', 'a1b2c3d4e5f6789012345678abcdef01.pdf', '120kb', 'Demo treatment plan.pdf')
+ON DUPLICATE KEY UPDATE docs_title = VALUES(docs_title);
+
+INSERT INTO tbl_checkbox_stripping (case_idx, steps_data, case_ref, stripping_completed_steps, last_updated_at)
+VALUES
+  (1002, JSON_ARRAY(), 'DEMO-1002', '', NOW())
+ON DUPLICATE KEY UPDATE case_ref = VALUES(case_ref);
+
+INSERT INTO tbl_stripping_v2 (case_idx, case_ref, schema_version, scene_json, last_updated_at)
+VALUES
+  (1002, 'DEMO-1002', 1, JSON_OBJECT('schemaVersion', 1, 'cases', JSON_ARRAY(), 'attachments', JSON_ARRAY()), NOW())
+ON DUPLICATE KEY UPDATE case_ref = VALUES(case_ref);
 
 INSERT INTO tbl_services_lab (code, service, vpt, points, point_value, sort_order) VALUES
   ('ALIGN-FULL', 'Full clear aligner treatment', 1.0000, 1.0000, 3200.0000, 10),
@@ -158,8 +198,24 @@ INSERT INTO tbl_invoices (
     '[{"code":"ALIGN-FULL","service":"Full clear aligner treatment","qty":1,"unitPrice":3500,"total":3500}]',
     0,
     0.0810
+  ),
+  (
+    'demo-invoice-1005',
+    1005,
+    '12',
+    '24',
+    4000.00,
+    0,
+    4000.00,
+    3,
+    DATE_FORMAT(NOW() - INTERVAL 45 DAY, '%Y-%m-%d'),
+    'INV-DEMO-1005',
+    '[{"code":"ALIGN-FULL","service":"Full clear aligner treatment","qty":1,"unitPrice":4000,"total":4000}]',
+    0,
+    0.0810
   )
 ON DUPLICATE KEY UPDATE
   total_price = VALUES(total_price),
   invoice_status = VALUES(invoice_status),
-  services_json = VALUES(services_json);
+  services_json = VALUES(services_json),
+  amount_paid = VALUES(amount_paid);

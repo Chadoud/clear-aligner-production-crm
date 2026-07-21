@@ -33,7 +33,7 @@ CI runs the same gates. Red CI = don’t merge.
 
 - Unit / component: next to the file, or under `src/test/` (Vitest + Testing Library)
 - API: `backend/tests/`
-- Smoke e2e: `e2e/` (Playwright) — local only; CI does not run Playwright
+- Smoke e2e: `e2e/` (Playwright) — local with MySQL + seed; CI job `e2e-smoke`
 
 If you touch auth, tenancy, or billing, add tests. Never put real patient data or secrets in fixtures.
 

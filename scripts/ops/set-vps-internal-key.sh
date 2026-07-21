@@ -12,7 +12,7 @@
 #
 # Usage:
 #   export MOBILE_INTERNAL_API_KEY=… VPS_HOST=… VPS_USER=… VPS_REPO=…
-#   bash scripts/set-vps-internal-key.sh
+#   bash scripts/ops/set-vps-internal-key.sh
 
 set -euo pipefail
 

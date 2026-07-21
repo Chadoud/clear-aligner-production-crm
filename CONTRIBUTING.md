@@ -11,4 +11,4 @@ npm run lint && npm run typecheck && npm run test:run && npm run build
 cd backend && npm run lint && npm run typecheck && npm run test:run && npm run build
 ```
 
-Playwright (`npm run test:e2e`) is optional / local — it is not part of CI.
+Playwright (`npm run test:e2e`) needs Compose MySQL + `npm run db:setup` (or `db:reset`). CI runs the same journeys in the `e2e-smoke` job.

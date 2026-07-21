@@ -121,12 +121,16 @@ npm run dev:all
 
 **Demo logins** (from seed — these are the only accounts that exist locally):
 
-| Email                 | Password     | Role   |
-| --------------------- | ------------ | ------ |
-| `lab@example.com`     | `Doctor123!` | Lab    |
-| `doctor@example.com`  | `Doctor123!` | Doctor |
+| Email                | Password     | Role   |
+| -------------------- | ------------ | ------ |
+| `lab@example.com`    | `Doctor123!` | Lab    |
+| `doctor@example.com` | `Doctor123!` | Doctor |
+
+Seed includes two cabinets, several patients/cases (open, beware, delivered), chat/suivi rows, case-doc metadata, and sample quotes plus a paid invoice (`DEMO-1005`). Enough to walk the main GIF paths without inventing data.
 
 In local dev the login screen shows these credentials and can fill them for you. Production emails from another CRM will return **Invalid email or password**.
+
+Branding placeholders live under `public/assets/brand/` — swap before a real deploy ([docs/BRANDING.md](docs/BRANDING.md)).
 
 If you already ran an older seed, refresh data with:
 
@@ -167,10 +171,14 @@ npm run build          # production frontend build
 npm run lint           # ESLint
 npm run typecheck      # TypeScript
 npm run test:run       # unit tests (Vitest)
-npm run test:e2e       # Playwright smoke tests (local; not in CI)
+npm run test:e2e       # Playwright smoke (needs MySQL + seed; also CI `e2e-smoke`)
 
 cd backend && npm run build && npm run test:run   # API build + tests
 ```
+
+CI runs frontend/backend quality, `db-template` (schema + seed login/smoke), and `e2e-smoke` (login → cases → cabinets).
+
+`scripts/ops/` is optional private VPS helpers — not part of local evaluation.
 
 ## Security
 

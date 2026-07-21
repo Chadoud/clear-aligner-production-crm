@@ -1,16 +1,10 @@
-import { useEffect } from "react";
-
 /**
- * Refreshes case sheet when the tab mounts. Use in tabs so they show fresh data
- * when the user lands on them.
+ * Previously invalidated + refetched the case sheet on every tab mount, which
+ * stormed the API under rate limits. Case sheet loading is owned by useCaseSheet
+ * on caseId change; tab remounts keep the in-memory sheet.
  *
- * @param {() => void} refreshCaseSheet - From useCaseSheet
- * @param {number|string|null} caseId - patient?.case_id
+ * Hook kept so call sites need not change (extra args ignored).
  */
-export function useRefreshCaseSheetOnMount(refreshCaseSheet, caseId) {
-  useEffect(() => {
-    if (caseId && refreshCaseSheet) {
-      refreshCaseSheet();
-    }
-  }, [caseId, refreshCaseSheet]);
+export function useRefreshCaseSheetOnMount() {
+  // no-op
 }

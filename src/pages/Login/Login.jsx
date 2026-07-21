@@ -16,9 +16,7 @@ const DEMO_DOCTOR = {
 
 export default function Login() {
   const { t } = useTranslation();
-  const [email, setEmail] = useState(
-    import.meta.env.DEV ? DEMO_LAB.email : ""
-  );
+  const [email, setEmail] = useState(import.meta.env.DEV ? DEMO_LAB.email : "");
   const [password, setPassword] = useState(
     import.meta.env.DEV ? DEMO_LAB.password : ""
   );
@@ -112,6 +110,7 @@ export default function Login() {
             id="email"
             type="email"
             className="login-input"
+            data-testid="login-email"
             placeholder={t("auth.emailPlaceholder")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -130,6 +129,7 @@ export default function Login() {
             id="password"
             type="password"
             className="login-input"
+            data-testid="login-password"
             placeholder={t("auth.passwordPlaceholder")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -154,6 +154,7 @@ export default function Login() {
         <button
           type="submit"
           className="login-btn-submit"
+          data-testid="login-submit"
           disabled={loading}
           aria-busy={loading}
         >

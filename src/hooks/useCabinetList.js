@@ -22,7 +22,7 @@ import { safeLogError } from "@/utils/safeLogError";
  */
 export function refreshCabinetList() {
   invalidateCabinetCache();
-  return loadCabinetsFromApi();
+  return loadCabinetsFromApi({ force: true });
 }
 
 /**
