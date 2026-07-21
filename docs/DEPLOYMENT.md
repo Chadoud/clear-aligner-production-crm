@@ -1,5 +1,9 @@
 # Deploy
 
+> Generic notes for **private deployments** of a fork. Not required to evaluate the local template (`docker compose` + `npm run db:setup`).
+
+Optional VPS helpers: [scripts/ops/](../scripts/ops/).
+
 ## Before you ship
 
 - CI green on the commit you’re releasing
@@ -15,7 +19,7 @@ npm run build
 cd backend && npm ci && npm run build
 ```
 
-There are helper scripts (`deploy:vps`, `scripts/push-vps-from-local.sh`) if you set `VPS_*` yourself. Don’t commit real hosts/keys into those scripts.
+There are helper scripts under `scripts/ops/` (`npm run deploy:vps`) if you set `VPS_*` yourself. Don’t commit real hosts/keys into those scripts.
 
 ## Steps
 

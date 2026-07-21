@@ -1,5 +1,7 @@
 # Hardening notes
 
+> Historical hardening baseline for private deployments. Not required for local template evaluation.
+
 Priority when something’s on fire: auth / tenancy / secrets / deploy safety first, nice-to-have features later.
 
 Anything that changes login, roles, cron/internal keys, or deploy scripts needs tests in the same PR.

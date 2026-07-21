@@ -1,5 +1,7 @@
 # Rollback
 
+> Generic notes for **private deployments**. Not required for local template evaluation.
+
 Do this when 5xx are stuck high, valid users start getting 401/403, writes look wrong, or the UI is clearly broken after a release.
 
 1. Tell whoever needs to know you’re rolling back.

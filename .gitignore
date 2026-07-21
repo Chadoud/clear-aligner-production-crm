@@ -64,8 +64,9 @@ backend/.env
 backend/.env.*
 !backend/.env.example
 
-# Sensitive data: do not commit DB dumps
+# Sensitive data: do not commit DB dumps (keep owned template SQL under backend/db/)
 *.sql
+!backend/db/**/*.sql
 *.sql.gz
 db-dump*
 backend/data/

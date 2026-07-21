@@ -1,22 +1,24 @@
 # Documentation
 
-Guides for **Clear Aligner Production CRM**. If code and docs disagree, update the docs in the same change when you can.
+Guides for the **Clear Aligner Production CRM** template. If code and docs disagree, update the docs in the same change when you can.
 
 ## Start here
 
 - [../README.md](../README.md) — product overview & quick start
+- [../backend/db/README.md](../backend/db/README.md) — schema + demo seed
 - [ARCHITECTURE.md](ARCHITECTURE.md) — folders and boundaries
 - [API.md](API.md) — how front and back talk
 - [SECURITY.md](SECURITY.md) — auth & secrets
+- [BRANDING.md](BRANDING.md) — logos, names, org contacts
 - [CONTRIBUTING.md](CONTRIBUTING.md) — PR / test expectations
 - [screenshots/README.md](screenshots/README.md) — README demo GIFs
 
-## Ops
+## Ops (private deployments)
 
 - [DEPLOYMENT.md](DEPLOYMENT.md)
 - [ROLLBACK.md](ROLLBACK.md)
 - [MONITORING.md](MONITORING.md)
-- [MYSQL_TUNNEL.md](MYSQL_TUNNEL.md) — local SSH tunnel to MySQL
+- [MYSQL_TUNNEL.md](MYSQL_TUNNEL.md) — SSH tunnel when not using Compose
 
 ## Product / data
 

@@ -1,6 +1,6 @@
 # Contributing
 
-This is a **sanitized public reference** of a clear-aligner lab CRM. Keep PRs small and run the quality gates before review.
+This repository is a **CRM template for clear-aligner production labs**. Keep PRs small and run the quality gates before review.
 
 Details (branches, tests, architecture rules): [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md).
 

@@ -1,6 +1,8 @@
 # MySQL over SSH tunnel
 
-Most managed hosting doesn’t expose MySQL to the internet. For local work we tunnel it over SSH.
+For the default local template path, use **Docker Compose** (`docker compose up -d`) instead of a tunnel.
+
+Use this guide only when MySQL lives on a remote host that is not exposed to the internet.
 
 Script: [`scripts/mysql-tunnel.sh`](../scripts/mysql-tunnel.sh). It reads the project `.env` if present, otherwise env vars.
 

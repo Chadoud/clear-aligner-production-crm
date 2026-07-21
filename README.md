@@ -4,11 +4,13 @@
 ![Node](https://img.shields.io/badge/node-%E2%89%A520-brightgreen)
 ![License](https://img.shields.io/badge/license-All%20rights%20reserved-lightgrey)
 
-Aligner labs juggle cases, doctor communication, quotes, and billing across email and spreadsheets. This CRM puts the whole production workflow in one place: a dentist submits a case, the lab tracks treatment steps and documents, and a quote becomes an emailed invoice in a few clicks — with consolidated doctor billing at the end of the month.
+**CRM template for clear-aligner production labs.** Put case intake, treatment follow-up, doctor collaboration, quotations, invoicing, and consolidated doctor billing in one place — instead of email and spreadsheets.
+
+“Production” in the product name means the **lab manufacturing workflow**, not a hosted SaaS instance of this repo.
 
 **Two roles, one shared record.** Labs (`company` role) manage production, pricing, and billing; doctors submit cases and follow their patients. Both collaborate on the same case — status, documents, and discussion stay in sync.
 
-> This is a **sanitized public reference** of a clear-aligner lab CRM — real architecture and CI quality gates, with client branding, secrets, and patient data removed. “Production” in the product name means the **lab manufacturing workflow**, not a live hosted instance of this repo. See [License](#license) for usage terms.
+> Evaluable starter under an All-rights-reserved license: you may run it locally to evaluate. Product use needs written permission — see [License](#license).
 
 ## Contents
 
@@ -20,7 +22,6 @@ Aligner labs juggle cases, doctor communication, quotes, and billing across emai
 - [Common commands](#common-commands)
 - [Security](#security)
 - [Documentation](#documentation)
-- [Notes for reviewers](#notes-for-reviewers)
 - [License](#license)
 
 ## Product demos
@@ -58,7 +59,7 @@ Aligner labs juggle cases, doctor communication, quotes, and billing across emai
 | **Collaboration**  | Lab ↔ doctor discussion (realtime when configured)                |
 | **Access**         | Lab (`company`) and doctor roles, JWT auth                        |
 
-The two **catalogs** reflect two sales channels: **Lab** prices work billed to partner clinics, **Direct** prices work billed straight to walk-in patients. Payment QR images and organisation details ship as **placeholders** — swap them in a private deployment before any live use.
+The two **catalogs** reflect two sales channels: **Lab** prices work billed to partner clinics, **Direct** prices work billed straight to walk-in patients. Payment QR images and organisation details ship as **placeholders** — swap them before any live use ([docs/BRANDING.md](docs/BRANDING.md)).
 
 ## How it works
 
@@ -82,73 +83,67 @@ flowchart LR
 ```
 src/               React application
 backend/           Fastify API
+backend/db/        Owned schema + demo seed
 packages/domain/   Shared pricing & service rules
-docs/              Architecture, API, security, deploy
+docs/              Architecture, API, security, branding
 e2e/               Playwright smoke tests
-scripts/           Local helpers (MySQL tunnel, deploy, demo GIFs)
+scripts/           Local helpers (diagnose, GIF encode, MySQL tunnel)
+scripts/ops/       Optional private VPS deploy helpers
 ```
 
 ## Design decisions
 
-- **Raw SQL (`mysql2`), not an ORM** — the CRM sits on a shared legacy MySQL schema it does not own; explicit queries keep every read/write auditable.
+- **App-owned SQL under `backend/db/`** — versioned schema + anonymized seed; no external dump required to evaluate.
+- **Raw SQL (`mysql2`), not an ORM** — explicit queries keep every read/write auditable against a known table layout.
 - **Shared `packages/domain` for pricing** — UI preview and API finalization use the same rules, so the quote total always matches the invoice.
-- **JWT for humans, machine keys for jobs** — short-lived role-scoped tokens for the UI; separate secrets for cron / server-to-server. bcrypt only — no legacy password paths.
-- **Dual auth rate limits** — login and password-reset are capped per IP _and_ per email (or reset token), so spray and credential-stuffing are both throttled.
+- **JWT for humans, machine keys for jobs** — short-lived role-scoped tokens for the UI; separate secrets for cron / server-to-server. bcrypt only.
+- **Dual auth rate limits** — login and password-reset are capped per IP _and_ per email (or reset token). Production binds default to `127.0.0.1` (`LISTEN_HOST`) behind a trusted proxy (`TRUST_PROXY`).
 
 ## Quick start
 
-**Requirements:** Node 20+ and a MySQL database you manage yourself — this template ships **without demo data** (empty schema or a private anonymised dump both work).
-
-**1. Install**
+**Requirements:** Node 20+, Docker (for MySQL + Mailpit).
 
 ```bash
+docker compose up -d
+cp .env.example .env
+cp backend/.env.example backend/.env
 npm install
 cd backend && npm install && cd ..
-```
-
-**2. Configure environment**
-
-```bash
-cp .env.example .env                    # frontend
-cp backend/.env.example backend/.env    # backend
-```
-
-Only three values need editing for local development:
-
-| File           | Key                 | Why                                     |
-| -------------- | ------------------- | --------------------------------------- |
-| `backend/.env` | `SOURCE_DB_URL`     | Points the API at your MySQL            |
-| `backend/.env` | `JWT_SECRET`        | Signs login tokens — long random string |
-| `.env`         | `VITE_USE_API=true` | UI loads data from the API (uncomment)  |
-
-Everything else (CORS origin, ports, log level) ships with working local defaults.
-
-**3. Run**
-
-```bash
+npm run db:setup
 npm run dev:all
 ```
 
-| App | URL                                                |
-| --- | -------------------------------------------------- |
-| UI  | http://localhost:3000                              |
-| API | http://localhost:4000 (`/health`, `/health/ready`) |
+| App     | URL                                                |
+| ------- | -------------------------------------------------- |
+| UI      | http://localhost:3000                              |
+| API     | http://localhost:4000 (`/health`, `/health/ready`) |
+| Mailpit | http://localhost:8025                              |
+
+**Demo logins** (from seed):
+
+| Email                 | Password     | Role   |
+| --------------------- | ------------ | ------ |
+| `lab@example.com`     | `Doctor123!` | Lab    |
+| `doctor@example.com`  | `Doctor123!` | Doctor |
+
+Reset the database anytime with `npm run db:reset`.
 
 <details>
-<summary>MySQL is only reachable over SSH?</summary>
+<summary>Connecting to a remote MySQL over SSH instead of Compose?</summary>
 
 ```bash
 export SSH_USER=…
 export SSH_HOST=…
 export REMOTE_HOST=…   # MySQL host as seen from the SSH server
 bash scripts/mysql-tunnel.sh
+# then point SOURCE_DB_URL at the tunnel port
 ```
 
 More in [docs/MYSQL_TUNNEL.md](docs/MYSQL_TUNNEL.md).
 
 </details>
 
-Env reference: [backend/.env.example](backend/.env.example)
+Env reference: [backend/.env.example](backend/.env.example) · Schema notes: [backend/db/README.md](backend/db/README.md)
 
 ## Common commands
 
@@ -156,6 +151,9 @@ Env reference: [backend/.env.example](backend/.env.example)
 npm run dev            # frontend only
 npm run dev:backend    # API only
 npm run dev:all        # both, concurrently
+
+npm run db:setup       # apply schema + demo seed
+npm run db:reset       # drop/recreate DB, then setup
 
 npm run build          # production frontend build
 npm run lint           # ESLint
@@ -176,8 +174,6 @@ cd backend && npm run build && npm run test:run   # API build + tests
 
 Details: [docs/SECURITY.md](docs/SECURITY.md) · Reporting: [.github/SECURITY.md](.github/SECURITY.md)
 
-The security contact in `.github/SECURITY.md` is a **placeholder** (`security@example.com`) — replace it with your company’s address before relying on it.
-
 ## Documentation
 
 Start at [docs/README.md](docs/README.md).
@@ -187,19 +183,14 @@ Start at [docs/README.md](docs/README.md).
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) | System map & boundaries |
 | [API.md](docs/API.md)                   | How UI and API talk     |
 | [SECURITY.md](docs/SECURITY.md)         | Auth & secrets          |
-| [DEPLOYMENT.md](docs/DEPLOYMENT.md)     | Ship checklist          |
+| [BRANDING.md](docs/BRANDING.md)         | Logos, names, contacts  |
+| [DEPLOYMENT.md](docs/DEPLOYMENT.md)     | Private deploy notes    |
 | [CONTRIBUTING.md](docs/CONTRIBUTING.md) | PR & quality gates      |
 
-**Deploy in short:** CI green on `main` → `npm run build` (front) + `cd backend && npm run build` → ship `dist/` + backend artifact → set production env → verify `/health` and login. Full notes: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
-
-## Notes for reviewers
-
-- **Why no seed data?** A realistic dump would contain patient data, so this template ships without one. Data loading, document conventions, and API shapes are documented under [docs/](docs/).
-- **What was sanitized?** Client branding, hosts, secrets, ops/migration scripts, and legacy integrations were removed; auth is bcrypt-only and documents are served locally by the API.
-- **Demo media** — the GIFs above are re-encoded screen recordings (`bash scripts/encode-readme-gifs.sh`).
+**Deploy in short:** CI green on `main` → `npm run build` (front) + `cd backend && npm run build` → ship `dist/` + backend artifact → set production env → verify `/health` and login. Full notes: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Optional VPS helpers live under [scripts/ops/](scripts/ops/).
 
 ## License
 
-© All rights reserved. This repository is published as a **sanitized public reference**.
+© Chadoud. All rights reserved. This repository is an **evaluable CRM template** for clear-aligner production labs.
 
-You may view the source. You may **not** copy, modify, redistribute, sublicense, or use it in a product without written permission from the rights holder. See [LICENSE](LICENSE).
+You may view the source and run it locally. You may **not** copy, modify, redistribute, sublicense, or use it in a product without written permission from the rights holder. See [LICENSE](LICENSE).

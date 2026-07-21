@@ -1,0 +1,33 @@
+# Local MySQL for the clear-aligner lab CRM template.
+# App processes (Vite + Fastify) run on the host: npm run dev:all
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: aligner-crm-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: aligner_crm
+      MYSQL_USER: aligner
+      MYSQL_PASSWORD: aligner
+    ports:
+      - "3306:3306"
+    volumes:
+      - aligner_crm_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-ualigner", "-paligner"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: aligner-crm-mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+volumes:
+  aligner_crm_mysql_data:

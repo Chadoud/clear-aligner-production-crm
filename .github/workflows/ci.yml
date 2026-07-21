@@ -42,3 +42,43 @@ jobs:
           npm run typecheck
           npm run test:run
           npm run build
+
+  db-template:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: aligner_crm
+          MYSQL_USER: aligner
+          MYSQL_PASSWORD: aligner
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -ualigner -paligner"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=30
+          --health-start-period=20s
+    env:
+      SOURCE_DB_URL: mysql://aligner:aligner@127.0.0.1:3306/aligner_crm
+      JWT_SECRET: ci-template-jwt-secret
+      CORS_ORIGIN: http://localhost:3000
+      NODE_ENV: development
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build:domain
+      - name: Install backend deps
+        working-directory: backend
+        run: npm ci
+      - name: Apply schema + demo seed
+        run: npm run db:setup
+      - name: Demo login smoke
+        working-directory: backend
+        run: npx vitest run tests/integration/demo-login.seed.test.ts

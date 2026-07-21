@@ -2,7 +2,7 @@
   "name": "clear-aligner-production-crm",
   "version": "1.0.0",
   "private": true,
-  "description": "CRM for clear aligner production labs \u2014 cases, quotations, invoicing, doctor billing, and delivery follow-up",
+  "description": "CRM template for clear-aligner production labs — cases, quotations, invoicing, doctor billing, and delivery follow-up",
   "type": "module",
   "engines": {
     "node": ">=20"
@@ -24,8 +24,10 @@
     "test:e2e": "playwright test",
     "prepare": "husky",
     "build:domain": "npm run build -w @aligner-crm/domain",
-    "deploy:vps": "bash scripts/deploy-vps-frontend.sh",
-    "deploy:vps:all": "bash scripts/deploy-vps-all.sh"
+    "db:setup": "node backend/scripts/db-setup.mjs",
+    "db:reset": "DB_RESET=1 node backend/scripts/db-setup.mjs",
+    "deploy:vps": "bash scripts/ops/deploy-vps-frontend.sh",
+    "deploy:vps:all": "bash scripts/ops/deploy-vps-all.sh"
   },
   "dependencies": {
     "@aligner-crm/domain": "workspace:*",
@@ -78,6 +80,7 @@
   "keywords": [
     "aligner",
     "crm",
+    "template",
     "quotation",
     "invoice",
     "dental",

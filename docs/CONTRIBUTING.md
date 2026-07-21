@@ -1,6 +1,6 @@
 # Contributing
 
-This repository is a **sanitized public reference**. Treat changes with the same care you would for a real CRM deployment: small PRs, no secrets, no real patient data in fixtures.
+This repository is a **CRM template for clear-aligner production labs**. Treat changes with the same care you would for a real CRM deployment: small PRs, no secrets, no real patient data in fixtures.
 
 ## Branches
 
