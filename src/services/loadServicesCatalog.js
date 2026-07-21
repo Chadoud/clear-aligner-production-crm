@@ -88,7 +88,15 @@ export async function runLoadServicesCatalog(deps) {
     try {
       const data = await getServicesOverrides(brand);
       const list = Array.isArray(data.services) ? data.services : [];
-      return { kind: "api-ok", list, brand };
+      // DB overrides may be sparse (template seed). Merge with static JSON so
+      // treatment presets (codes 0.1 / 012 / 091, …) can resolve.
+      const merged = await mergeCatalogWithJson(
+        brand,
+        list,
+        getStaticServicesJson,
+        getServicesJsonPath
+      );
+      return { kind: "api-ok", list: merged, brand };
     } catch (err) {
       return {
         kind: "api-fail",
