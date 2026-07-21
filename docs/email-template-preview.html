@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aligner CRM — sent email templates (preview)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px 16px 48px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #cbd5e1;
+      color: #0f172a;
+    }
+    .page-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 8px; }
+    .page-note {
+      font-size: 0.875rem;
+      color: #475569;
+      max-width: 720px;
+      line-height: 1.5;
+      margin: 0 0 28px;
+    }
+    .page-note code { font-size: 0.8125rem; }
+    .preview-block { margin-bottom: 36px; }
+    .preview-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin: 0 0 12px;
+    }
+    /* Each block below is the same outer structure as wrapHtmlEmail (emailLayout.ts) */
+  </style>
+</head>
+<body>
+  <h1 class="page-title">Sent email templates (static preview)</h1>
+  <p class="page-note">
+    Mirrors <code>backend/src/services/email/emailLayout.ts</code> (<code>wrapHtmlEmail</code>).
+    Production uses <code>src="cid:brandlogo"</code> for the header; this preview loads
+    <code>../public/assets/brand/logo.svg</code> (open this file from the repo so the path works).
+    Contact rows come from <code>ORG_CONTACT_*</code> env at runtime; sample values are shown below.
+  </p>
+
+  <!-- 1. Standard transactional -->
+  <div class="preview-block">
+    <p class="preview-label">1. Standard transactional (logo + &ldquo;CRM notification&rdquo;)</p>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;background-color:#f1f5f9;border-radius:8px;overflow:hidden;border:1px solid #94a3b8;">
+      <tr><td align="center" style="padding:36px 16px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;border-collapse:collapse;">
+          <tr><td style="background:#ffffff;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:34px 30px;">
+            <img src="../public/assets/brand/logo.svg" alt="Aligner CRM" style="display:block;height:30px;width:auto;border:0;outline:none;text-decoration:none;" />
+            <p style="margin:6px 0 0;font-size:12px;color:#64748b;line-height:1.45;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">CRM notification</p>
+          </td></tr>
+          <tr><td style="background:#ffffff;padding:20px 30px 26px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 14px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <div style="font-size:15px;line-height:1.65;color:#334155;">
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Dear Sir or Madam,</p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">We have received your request and thank you for it.</p>
+              <p style="margin:0 0 16px;"><a href="#" style="display:inline-block;padding:12px 22px;background:#2563eb;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;font-size:15px;">Open case in CRM</a></p>
+              <p style="margin:0 0 16px;font-size:13px;color:#64748b;line-height:1.5;">If the button does not work, copy this link into your browser:<br/><span style="word-break:break-all;">https://crm.example.com/cases/123</span></p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Thank you for your trust.</p>
+            </div>
+            <p style="margin:24px 0 0;font-size:15px;line-height:1.65;color:#334155;">Kind regards,</p>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.65;color:#0f172a;"><strong>Lab Customer Service</strong></p>
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-top:28px;border-top:1px solid #e2e8f0;padding-top:22px;">
+              <tr><td>
+                <p style="margin:14px 0 14px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">Lab &mdash; contact</p>
+                <table role="presentation" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;">
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Email</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="mailto:noreply@example.com" style="color:#2563eb;text-decoration:none;">noreply@example.com</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Website</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="https://www.example.com" style="color:#2563eb;text-decoration:none;" target="_blank" rel="noopener noreferrer">www.example.com</a></td>
+                  </tr>
+                </table>
+              </td></tr>
+            </table>
+          </td></tr>
+          <tr><td style="padding:22px 12px 8px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <p style="margin:0;font-size:11px;color:#94a3b8;line-height:1.55;max-width:480px;margin-left:auto;margin-right:auto;">You received this email from <strong>Clear Aligner Production CRM</strong> (<a href="mailto:noreply@example.com" style="color:#64748b;">noreply@example.com</a>). For questions, use the contact details above.</p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </div>
+
+  <!-- 2. Invoice -->
+  <div class="preview-block">
+    <p class="preview-label">2. Invoice notification (logo + &ldquo;Invoice notification&rdquo;)</p>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;background-color:#f1f5f9;border-radius:8px;overflow:hidden;border:1px solid #94a3b8;">
+      <tr><td align="center" style="padding:36px 16px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;border-collapse:collapse;">
+          <tr><td style="background:#ffffff;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:34px 30px;">
+            <img src="../public/assets/brand/logo.svg" alt="Aligner CRM" style="display:block;height:30px;width:auto;border:0;outline:none;text-decoration:none;" />
+            <p style="margin:6px 0 0;font-size:12px;color:#64748b;line-height:1.45;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">Invoice notification</p>
+          </td></tr>
+          <tr><td style="background:#ffffff;padding:20px 30px 26px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 14px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <div style="font-size:15px;line-height:1.65;color:#334155;">
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Dear Dr.,</p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Please find below the details of your <strong>Aligner CRM</strong> invoice.</p>
+              <table role="presentation" style="border-collapse:collapse;margin:4px 0 8px;width:100%;max-width:420px;">
+                <tr><td style="padding:10px 14px;border:1px solid #e2e8f0;background:#f8fafc;font-size:13px;font-weight:600;color:#475569;">Reference</td><td style="padding:10px 14px;border:1px solid #e2e8f0;font-size:15px;color:#0f172a;">INV-2026-001</td></tr>
+                <tr><td style="padding:10px 14px;border:1px solid #e2e8f0;background:#f8fafc;font-size:13px;font-weight:600;color:#475569;">Client</td><td style="padding:10px 14px;border:1px solid #e2e8f0;font-size:15px;color:#0f172a;">Sample Client</td></tr>
+                <tr><td style="padding:10px 14px;border:1px solid #e2e8f0;background:#f8fafc;font-size:13px;font-weight:600;color:#475569;">Total amount</td><td style="padding:10px 14px;border:1px solid #e2e8f0;font-size:15px;color:#0f172a;font-weight:600;">1&apos;234.56 CHF</td></tr>
+              </table>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Thank you for your trust.</p>
+            </div>
+            <p style="margin:24px 0 0;font-size:15px;line-height:1.65;color:#334155;">Kind regards,</p>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.65;color:#0f172a;"><strong>Lab Customer Service</strong></p>
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-top:28px;border-top:1px solid #e2e8f0;padding-top:22px;">
+              <tr><td>
+                <p style="margin:14px 0 14px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">Lab &mdash; contact</p>
+                <table role="presentation" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;">
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Email</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="mailto:noreply@example.com" style="color:#2563eb;text-decoration:none;">noreply@example.com</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Website</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="https://www.example.com" style="color:#2563eb;text-decoration:none;" target="_blank" rel="noopener noreferrer">www.example.com</a></td>
+                  </tr>
+                </table>
+              </td></tr>
+            </table>
+          </td></tr>
+          <tr><td style="padding:22px 12px 8px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <p style="margin:0;font-size:11px;color:#94a3b8;line-height:1.55;max-width:480px;margin-left:auto;margin-right:auto;">You received this email from <strong>Clear Aligner Production CRM</strong> (<a href="mailto:noreply@example.com" style="color:#64748b;">noreply@example.com</a>). For questions, use the contact details above.</p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </div>
+
+  <!-- 3. Doctor billing custom header -->
+  <div class="preview-block">
+    <p class="preview-label">3. Doctor billing email (custom header: logo + &ldquo;New bill for March 2026&rdquo;)</p>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;background-color:#f1f5f9;border-radius:8px;overflow:hidden;border:1px solid #94a3b8;">
+      <tr><td align="center" style="padding:36px 16px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;border-collapse:collapse;">
+          <tr><td style="background:#ffffff;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:34px 30px;">
+            <img src="../public/assets/brand/logo.svg" alt="Aligner CRM" style="display:block;height:30px;width:auto;border:0;outline:none;text-decoration:none;" />
+            <p style="margin:8px 0 0;font-size:15px;font-weight:600;color:#0f172a;line-height:1.35;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">New bill for March 2026</p>
+          </td></tr>
+          <tr><td style="background:#ffffff;padding:20px 30px 26px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 14px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <div style="font-size:15px;line-height:1.65;color:#334155;">
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Dear Dr.,</p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">A new bill has been generated for your practice in the CRM.</p>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:8px 0 20px;">
+                <tr>
+                  <th style="padding:11px 12px;text-align:left;border:1px solid #e2e8f0;background:#f1f5f9;font-size:12px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.04em;">Patient</th>
+                  <th style="padding:11px 12px;text-align:left;border:1px solid #e2e8f0;background:#f1f5f9;font-size:12px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.04em;">Ref</th>
+                  <th style="padding:11px 12px;text-align:right;border:1px solid #e2e8f0;background:#f1f5f9;font-size:12px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.04em;">Amount</th>
+                </tr>
+                <tr>
+                  <td style="padding:10px 12px;border:1px solid #e2e8f0;font-size:14px;color:#334155;">Doe Jane</td>
+                  <td style="padding:10px 12px;border:1px solid #e2e8f0;font-size:14px;color:#334155;">C-1001</td>
+                  <td style="padding:10px 12px;border:1px solid #e2e8f0;font-size:14px;color:#0f172a;text-align:right;font-weight:600;">99.00 CHF</td>
+                </tr>
+              </table>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Thank you for your trust.</p>
+            </div>
+            <p style="margin:24px 0 0;font-size:15px;line-height:1.65;color:#334155;">Kind regards,</p>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.65;color:#0f172a;"><strong>Lab Customer Service</strong></p>
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-top:28px;border-top:1px solid #e2e8f0;padding-top:22px;">
+              <tr><td>
+                <p style="margin:14px 0 14px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">Lab &mdash; contact</p>
+                <table role="presentation" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;">
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Email</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="mailto:noreply@example.com" style="color:#2563eb;text-decoration:none;">noreply@example.com</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Website</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="https://www.example.com" style="color:#2563eb;text-decoration:none;" target="_blank" rel="noopener noreferrer">www.example.com</a></td>
+                  </tr>
+                </table>
+              </td></tr>
+            </table>
+          </td></tr>
+          <tr><td style="padding:22px 12px 8px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <p style="margin:0;font-size:11px;color:#94a3b8;line-height:1.55;max-width:480px;margin-left:auto;margin-right:auto;">You received this email from <strong>Clear Aligner Production CRM</strong> (<a href="mailto:noreply@example.com" style="color:#64748b;">noreply@example.com</a>). For questions, use the contact details above.</p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </div>
+
+  <!-- 4. Text fallback -->
+  <div class="preview-block">
+    <p class="preview-label">4. Fallback when logo file is missing (<code>useLogoCid</code> false)</p>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;background-color:#f1f5f9;border-radius:8px;overflow:hidden;border:1px solid #94a3b8;">
+      <tr><td align="center" style="padding:36px 16px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:600px;border-collapse:collapse;">
+          <tr><td style="background:#ffffff;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:34px 30px;">
+            <p style="margin:0;font-size:16px;font-weight:700;color:#0f172a;letter-spacing:-0.01em;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">Lab</p>
+            <p style="margin:6px 0 0;font-size:12px;color:#64748b;line-height:1.45;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">Account security</p>
+          </td></tr>
+          <tr><td style="background:#ffffff;padding:20px 30px 26px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 14px 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <div style="font-size:15px;line-height:1.65;color:#334155;">
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Hello,</p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">We received a request to reset the password for your Aligner CRM account.</p>
+              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#334155;">Thank you,<br/><strong>Aligner CRM Support</strong></p>
+            </div>
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-top:28px;border-top:1px solid #e2e8f0;padding-top:22px;">
+              <tr><td>
+                <p style="margin:14px 0 14px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">Lab &mdash; contact</p>
+                <table role="presentation" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;">
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Email</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="mailto:noreply@example.com" style="color:#2563eb;text-decoration:none;">noreply@example.com</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px 18px 8px 0;vertical-align:top;font-size:13px;color:#64748b;font-weight:600;white-space:nowrap;">Website</td>
+                    <td style="padding:8px 0;font-size:14px;color:#1e293b;line-height:1.55;"><a href="https://www.example.com" style="color:#2563eb;text-decoration:none;" target="_blank" rel="noopener noreferrer">www.example.com</a></td>
+                  </tr>
+                </table>
+              </td></tr>
+            </table>
+          </td></tr>
+          <tr><td style="padding:22px 12px 8px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+            <p style="margin:0;font-size:11px;color:#94a3b8;line-height:1.55;max-width:480px;margin-left:auto;margin-right:auto;">You received this email from <strong>Clear Aligner Production CRM</strong> (<a href="mailto:noreply@example.com" style="color:#64748b;">noreply@example.com</a>). For questions, use the contact details above.</p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </div>
+
+</body>
+</html>

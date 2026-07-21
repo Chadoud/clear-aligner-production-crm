@@ -1,0 +1,93 @@
+{
+  "name": "clear-aligner-production-crm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CRM for clear aligner production labs \u2014 cases, quotations, invoicing, doctor billing, and delivery follow-up",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:all": "concurrently -n be,fe -c blue,green \"npm run dev:backend\" \"npm run dev\"",
+    "build": "npm run build:domain && NODE_OPTIONS=--max-old-space-size=6144 vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "prepare": "husky",
+    "build:domain": "npm run build -w @aligner-crm/domain",
+    "deploy:vps": "bash scripts/deploy-vps-frontend.sh",
+    "deploy:vps:all": "bash scripts/deploy-vps-all.sh"
+  },
+  "dependencies": {
+    "@aligner-crm/domain": "workspace:*",
+    "dompurify": "^2.5.8",
+    "html2canvas": "^1.4.1",
+    "i18next": "^26.1.0",
+    "i18next-http-backend": "^4.0.0",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^17.0.7",
+    "react-router-dom": "^7.13.0",
+    "socket.io-client": "^4.8.3",
+    "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^22.10.7",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^9.1.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "lint-staged": "^15.2.11",
+    "msw": "^2.7.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3",
+    "vite": "^5.0.8",
+    "vitest": "^2.1.8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{js,jsx,ts,tsx,css,md}": [
+      "prettier --write"
+    ]
+  },
+  "keywords": [
+    "aligner",
+    "crm",
+    "quotation",
+    "invoice",
+    "dental",
+    "qr-bill",
+    "react"
+  ],
+  "author": "Chadoud",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chadoud/clear-aligner-production-crm.git"
+  }
+}

@@ -1,0 +1,456 @@
+/**
+ * Doctors Billing page – month-based view, cards, preview modal.
+ * Uses design tokens from variables.css; aligned with Overview.
+ */
+
+.doctors-billing-page {
+  --db-text-primary: var(--text-primary);
+  --db-text-secondary: var(--text-secondary);
+  --db-text-muted: var(--text-muted);
+  --db-border: var(--border-light);
+  --db-bg-card: var(--bg-white);
+  --db-bg-subtle: var(--bg-muted);
+  --db-accent: var(--primary-blue);
+  --db-accent-hover: var(--primary-blue-hover);
+  --db-success: var(--color-success-muted);
+  --db-radius: var(--radius-lg);
+  --db-shadow: var(--shadow-md);
+  --db-shadow-sm: var(--shadow-sm);
+}
+
+.doctors-billing-page {
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.doctors-billing-view-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.doctors-billing-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border: 1px solid var(--db-border);
+  border-radius: var(--radius-md);
+  background: var(--db-bg-card);
+  color: var(--db-text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.doctors-billing-toggle-btn:hover {
+  background: var(--db-bg-subtle);
+  color: var(--db-text-primary);
+}
+
+.doctors-billing-toggle-btn.active {
+  background: var(--db-accent);
+  color: white;
+  border-color: var(--db-accent);
+}
+
+.doctors-billing-toggle-btn.active:hover {
+  background: var(--db-accent-hover);
+  border-color: var(--db-accent-hover);
+}
+
+.doctors-billing-month-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: min(100%, 28rem);
+}
+
+.doctors-billing-month-row .month-or-range-filter {
+  width: 100%;
+}
+
+.doctors-billing-month-row > label:first-child {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--db-text-secondary);
+}
+
+.doctors-billing-month-row .doctors-billing-month-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.doctors-billing-month-select {
+  min-width: 8rem;
+}
+
+.doctors-billing-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.doctors-billing-summary-card {
+  background: var(--db-bg-card);
+  border: 1px solid var(--db-border);
+  border-radius: var(--db-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--db-shadow-sm);
+}
+
+.doctors-billing-summary-card-label {
+  font-size: var(--font-size-xs);
+  color: var(--db-text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.doctors-billing-summary-card-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--db-text-primary);
+}
+
+.doctors-billing-doctor-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.doctors-billing-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  padding: var(--spacing-xl) 0;
+}
+
+.doctors-billing-doctor-card {
+  background: var(--db-bg-card);
+  border: 1px solid var(--db-border);
+  border-radius: var(--db-radius);
+  box-shadow: var(--db-shadow-sm);
+  overflow: hidden;
+}
+
+.doctors-billing-doctor-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.doctors-billing-doctor-card-header:hover {
+  background: var(--db-bg-subtle);
+}
+
+.doctors-billing-doctor-card-header-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.doctors-billing-doctor-card-name {
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--db-text-primary);
+}
+
+.doctors-billing-doctor-card-meta {
+  font-size: var(--font-size-sm);
+  color: var(--db-text-secondary);
+}
+
+.doctors-billing-status-line {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  max-width: 100%;
+}
+
+.doctors-billing-status-line__date {
+  font-size: var(--font-size-sm);
+  color: var(--db-text-secondary);
+  font-weight: 500;
+}
+
+.doctors-billing-status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.doctors-billing-status-tag--paid {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border-light);
+}
+
+.doctors-billing-status-tag--billed {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  border: 1px solid var(--color-info-border);
+}
+
+.doctors-billing-status-tag--toBill {
+  background: var(--color-warning-bg);
+  color: var(--color-amber);
+  border: 1px solid var(--color-orange-border);
+}
+
+.doctors-billing-doctor-card-status-summary {
+  flex: 1 1 100%;
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--db-text-muted);
+  font-weight: 500;
+}
+
+.doctors-billing-td-status-tag {
+  vertical-align: middle;
+}
+
+.doctors-billing-doctor-card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.doctors-billing-doctor-card-expand {
+  padding: var(--spacing-sm);
+  border: none;
+  background: transparent;
+  color: var(--db-text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.doctors-billing-doctor-card-expand:hover {
+  color: var(--db-accent);
+  background: var(--db-bg-subtle);
+}
+
+.doctors-billing-doctor-card-body {
+  border-top: 1px solid var(--db-border);
+  padding: var(--spacing-lg);
+}
+
+.doctors-billing-patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.doctors-billing-patient-table th,
+.doctors-billing-patient-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--db-border);
+}
+
+.doctors-billing-patient-table th {
+  font-weight: 600;
+  color: var(--db-text-secondary);
+}
+
+.doctors-billing-patient-table td:last-child,
+.doctors-billing-patient-table .doctors-billing-th-amount {
+  text-align: right;
+  font-weight: 500;
+}
+
+.doctors-billing-patient-row-clickable {
+  cursor: pointer;
+}
+
+.doctors-billing-patient-row-clickable:hover {
+  background: var(--db-bg-subtle);
+}
+
+/*
+ * Buttons in this page now use the shared btn-base + btn-base--* system
+ * from components.css. No layout or font rules here; only a local alias
+ * for the page's "primary" color (brand navy) to keep the same look.
+ */
+.doctors-billing-btn-primary {
+  background: var(--db-accent);
+  color: var(--bg-white);
+}
+
+.doctors-billing-btn-primary:hover:not(:disabled) {
+  background: var(--db-accent-hover);
+}
+
+.doctors-billing-btn-mark-paid {
+  background: var(--color-success-muted);
+  color: var(--bg-white);
+}
+
+.doctors-billing-btn-mark-paid:hover:not(:disabled) {
+  background: var(--color-success);
+}
+
+.doctors-billing-empty {
+  text-align: center;
+  padding: var(--spacing-4xl);
+  color: var(--db-text-muted);
+  font-size: var(--font-size-base);
+}
+
+/* Modal — BillModal is portaled to document.body; it no longer inherits --db-* tokens
+   from .doctors-billing-page. Redeclare them here so header/footer/modal backgrounds work. */
+.doctors-billing-modal-overlay {
+  --db-text-primary: var(--text-primary);
+  --db-text-secondary: var(--text-secondary);
+  --db-text-muted: var(--text-muted);
+  --db-border: var(--border-light);
+  --db-bg-card: var(--bg-white);
+  --db-bg-subtle: var(--bg-muted);
+  --db-accent: var(--primary-blue);
+  --db-accent-hover: var(--primary-blue-hover);
+  --db-success: var(--color-success-muted);
+  --db-radius: var(--radius-lg);
+  --db-shadow: var(--shadow-md);
+  --db-shadow-sm: var(--shadow-sm);
+
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-lg);
+}
+
+.doctors-billing-modal {
+  background: var(--db-bg-card);
+  border-radius: var(--db-radius);
+  box-shadow: var(--shadow-md);
+
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.doctors-billing-modal.doctors-billing-modal--preview {
+  max-width: 75vw;
+  max-height: calc(100vh - 40px);
+}
+
+.doctors-billing-modal-body-preview .invoice-preview {
+  flex-shrink: 0;
+}
+
+.doctors-billing-modal-body-preview .doctors-billing-preview-iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 70vh;
+  border: none;
+  background: var(--bg-white);
+}
+
+.doctors-billing-modal-body-preview .doctors-billing-modal-footer {
+  flex-shrink: 0;
+}
+
+.doctors-billing-modal-header {
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--db-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.doctors-billing-modal-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--db-text-primary);
+  margin: 0;
+}
+
+.doctors-billing-modal-close {
+  padding: var(--spacing-sm);
+  border: none;
+  background: transparent;
+  color: var(--db-text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+.doctors-billing-modal-close:hover {
+  color: var(--db-text-primary);
+  background: var(--db-bg-subtle);
+}
+
+.doctors-billing-modal-body {
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.doctors-billing-modal-line-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--db-border);
+  gap: var(--spacing-md);
+}
+
+.doctors-billing-modal-line-item:last-child {
+  border-bottom: none;
+}
+
+.doctors-billing-modal-footer {
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--db-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 640px) {
+  .doctors-billing-page {
+    padding: var(--spacing-md);
+  }
+
+  .doctors-billing-summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .doctors-billing-doctor-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doctors-billing-modal {
+    max-height: 100vh;
+  }
+}

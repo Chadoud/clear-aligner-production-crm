@@ -1,0 +1,68 @@
+[
+  {
+    "code": "0.1",
+    "service": "Laboratory service",
+    "vpt": 1,
+    "points": null
+  },
+  {
+    "code": "4.0970",
+    "service": "Photographie extraorale ou intraorale",
+    "vpt": 1,
+    "points": 16.3
+  },
+  {
+    "code": "4.1540",
+    "service": "Ablation d'une attelle interdentaire collée",
+    "vpt": 1,
+    "points": 20
+  },
+  {
+    "code": "4.1750",
+    "service": "Gouttière thermoformée",
+    "vpt": 1,
+    "points": 89.1
+  },
+  {
+    "code": "4.8000",
+    "service": "Analyse & consultation",
+    "vpt": 1,
+    "points": 50
+  },
+  {
+    "code": "4.8490",
+    "service": "Contention en fil métallique, collée, indirect",
+    "vpt": 1,
+    "points": 126
+  },
+  {
+    "code": "4.8720",
+    "service": "Collage, par point de collage",
+    "vpt": 1,
+    "points": 15
+  },
+  {
+    "code": "4.0900",
+    "service": "Prise d'empreinte",
+    "vpt": 1,
+    "points": 120
+  },
+  {
+    "code": "0013.1",
+    "service": "Modèle duplicata",
+    "vpt": 1,
+    "points": 50
+  },
+  {
+    "code": "0091.1",
+    "service": "Gouttière de contention - Attelle de Drum / masque pour Bracket jusqu'à 1mm",
+    "vpt": 1,
+    "points": 50
+  },
+  {
+    "code": "PANORAMIQUE",
+    "service": "Examen et radiographie panoramique chez CDC",
+    "vpt": 1,
+    "points": 300
+  }
+]

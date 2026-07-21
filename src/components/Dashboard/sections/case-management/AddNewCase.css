@@ -1,0 +1,199 @@
+/* ============================================================
+   Add New Case – 5-step wizard shell
+   Step-specific and form utility styles live in steps.css.
+   ============================================================ */
+
+.add-new-case {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* ---- Wizard step tabs ---- */
+.wizard-steps {
+  display: flex;
+  align-items: center;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  overflow-x: auto;
+  gap: 0;
+}
+
+.wizard-step-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.wizard-step-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: none;
+  background: none;
+  cursor: default;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-base);
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.wizard-step-tab:not(:disabled) {
+  cursor: pointer;
+}
+
+.wizard-step-tab:not(:disabled):hover {
+  background: var(--bg-light);
+}
+
+/* Step badge circle */
+.wizard-step-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--bg-muted);
+  border: 2px solid var(--border-default);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.wizard-step-tab--active .wizard-step-badge {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: var(--bg-white);
+}
+
+.wizard-step-tab--done .wizard-step-badge {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--bg-white);
+}
+
+/* Step label stack */
+.wizard-step-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.wizard-step-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.wizard-step-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wizard-step-icon {
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+}
+
+.wizard-step-tab--active .wizard-step-label {
+  color: var(--primary-blue);
+}
+
+.wizard-step-tab--done .wizard-step-label {
+  color: var(--color-success);
+}
+
+/* Connector line between steps */
+.wizard-step-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--border-default);
+  margin: 0 var(--spacing-xs);
+  transition: background var(--transition-base);
+  border-radius: 1px;
+}
+
+.wizard-step-connector--done {
+  background: var(--color-success);
+}
+
+/* ---- Wizard content card ---- */
+.wizard-content {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.wizard-error {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-danger-bg);
+  border: 1px solid var(--border-danger);
+  border-radius: var(--radius-sm);
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* ---- Wizard footer ---- */
+.wizard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+}
+
+.wizard-footer-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/*
+ * Wizard footer buttons use btn-base + btn-base--primary/secondary from components.css.
+ * No layout or color overrides needed here.
+ */
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .wizard-steps {
+    padding: var(--spacing-sm);
+  }
+
+  .wizard-step-info {
+    display: none;
+  }
+
+  .wizard-content {
+    padding: var(--spacing-lg);
+  }
+}

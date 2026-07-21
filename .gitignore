@@ -1,0 +1,71 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+packages/domain/dist
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+.cursorrules
+.cursor/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.pem
+id_rsa*
+id_ed25519*
+
+# Test coverage
+coverage/
+backend/coverage/
+
+# Generated files
+*.pdf
+invoice_*.pdf
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backend
+backend/dist
+backend/node_modules
+
+# Environment files: never commit real secrets — only *.example templates
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Sensitive data: do not commit DB dumps
+*.sql
+*.sql.gz
+db-dump*
+backend/data/

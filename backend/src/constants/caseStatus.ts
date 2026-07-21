@@ -1,0 +1,8 @@
+export const CASE_STATUS_NO_FOLLOW_UP = 8;
+export const CASE_STATUS_CASE_STUDY = 3;
+export const CASE_STATUS_AWAITING_ACCEPTANCE = 4;
+export const CASE_STATUS_IN_FABRICATION = 5;
+export const CASE_STATUS_PAUSE = 6;
+export const CASE_STATUS_DELIVERED = 7;
+export const CASE_STATUS_REACTIVATION = 10;
+export const CASE_STATUS_IN_TREATMENT = 11;

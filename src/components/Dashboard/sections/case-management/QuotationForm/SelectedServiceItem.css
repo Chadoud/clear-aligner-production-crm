@@ -1,0 +1,5 @@
+/* Selected service item styles are in main CSS */
+
+.selected-service-item .service-attr.service-price {
+  font-weight: 600;
+}

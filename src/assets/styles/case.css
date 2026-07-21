@@ -1,0 +1,90 @@
+/* Layout: see base.css + layout.css */
+
+.user-name-header {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* Case Details Section */
+.case-details-section {
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-white);
+}
+
+.case-section {
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-white);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.case-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.case-section-title i {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+}
+
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.case-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.case-status-text {
+  font-size: var(--font-size-base);
+  color: var(--color-danger);
+  font-weight: var(--font-weight-normal);
+  margin-right: var(--spacing-sm);
+}
+
+.case-name {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-blue);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.case-ref {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+.case-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin-top: var(--spacing-sm);
+}
+
+.case-info-item {
+  line-height: 1.6;
+}

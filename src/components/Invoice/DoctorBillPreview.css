@@ -1,0 +1,98 @@
+/*
+ * Doctor bill shares base .invoice-table typography from invoice.css.
+ * Patient 7-column widths are scoped to .invoice-table--patient; this file defines the 4-column doctor layout.
+ */
+
+.invoice-preview--doctor {
+  width: 210mm;
+  max-width: 210mm;
+  min-height: 297mm;
+}
+
+.invoice-preview--doctor .invoice-info-section {
+  gap: 12px;
+}
+
+/* --- 4-column doctor table --- */
+.invoice-preview--doctor .invoice-table--doctor {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.invoice-preview--doctor .invoice-table--doctor thead th:nth-child(1),
+.invoice-preview--doctor .invoice-table--doctor tbody td:nth-child(1) {
+  width: 38%;
+  text-align: left;
+}
+
+.invoice-preview--doctor .invoice-table--doctor thead th:nth-child(2),
+.invoice-preview--doctor .invoice-table--doctor tbody td:nth-child(2) {
+  width: 14%;
+  text-align: left;
+}
+
+.invoice-preview--doctor .invoice-table--doctor thead th:nth-child(3),
+.invoice-preview--doctor .invoice-table--doctor tbody td:nth-child(3) {
+  width: 22%;
+  text-align: center;
+}
+
+.invoice-preview--doctor .invoice-table--doctor thead th:nth-child(4),
+.invoice-preview--doctor .invoice-table--doctor tbody td:nth-child(4) {
+  width: 26%;
+  text-align: right;
+}
+
+.invoice-preview--doctor .invoice-table--doctor tbody td:nth-child(3) {
+  font-size: 10px;
+  line-height: 1.35;
+  word-break: normal;
+  hyphens: none;
+}
+
+.invoice-preview--doctor .invoice-table--doctor th,
+.invoice-preview--doctor .invoice-table--doctor td {
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.invoice-preview--doctor .invoice-table--doctor th:nth-child(1),
+.invoice-preview--doctor .invoice-table--doctor td:nth-child(1) {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.invoice-preview--doctor .invoice-table--doctor th:nth-child(2),
+.invoice-preview--doctor .invoice-table--doctor td:nth-child(2),
+.invoice-preview--doctor .invoice-table--doctor th:nth-child(3),
+.invoice-preview--doctor .invoice-table--doctor td:nth-child(3) {
+  white-space: nowrap;
+}
+
+.invoice-preview--doctor .invoice-table--doctor th:nth-child(4),
+.invoice-preview--doctor .invoice-table--doctor td:nth-child(4) {
+  white-space: nowrap;
+}
+
+.invoice-preview--doctor .invoice-total {
+  margin-bottom: 0;
+}
+
+.invoice-preview--doctor .invoice-header {
+  gap: 8px;
+}
+
+/* Match patient invoice title (Direct-style) — do not shrink vs global */
+.invoice-preview--doctor .invoice-title {
+  font-size: 56px;
+  line-height: 1.1;
+}
+
+.invoice-preview--doctor .invoice-vat-section {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.invoice-preview--doctor .invoice-payment-section {
+  margin-top: 12px;
+}

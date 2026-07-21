@@ -1,0 +1,262 @@
+.user-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+.user-detail-back:hover {
+  text-decoration: underline;
+}
+
+.user-detail-title {
+  margin-bottom: var(--spacing-lg);
+}
+
+.user-detail-loading,
+.user-detail-error {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  padding: var(--spacing-lg) 0;
+}
+
+.user-detail-error {
+  color: var(--color-error, #dc3545);
+}
+
+.user-detail-body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  align-items: stretch;
+  width: 100%;
+}
+
+.user-detail-card {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+.user-detail-section-heading {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.user-detail-info-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) 0;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid var(--bg-muted);
+}
+
+.user-detail-info-label {
+  flex: 0 0 120px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.user-detail-info-value {
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+/* View cabinet – outline style override for IconButton secondary */
+.user-detail-view-cabinet {
+  margin-top: var(--spacing-md);
+  background: var(--bg-white) !important;
+  color: var(--primary-blue) !important;
+  border: 1px solid var(--primary-blue) !important;
+}
+
+.user-detail-view-cabinet:hover:not(:disabled) {
+  background: rgba(37, 99, 235, 0.08) !important;
+}
+
+/* Edit / delete actions – uses IconButton; only layout overrides */
+.user-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.user-detail-edit-btn,
+.user-detail-delete-btn {
+  margin-top: 0;
+}
+
+.user-detail-tabs {
+  width: 100%;
+  margin-bottom: var(--spacing-lg);
+}
+
+.user-detail-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  align-items: center;
+}
+
+/* Tabs use IconButton (primary/cancel) for consistency with Save/Cancel */
+
+.user-detail-form-card {
+  padding: var(--spacing-lg);
+}
+
+.user-detail-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.user-detail-form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.user-detail-form-grid input,
+.user-detail-form-grid select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.user-detail-form-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* Rights section – toggles and cards */
+.user-detail-rights-card {
+  max-width: 560px;
+}
+
+.user-detail-rights-help {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.5;
+}
+
+.user-detail-rights-empty {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.user-detail-rights-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.user-detail-rights-group {
+  background: var(--bg-muted);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.user-detail-right-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.user-detail-right-toggle:hover {
+  background: var(--bg-hover);
+}
+
+.user-detail-rights-group:has(.user-detail-rights-children)
+  .user-detail-right-toggle--parent {
+  border-bottom: 1px solid var(--border-default);
+}
+
+.user-detail-rights-group-header {
+  display: flex;
+  align-items: center;
+  cursor: default;
+  pointer-events: none;
+}
+
+.user-detail-rights-group-header:hover {
+  background: var(--bg-white);
+}
+
+.user-detail-right-toggle--parent {
+  font-weight: 600;
+  background: var(--bg-white);
+}
+
+.user-detail-right-toggle--child {
+  font-weight: 400;
+  padding-left: var(--spacing-xl);
+}
+
+.user-detail-right-toggle--child {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.user-detail-right-toggle--child:last-child {
+  border-bottom: none;
+}
+
+.user-detail-right-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-detail-right-toggle .toggle-switch {
+  flex-shrink: 0;
+  width: 44px;
+  height: 24px;
+}
+
+.user-detail-right-toggle .toggle-slider {
+  border-radius: 24px;
+}
+
+.user-detail-right-toggle .toggle-slider:before {
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+}
+
+.user-detail-right-toggle .toggle-input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+}
+
+.user-detail-rights-children {
+  display: flex;
+  flex-direction: column;
+}

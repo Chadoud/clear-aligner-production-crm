@@ -1,0 +1,2310 @@
+/* ============================================================
+   DentalToothGrid – anatomical FDI dental schema
+   ============================================================ */
+
+/* ---- Wrapper ---- */
+.dtg-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* ================================================================
+   Module palette
+   ================================================================ */
+.dtg-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.dtg-palette-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+  cursor: grab;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+  line-height: 1.2;
+  user-select: none;
+}
+
+.dtg-palette-btn:active {
+  cursor: grabbing;
+}
+
+.dtg-palette-btn:hover {
+  background: var(--mod-bg, var(--bg-light));
+  border-color: var(--mod-color, var(--primary-blue));
+}
+
+.dtg-palette-btn--active {
+  background: var(--mod-bg, var(--primary-blue-light));
+  border-color: var(--mod-color, var(--primary-blue));
+  color: var(--mod-color, var(--primary-blue));
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--mod-color, var(--primary-blue)) 20%, transparent);
+}
+
+.dtg-palette-icon {
+  font-size: 1rem;
+  color: var(--mod-color, currentColor);
+  width: 1.4rem;
+  min-height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.dtg-palette-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dtg-palette-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.dtg-palette-sub {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+}
+
+/* ---- Section labels ---- */
+.dtg-section-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.dtg-section-intro {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-sm, 8px);
+  line-height: 1.4;
+}
+
+/* ================================================================
+   Step palette – horizontal scroll when narrow so all steps stay in view
+   ================================================================ */
+.dtg-steps-palette-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin: 0 calc(-1 * var(--spacing-md, 16px)); /* extend scroll to edges on narrow screens */
+  padding: 0 var(--spacing-md, 16px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.dtg-steps-palette {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  min-width: min-content;
+}
+
+.dtg-step-chip {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 2px solid #cbd5e1;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.1s;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.dtg-step-chip:hover {
+  background: #e2e8f0;
+  border-color: #64748b;
+  transform: scale(1.05);
+}
+
+.dtg-step-chip--active {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.dtg-step-chip:active {
+  cursor: grabbing;
+}
+
+.dtg-step-chip--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dtg-step-chip--disabled:hover {
+  transform: none;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* inline chip shown in popup header */
+.dtg-step-chip-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #dbeafe;
+  border: 2px solid #3b82f6;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1d4ed8;
+  flex-shrink: 0;
+}
+
+/* ---- Contextual hint ---- */
+.dtg-hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  background: var(--primary-blue-light);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* ================================================================
+   Dental schema card
+   ================================================================ */
+.dtg-schema {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Prevent arch rows from shrinking so horizontal scroll reveals left/right teeth */
+.dtg-schema .dtg-arch {
+  min-width: min-content;
+}
+
+/* ---- Arch header / footer ---- */
+.dtg-arch-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px var(--spacing-md);
+}
+
+.dtg-arch-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.dtg-side {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ---- Arch rows ---- */
+.dtg-arch {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* Upper arch: crowns face DOWN toward the occlusal line.
+   Stretch ensures both quadrants have same height so tooth tips align across midline. */
+.dtg-arch--upper {
+  align-items: stretch;
+}
+/* Lower arch: crowns face UP toward the occlusal line.
+   Stretch ensures both quadrants have same height so tooth tips align across midline. */
+.dtg-arch--lower {
+  align-items: stretch;
+}
+
+.dtg-quadrant {
+  display: flex;
+  gap: 0;
+  align-items: stretch; /* Same-height teeth so numbers align and crowns meet at occlusal line */
+}
+
+/* Horizontal divider between arches */
+.dtg-occlusal-line {
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-default),
+    var(--border-input),
+    var(--border-default),
+    transparent
+  );
+  margin: 12px 0;
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+/* ================================================================
+   Gap zones (inter-dental)
+   ================================================================ */
+.dtg-gap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch; /* fill full arch row height */
+  width: 22px;
+  min-width: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+  position: relative;
+}
+
+.dtg-gap--upper {
+  justify-content: flex-end;
+}
+.dtg-gap--lower {
+  justify-content: flex-start;
+}
+
+/* Midline gap acts as the midline divider */
+.dtg-gap--midline {
+  width: 22px;
+  min-width: 22px;
+  margin: 0 2px;
+}
+
+.dtg-gap:hover,
+.dtg-gap--over {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.dtg-gap--has-steps {
+  width: 26px;
+  min-width: 26px;
+}
+
+/* The visible vertical line inside each gap – fixed width to avoid layout shift on hover */
+.dtg-gap-line {
+  width: 2px;
+  flex: 1;
+  min-height: 10px;
+  background: #c8c2b4;
+  border-radius: 1px;
+  opacity: 0.55;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+}
+
+.dtg-gap--over .dtg-gap-line,
+.dtg-gap:hover .dtg-gap-line {
+  background: #3b82f6;
+  opacity: 0.8;
+}
+
+/* Step bubbles in a gap */
+.dtg-gap-bubbles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 0;
+}
+
+.dtg-gap-bubble {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  border: 2px solid #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+  flex-shrink: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.dtg-gap-bubble--striped {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.dtg-gap-bubble:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+}
+
+/* ================================================================
+   Tooth drop zone
+   ================================================================ */
+.dtg-tooth {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+/* Upper: row 1 = number (aligned across arch), row 2 = crown+root */
+.dtg-tooth--upper {
+  grid-template-rows: auto 1fr;
+}
+
+/* Lower: row 1 = crown+root, row 2 = number (aligned across arch) */
+.dtg-tooth--lower {
+  grid-template-rows: 1fr auto;
+}
+
+/* Crown+root wrapper: flex column to stack root and crown */
+.dtg-tooth-crown-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+  grid-column: 1;
+}
+
+.dtg-tooth--upper .dtg-tooth-crown-root {
+  grid-row: 2;
+  justify-content: flex-end;
+}
+
+.dtg-tooth--lower .dtg-tooth-crown-root {
+  grid-row: 1;
+  justify-content: flex-start;
+}
+
+/* Hover highlight on the crown */
+.dtg-tooth:hover .dtg-tooth-body {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue-light);
+}
+.dtg-tooth--lower:hover .dtg-tooth-body {
+  transform: translateY(-1px);
+}
+.dtg-tooth--upper:hover .dtg-tooth-body {
+  transform: translateY(1px);
+}
+/* Don't show hover effect when tooth already has modules (avoid confusion) */
+.dtg-tooth--has-module:hover .dtg-tooth-body:not(.dtg-tooth-body--dragover) {
+  background: var(--ta-bg, var(--primary-blue-light));
+}
+
+/* Drag-over state on the crown */
+.dtg-tooth-body--dragover {
+  border-color: var(--primary-blue) !important;
+  background: var(--primary-blue-light) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-blue) 30%, transparent) !important;
+  transform: scale(1.08);
+  transition: transform 0.1s ease;
+}
+
+/* ---- Crown (body) ---- */
+/* border-radius order: top-left top-right bottom-right bottom-left
+   Lower: TOP = occlusal (toward center) → small radius = squarish bite edge
+          BOTTOM = cervical (root side)  → more rounded at neck
+   Upper: BOTTOM = occlusal (toward center) → small radius
+          TOP = cervical (root side)         → more rounded at neck        */
+.dtg-tooth-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 36px;
+  height: 52px;
+  background: #faf7f0;
+  border: 2px solid #c8c2b4;
+  /* lower default: small occlusal top, rounded cervical bottom */
+  border-radius: 5px 5px 18px 18px;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    transform 0.1s ease;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Upper teeth: small occlusal BOTTOM, rounded cervical TOP */
+.dtg-tooth--upper .dtg-tooth-body {
+  border-radius: 18px 18px 5px 5px;
+}
+
+/* Active (module applied) */
+.dtg-tooth-body--active {
+  background: var(--ta-bg, var(--primary-blue-light));
+  border-color: var(--ta, var(--primary-blue));
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--ta, var(--primary-blue)) 20%, transparent);
+}
+
+/* ── Per-type: width / height / lower border-radius ── */
+.dtg-tooth--molar3 .dtg-tooth-body {
+  width: 44px;
+  height: 46px;
+  border-radius: 4px 4px 13px 13px;
+}
+.dtg-tooth--molar1 .dtg-tooth-body {
+  width: 42px;
+  height: 46px;
+  border-radius: 4px 4px 13px 13px;
+}
+.dtg-tooth--premolar .dtg-tooth-body {
+  width: 36px;
+  height: 50px;
+  border-radius: 5px 5px 17px 17px;
+}
+.dtg-tooth--canine .dtg-tooth-body {
+  width: 30px;
+  height: 58px;
+  border-radius: 8px 8px 26px 26px;
+}
+.dtg-tooth--lateral .dtg-tooth-body {
+  width: 28px;
+  height: 50px;
+  border-radius: 6px 6px 23px 23px;
+}
+.dtg-tooth--central .dtg-tooth-body {
+  width: 36px;
+  height: 52px;
+  border-radius: 6px 6px 23px 23px;
+}
+
+/* ── Per-type upper: mirror (occlusal = bottom, small radius) ── */
+.dtg-tooth--upper.dtg-tooth--molar3 .dtg-tooth-body {
+  border-radius: 13px 13px 4px 4px;
+}
+.dtg-tooth--upper.dtg-tooth--molar1 .dtg-tooth-body {
+  border-radius: 13px 13px 4px 4px;
+}
+.dtg-tooth--upper.dtg-tooth--premolar .dtg-tooth-body {
+  border-radius: 17px 17px 5px 5px;
+}
+.dtg-tooth--upper.dtg-tooth--canine .dtg-tooth-body {
+  border-radius: 26px 26px 8px 8px;
+}
+.dtg-tooth--upper.dtg-tooth--lateral .dtg-tooth-body {
+  border-radius: 23px 23px 6px 6px;
+}
+.dtg-tooth--upper.dtg-tooth--central .dtg-tooth-body {
+  border-radius: 23px 23px 6px 6px;
+}
+
+/* ---- Root ---- */
+/* Lower: flat TOP, tapered DOWN */
+.dtg-tooth-root {
+  width: 13px;
+  height: 22px;
+  background: #e8e0d0;
+  border: 2px solid #c8c2b4;
+  border-top: none;
+  border-radius: 0 0 7px 7px;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Upper: flat BOTTOM, tapered UP */
+.dtg-tooth--upper .dtg-tooth-root {
+  border-top: 2px solid #c8c2b4;
+  border-bottom: none;
+  border-radius: 7px 7px 0 0;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.06);
+}
+
+.dtg-tooth--has-module .dtg-tooth-root {
+  background: #d8e8f0;
+  border-color: var(--ta, var(--primary-blue));
+}
+
+.dtg-tooth--molar3 .dtg-tooth-root,
+.dtg-tooth--molar1 .dtg-tooth-root {
+  width: 16px;
+  height: 26px;
+}
+.dtg-tooth--premolar .dtg-tooth-root {
+  width: 13px;
+  height: 24px;
+}
+
+/* ---- Tooth number ---- */
+.dtg-tooth-num {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.1;
+  user-select: none;
+  min-width: 28px;
+  text-align: center;
+  padding: 2px 0;
+}
+
+/* Highlighted number when module active */
+.dtg-tooth--has-module .dtg-tooth-num {
+  color: var(--ta, var(--primary-blue));
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---- Module icon remove buttons inside crown ---- */
+.dtg-tooth-mod-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 11px;
+  line-height: 1;
+  transition:
+    background 0.1s,
+    transform 0.1s;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.dtg-tooth-mod-btn:hover {
+  background: rgba(255, 255, 255, 0.97);
+  transform: scale(1.2);
+}
+
+.dtg-tooth-mod-btn i {
+  pointer-events: none;
+}
+
+/* Multiple modules on one crown: smaller hit area + gap so icons stay inside */
+.dtg-tooth-body--mods2 {
+  gap: 2px;
+}
+.dtg-tooth-body--mods3,
+.dtg-tooth-body--mods4plus {
+  gap: 1px;
+}
+
+.dtg-tooth-body--mods2 .dtg-tooth-mod-btn {
+  width: 15px;
+  min-height: 16px;
+  height: 16px;
+  font-size: 0.65rem;
+}
+
+.dtg-tooth-body--mods3 .dtg-tooth-mod-btn {
+  width: 13px;
+  min-height: 14px;
+  height: 14px;
+  font-size: 0.55rem;
+}
+
+.dtg-tooth-body--mods4plus .dtg-tooth-mod-btn {
+  width: 11px;
+  min-height: 12px;
+  height: 12px;
+  font-size: 0.45rem;
+}
+
+.dtg-tooth-body--mods3 .dtg-tooth-mod-btn:hover,
+.dtg-tooth-body--mods4plus .dtg-tooth-mod-btn:hover {
+  transform: scale(1.08);
+}
+
+/* ================================================================
+   Comment popup
+   ================================================================ */
+.dtg-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  padding: var(--spacing-md);
+}
+
+.dtg-popup-modal {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.18),
+    0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: dtg-popup-in 0.18s ease;
+}
+
+@keyframes dtg-popup-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.dtg-popup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-light);
+}
+
+.dtg-popup-title {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.dtg-popup-title i {
+  color: #3b82f6;
+}
+
+.dtg-popup-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-muted);
+  transition:
+    background var(--transition-base),
+    color var(--transition-base);
+}
+
+.dtg-popup-close:hover {
+  background: var(--border-light);
+  color: var(--text-primary);
+}
+
+.dtg-popup-body {
+  padding: var(--spacing-lg);
+}
+
+.dtg-popup-textarea {
+  width: 100%;
+  border: 1.5px solid var(--border-input);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-white);
+  resize: vertical;
+  min-height: 96px;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  box-sizing: border-box;
+}
+
+.dtg-popup-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.dtg-popup-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-light);
+}
+
+.dtg-popup-btn--remove {
+  margin-right: auto;
+}
+
+.dtg-popup-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.dtg-popup-btn--cancel {
+  background: var(--bg-white);
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+}
+
+.dtg-popup-btn--cancel:hover {
+  background: var(--bg-light);
+  border-color: var(--border-input);
+}
+
+.dtg-popup-btn--save {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.dtg-popup-btn--save:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.dtg-popup-btn--remove {
+  background: #fff0f0;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.dtg-popup-btn--remove:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+/* ---- Step edit popup extras ---- */
+.dtg-popup-section-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0 0 var(--spacing-sm) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.dtg-popup-checkboxes,
+.dtg-popup-radios {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.dtg-popup-checkboxes .dtg-popup-check-item,
+.dtg-popup-radios .dtg-popup-radio-item {
+  flex: 1;
+}
+
+.dtg-popup-check-item,
+.dtg-popup-radio-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-white);
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+
+.dtg-popup-check-item:has(input:checked),
+.dtg-popup-radio-item:has(input:checked) {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.dtg-popup-check-item input[type="checkbox"],
+.dtg-popup-radio-item input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  position: absolute;
+  opacity: 0;
+}
+
+/* Striping option: tooth SVG + line(s) showing where stripping occurs (left, right, or both) */
+.dtg-stripping-option-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.dtg-stripping-line {
+  width: 3px;
+  height: 20px;
+  border-radius: 2px;
+  background: #b91c1c;
+}
+
+.dtg-stripping-line--left {
+  order: -1;
+}
+
+/* Required hint inside popup */
+.dtg-popup-required {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-danger, #ef4444);
+  margin-left: 4px;
+}
+
+/* Disabled save button */
+.dtg-popup-btn--save:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Treatment plan visual summary ─────────────────────── */
+.tp-visual {
+  margin-top: 28px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  background: var(--bg-white);
+}
+
+.tp-visual-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* One row per arch */
+.tp-arch-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tp-arch-row:last-child {
+  margin-bottom: 0;
+}
+
+.tp-arch-label {
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  align-self: center;
+  min-width: 20px;
+}
+
+/* Horizontal row of gap columns */
+.tp-gaps-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+  position: relative;
+}
+
+/* Horizontal baseline spanning all active gaps */
+.tp-gaps-row::before {
+  content: "";
+  position: absolute;
+  top: 32px; /* just below the gap labels + top connector */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border-light);
+  z-index: 0;
+}
+
+/* One column per active gap – fixed width so stacked steps stay vertically aligned */
+.tp-gap-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 56px;
+  min-width: 56px;
+  max-width: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tooth number label above the baseline */
+.tp-gap-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+/* Clickable step column (treatment plan summary) */
+.tp-gap-col--clickable {
+  cursor: pointer;
+}
+
+/* Highlighted step in summary: color change only (visual highlight is on the schema) */
+.tp-gap-col--highlighted .tp-gap-connector-top,
+.tp-gap-col--highlighted .tp-step-connector-line,
+.tp-gap-col--highlighted .tp-step-bubble,
+.tp-gap-col--highlighted .tp-gap-tick,
+.tp-gap-col--highlighted .tp-step-striping-line {
+  background: #7c3aed;
+}
+
+/* Short vertical line from label to baseline */
+.tp-gap-connector-top {
+  width: 2px;
+  height: 8px;
+  background: var(--border-light);
+}
+
+/* Tick mark ON the baseline */
+.tp-gap-tick {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-blue, #3b82f6);
+  flex-shrink: 0;
+}
+
+/* Wrapper for a single step – keep connector and bubble on same vertical axis */
+.tp-step-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Vertical connector – full width of column so it stays centered under the tick/bubble above */
+.tp-step-connector-line {
+  width: 2px;
+  height: 12px;
+  background: var(--primary-blue, #3b82f6);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 0;
+}
+
+/* Step number bubble */
+.tp-step-bubble {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-blue, #3b82f6);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Connector from bubble to striping tags */
+.tp-step-striping-line {
+  width: 2px;
+  height: 10px;
+  background: #94a3b8;
+  position: relative;
+  z-index: 0;
+}
+
+/* Row of striping tags – keep narrow so column axis stays vertical; above lines via z-index */
+.tp-step-stripings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  max-width: 100%;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.tp-striping-tag {
+  font-size: 0.6rem;
+  font-weight: var(--font-weight-semibold);
+  color: #1d4ed8;
+  background: #dbeafe;
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  padding: 1px 5px;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover card for step bubble – shows striping icons */
+.tp-step-hover-card {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  min-width: 120px;
+  padding: 10px 12px;
+  background: var(--bg-white, #fff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* Chat-bubble tail pointing down to the step bubble */
+.tp-step-hover-card::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--bg-white, #fff);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
+}
+
+.tp-step-hover-card::before {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid var(--border-light, #e2e8f0);
+  z-index: -1;
+}
+
+.tp-step-hover-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-light, #eee);
+}
+
+.tp-step-hover-card-step {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary, #1e293b);
+}
+
+.tp-step-hover-card-gap {
+  font-size: 0.7rem;
+  color: var(--text-muted, #64748b);
+}
+
+.tp-step-hover-card-stripings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tp-step-hover-card-striping-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+}
+
+.tp-step-hover-card-striping-item .dtg-stripping-option-icon {
+  flex-shrink: 0;
+}
+
+.tp-step-hover-card-empty {
+  font-size: 0.75rem;
+  color: var(--text-muted, #94a3b8);
+}
+
+/* ── Card wrapping the visual treatment plan schema ───── */
+.tp-schema-card {
+  margin-top: 24px;
+  background: var(--bg-white, #fff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* ── Visual treatment plan schema overlay ─────────────── */
+.tp-schema-visual {
+  overflow: hidden;
+  background: transparent;
+}
+
+.tp-schema-visual-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: var(--font-size-sm, 0.875rem);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--text-primary, #1e293b);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tp-schema-attachment-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary, #64748b);
+}
+
+.tp-schema-attachment-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* foreignObject module icons on schema (rhizalyze, extraction, comment, lock) */
+.tp-schema-svg .tp-schema-module-foreign {
+  overflow: visible;
+}
+
+.tp-schema-module-fo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 6px;
+  border: 1px solid rgba(100, 116, 139, 0.35);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.tp-schema-preview-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-blue, #2563eb);
+  background: transparent;
+  border: 1px solid var(--primary-blue, #2563eb);
+  border-radius: var(--radius-md, 8px);
+  cursor: pointer;
+}
+
+.tp-schema-preview-btn:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.tp-schema-body {
+  display: flex;
+  justify-content: center;
+  padding: 16px 12px 20px;
+  background: #fff;
+  height: 800px;
+}
+
+/* Single SVG containing both the dental image and the overlay annotations.
+   Width is constrained to keep the visual readable; height is auto from the
+   padded viewBox (which includes room for 5 stacked bubbles on every side). */
+.tp-schema-svg {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  overflow: visible;
+  margin: auto;
+}
+
+/* ── A4 Preview modal ─────────────────────────────────── */
+.tp-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.tp-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.tp-preview-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  width: min(95vw, 320mm);
+  max-width: min(95vw, 320mm);
+  height: min(90vh, 420mm);
+  max-height: min(90vh, 420mm);
+  overflow: hidden;
+}
+
+.tp-preview-modal .tp-preview-a4 {
+  flex: 1;
+  min-height: 0;
+}
+
+.tp-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--text-primary, #1e293b);
+  background: var(--bg-subtle, #f8fafc);
+  border-bottom: 1px solid var(--border-light, #e2e8f0);
+  flex-shrink: 0;
+}
+
+.tp-preview-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tp-preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary, #1e293b);
+  background: var(--bg-white, #fff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tp-preview-btn:hover {
+  background: var(--bg-subtle, #f8fafc);
+  border-color: var(--text-muted, #64748b);
+}
+
+.tp-preview-btn--download {
+  color: var(--primary-blue, #2563eb);
+  border-color: var(--primary-blue, #2563eb);
+}
+
+.tp-preview-btn--download:hover {
+  background: #eff6ff;
+}
+
+.tp-preview-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--text-muted, #64748b);
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tp-preview-close:hover {
+  color: var(--text-primary, #1e293b);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* A4 format: on screen fill modal and center schema; in print use full A4 height */
+.tp-preview-a4 {
+  width: 100%;
+  max-width: 100%;
+  padding: 1mm;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Zoom/pan viewport for interactive preview (screen only) */
+.tp-preview-zoom-viewport {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.tp-preview-zoom-viewport:active {
+  cursor: grabbing;
+}
+
+.tp-preview-zoom-content {
+  transform-origin: center center;
+  transition: transform 0.15s ease-out;
+}
+
+.tp-preview-zoom-content.tp-preview-zoom-content--dragging,
+.tp-preview-zoom-content.tp-preview-zoom-content--panning {
+  transition: none;
+}
+
+.tp-preview-a4 .tp-visual {
+  margin-bottom: 12px;
+}
+
+.tp-preview-a4 .tp-schema-visual {
+  margin-top: 0;
+}
+
+.tp-preview-a4 .tp-schema-body {
+  padding: 24px 20px 28px;
+}
+
+.tp-preview-a4 .tp-schema-svg {
+  max-width: 100%;
+  min-width: 500px;
+}
+
+.tp-preview-a4 .tp-schema-visual-header {
+  display: none;
+}
+
+.tp-preview-a4 .tp-schema-visual-header .tp-schema-preview-btn {
+  display: none;
+}
+
+/* Smaller treatment plan summary in A4 preview */
+.tp-preview-a4 .tp-visual {
+  padding: 10px 14px;
+  margin-top: 0;
+}
+
+.tp-preview-a4 .tp-visual-header {
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+}
+
+.tp-preview-a4 .tp-arch-row {
+  margin-bottom: 12px;
+}
+
+.tp-preview-a4 .tp-arch-label {
+  font-size: 0.6rem;
+  min-width: 14px;
+}
+
+.tp-preview-a4 .tp-gaps-row::before {
+  top: 24px;
+}
+
+.tp-preview-a4 .tp-gap-col {
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+}
+
+.tp-preview-a4 .tp-gap-label {
+  font-size: 0.55rem;
+}
+
+.tp-preview-a4 .tp-gap-connector-top {
+  height: 6px;
+}
+
+.tp-preview-a4 .tp-gap-tick {
+  width: 6px;
+  height: 6px;
+}
+
+.tp-preview-a4 .tp-step-connector-line {
+  height: 8px;
+}
+
+.tp-preview-a4 .tp-step-bubble {
+  width: 20px;
+  height: 20px;
+  font-size: 0.6rem;
+}
+
+.tp-preview-a4 .tp-step-striping-line {
+  height: 6px;
+}
+
+.tp-preview-a4 .tp-striping-tag {
+  font-size: 0.5rem;
+  padding: 0 4px;
+}
+
+/* Print: show only the A4 content, hide modal chrome, fill A4 page */
+@media print {
+  .tp-preview-overlay .tp-preview-backdrop,
+  .tp-preview-overlay .tp-preview-header {
+    display: none !important;
+  }
+  .tp-preview-overlay .tp-preview-modal {
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .tp-preview-overlay .tp-preview-a4 {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm;
+    overflow: visible;
+    box-shadow: none;
+    display: block !important;
+    padding: 0 !important;
+  }
+  .tp-preview-overlay .tp-preview-zoom-viewport {
+    overflow: visible;
+    cursor: default;
+    width: 210mm !important;
+    height: 297mm !important;
+    display: block !important;
+  }
+  /* Fill A4: content stretches to page dimensions */
+  .tp-preview-overlay .tp-preview-zoom-content {
+    transform: none !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+  .tp-preview-overlay .tp-preview-zoom-content .tp-schema-visual {
+    width: 100% !important;
+    height: 100% !important;
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+  .tp-preview-overlay .tp-preview-zoom-content .tp-schema-body {
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 5mm !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+  .tp-preview-overlay .tp-preview-zoom-content .tp-schema-svg {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    flex: 1 1 0 !important;
+  }
+}
+
+.dtg-v2-step-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  border: 1px solid var(--border-light);
+  background: var(--bg-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.dtg-v2-step-actions-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.dtg-v2-step-actions-buttons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.dtg-v2-action-btn {
+  border: 1px solid var(--border-default);
+  background: var(--bg-white);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+}
+
+.dtg-v2-action-btn:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.dtg-v2-action-btn--danger:hover {
+  border-color: var(--color-danger, #dc2626);
+  color: var(--color-danger, #dc2626);
+}
+
+.dtg-v2-proto {
+  display: flex;
+  min-height: 640px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #eef2f6;
+}
+
+.dtg-v2-sidebar {
+  width: 320px;
+  background: var(--bg-white);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  box-shadow: 2px 0 18px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+}
+
+.dtg-v2-title {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.dtg-v2-subtitle {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.dtg-v2-input {
+  padding: 8px 10px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.dtg-v2-row {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.dtg-v2-strip-scale {
+  margin: 4px 0 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  background: #f8fafc;
+}
+
+.dtg-v2-strip-scale--active {
+  border-color: rgba(15, 111, 255, 0.45);
+  outline: 1px solid rgba(15, 111, 255, 0.35);
+  outline-offset: 0;
+  background: #f4f8ff;
+}
+
+.dtg-v2-strip-scale-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.dtg-v2-strip-scale-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dtg-v2-strip-scale-end {
+  font-size: 11px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  width: 44px;
+}
+
+.dtg-v2-strip-scale-end:last-child {
+  text-align: right;
+}
+
+.dtg-v2-strip-scale-range {
+  flex: 1;
+  min-width: 0;
+  accent-color: #0f6fff;
+}
+
+.dtg-v2-strip-scale-readout {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.dtg-v2-strip-scale-context {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.dtg-v2-rotation-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #0f6fff;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.dtg-v2-btn {
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  background: #dfe6ee;
+  color: var(--text-primary);
+}
+
+.dtg-v2-btn-primary {
+  background: #0f6fff;
+  color: #fff;
+}
+
+.dtg-v2-btn-danger {
+  background: #dc3545;
+  color: #fff;
+}
+
+.dtg-v2-btn-mode-active {
+  background: #1f4f95;
+  color: #fff;
+}
+
+.dtg-v2-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dtg-v2-section-title {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.dtg-v2-modules-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dtg-v2-module-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 6px;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  background: #fff;
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.dtg-v2-module-btn:hover {
+  background: var(--mod-bg, #f8fafc);
+  border-color: var(--mod-color, #0f6fff);
+}
+
+.dtg-v2-module-btn.is-active {
+  background: var(--mod-bg, #eef2ff);
+  border-color: var(--mod-color, #0f6fff);
+  color: var(--mod-color, #0f6fff);
+  box-shadow: none;
+  outline: 1px solid
+    color-mix(in srgb, var(--mod-color, #0f6fff) 55%, transparent);
+  outline-offset: 1px;
+}
+
+/* Match old tab panel rendering via ModuleIcon (SVG + Font Awesome). */
+.dtg-v2-module-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--mod-color, currentColor);
+}
+
+.dtg-v2-module-icon svg {
+  display: block;
+  width: 28px;
+  height: 37.8px;
+  flex-shrink: 0;
+}
+
+/* Bracket strip modules: square icon; size comes from ModuleIcon svgSize + scale slider. */
+.dtg-v2-module-btn--strip .dtg-v2-module-icon svg {
+  width: auto;
+  height: auto;
+  max-width: 56px;
+  max-height: 56px;
+}
+
+.dtg-v2-module-icon i {
+  font-size: 22px;
+  line-height: 1;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dtg-v2-chip {
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  font-size: 12px;
+  background: #fff;
+}
+
+.dtg-v2-chip.is-active {
+  background: rgba(15, 111, 255, 0.1);
+  color: #0f6fff;
+  border: 1px solid rgba(15, 111, 255, 0.55);
+  box-shadow: none;
+  outline: 1px solid rgba(15, 111, 255, 0.35);
+  outline-offset: 1px;
+}
+
+.dtg-v2-selection-card {
+  border: 1px solid rgba(15, 111, 255, 0.35);
+  border-radius: var(--radius-sm);
+  background: #f7fafc;
+  padding: 8px;
+  outline: 1px solid rgba(15, 111, 255, 0.2);
+  outline-offset: 0;
+}
+
+.dtg-v2-selection-title {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.dtg-v2-comment-caption {
+  position: absolute;
+  max-width: min(200px, 42vw);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  line-height: 1.35;
+  color: #1e3a5f;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dtg-v2-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.dtg-v2-main-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.dtg-v2-main-header-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.dtg-v2-main-header-steps {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.dtg-v2-main-header-print {
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+
+.dtg-v2-chip-grid--header {
+  margin-bottom: 2px;
+}
+
+.dtg-v2-canvas-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  /*   aspect-ratio: 436 / 680; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dtg-v2-canvas {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  cursor: crosshair;
+  display: block;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.dtg-v2-placed-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dtg-v2-placed-icon {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mod-color, #1f4f95);
+}
+
+.dtg-v2-placed-icon--selected {
+  outline: 1px solid rgba(15, 111, 255, 0.75);
+  outline-offset: 0;
+  border-radius: 2px;
+}
+
+.dtg-v2-placed-hitbox {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.dtg-v2-placed-hitbox--selected {
+  outline: 1px solid rgba(15, 111, 255, 0.75);
+  outline-offset: 0;
+  border-radius: 2px;
+}
+
+.dtg-v2-placed-icon--strip {
+  overflow: visible;
+}
+
+.dtg-v2-placed-icon i {
+  font-size: 1em;
+  line-height: 1;
+}
+
+.dtg-v2-arrow-popup {
+  position: absolute;
+  z-index: 4;
+  min-width: 190px;
+  max-width: 220px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  padding: 8px;
+}
+
+.dtg-v2-arrow-popup-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.dtg-v2-arrow-popup-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.dtg-v2-arrow-popup-row label {
+  font-size: 12px;
+  color: var(--text-muted);
+  min-width: 44px;
+}
+
+.dtg-v2-arrow-step-select {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.dtg-v2-arrow-popup-footer {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-light);
+}
+
+.dtg-v2-arrow-popup-footer .dtg-v2-btn {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dtg-v2-arrow-popup-footer--only {
+  margin-top: 8px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.dtg-v2-arrow-popup--module {
+  min-width: 108px;
+  max-width: 132px;
+  padding: 4px 5px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.dtg-v2-arrow-popup--module .dtg-v2-arrow-popup-title {
+  font-size: 10px;
+  margin-bottom: 2px;
+  letter-spacing: 0.04em;
+}
+
+.dtg-v2-arrow-popup--module .dtg-v2-arrow-popup-footer {
+  margin-top: 4px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.dtg-v2-arrow-popup--module .dtg-v2-btn {
+  padding: 4px 6px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.dtg-v2-arrow-popup--module .dtg-v2-module-popup-body {
+  margin-top: 2px;
+}
+
+.dtg-v2-module-popup-body {
+  margin-top: 6px;
+}
+
+.dtg-v2-module-popup-body .dtg-v2-btn {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Stripping V2 print preview modal (A4, mirrors .tp-preview-*) ───────── */
+.sa-v2-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.sa-v2-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.sa-v2-preview-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  width: min(95vw, 320mm);
+  max-width: min(95vw, 320mm);
+  height: min(90vh, 420mm);
+  max-height: min(90vh, 420mm);
+  overflow: hidden;
+}
+
+.sa-v2-preview-modal .sa-v2-preview-a4 {
+  flex: 1;
+  min-height: 0;
+}
+
+.sa-v2-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--text-primary, #1e293b);
+  background: var(--bg-subtle, #f8fafc);
+  border-bottom: 1px solid var(--border-light, #e2e8f0);
+  flex-shrink: 0;
+}
+
+.sa-v2-preview-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sa-v2-preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary, #1e293b);
+  background: var(--bg-white, #fff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sa-v2-preview-btn:hover {
+  background: var(--bg-subtle, #f8fafc);
+  border-color: var(--text-muted, #64748b);
+}
+
+.sa-v2-preview-btn--download {
+  color: var(--primary-blue, #2563eb);
+  border-color: var(--primary-blue, #2563eb);
+}
+
+.sa-v2-preview-btn--download:hover {
+  background: #eff6ff;
+}
+
+.sa-v2-preview-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--text-muted, #64748b);
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sa-v2-preview-close:hover {
+  color: var(--text-primary, #1e293b);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.sa-v2-preview-a4 {
+  width: 100%;
+  max-width: 100%;
+  padding: 1mm;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.sa-v2-preview-zoom-viewport {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sa-v2-preview-zoom-content {
+  transform-origin: center center;
+}
+
+.dtg-v2-static-scene .dtg-v2-canvas {
+  cursor: default;
+}
+
+.dtg-v2-btn-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  justify-content: center;
+  min-width: 9.5rem;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--primary-blue, #2563eb);
+  background: var(--bg-white, #fff);
+  border: 1px solid var(--primary-blue, #2563eb);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dtg-v2-btn-print:hover {
+  background: #eff6ff;
+  border-color: var(--primary-blue, #2563eb);
+}

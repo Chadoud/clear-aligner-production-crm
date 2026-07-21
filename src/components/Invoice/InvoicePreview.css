@@ -1,0 +1,159 @@
+.arrangement-summary-table {
+  margin-top: 14px;
+}
+
+.arrangement-summary-table td {
+  padding: 10px 8px;
+}
+
+.arrangement-summary-table td:first-child {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.arrangement-summary-table td:last-child {
+  text-align: right;
+}
+
+.arrangement-plan-table {
+  margin-top: 10px;
+}
+
+.arrangement-plan-table th:last-child,
+.arrangement-plan-table td:last-child {
+  text-align: right;
+}
+
+.invoice-signature-section {
+  margin-top: auto;
+  padding: 0 8px 0 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.invoice-signature-left {
+  font-size: 12px;
+  text-align: left;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.invoice-signature-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.invoice-signature-label {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.invoice-signature-box {
+  border: 1px solid var(--text-primary);
+  width: 260px;
+  height: 60px;
+  background: var(--bg-white);
+}
+
+.invoice-remaining-balance {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.invoice-remaining-balance div:first-child {
+  font-weight: 500;
+}
+
+.invoice-vat-breakdown {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-secondary, #555);
+}
+
+.invoice-vat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+
+.invoice-vat-row span:last-child {
+  text-align: right;
+}
+
+/* Block that contains Total H.T., TVA and bold TOTAL (between blue lines) */
+.invoice-total-block {
+  margin-top: 12px;
+  padding: 10px 0;
+  border-top: 2px solid var(--brand-color, #2d3884);
+  border-bottom: 2px solid var(--brand-color, #2d3884);
+}
+
+.invoice-total-block .invoice-vat-breakdown {
+  margin-bottom: 8px;
+}
+
+.invoice-total-block .invoice-total {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* VAT breakdown section (Subtotal excl. VAT / VAT / TOTAL incl. VAT) */
+/* margin-top: auto: inside flex .invoice-treatment-section (flex:1, min A4 height)
+   this pins totals to the bottom of the on-screen “page”. @media print in print.css
+   resets that flex so totals sit under the table like a normal printed invoice. */
+.invoice-vat-section {
+  margin-top: auto;
+}
+
+.invoice-vat-section .invoice-total {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-top: none;
+  border-bottom: none;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.invoice-vat-section .invoice-total--ht,
+.invoice-vat-section .invoice-total--tva {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary, #555);
+}
+
+.invoice-vat-section .invoice-total--ttc {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-color, #51a1ab);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid var(--brand-color, #51a1ab);
+  border-bottom: 1px solid var(--brand-color, #51a1ab);
+}
+
+[data-brand="Direct"] .invoice-vat-section {
+  margin-bottom: 0;
+}
+
+/* Panoramique asterisk and footnote (Direct) */
+.invoice-panoramique-asterisk {
+  font-size: 0.75em;
+  margin-left: 1px;
+}
+
+.invoice-panoramique-note {
+  margin: 6px 0 0;
+  padding: 0;
+  font-size: 0.65rem;
+  line-height: 1.35;
+  color: var(--text-secondary, #555);
+}

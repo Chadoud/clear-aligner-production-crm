@@ -1,0 +1,66 @@
+.month-or-range-filter {
+  --mor-action-width: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Row 1: month select + calendar toggle — same column widths as row 2 */
+.month-or-range-filter-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--mor-action-width);
+  gap: var(--spacing-sm);
+  align-items: stretch;
+}
+
+.month-or-range-filter-controls .custom-dropdown-wrap {
+  min-width: 0;
+  width: 100%;
+}
+
+.month-or-range-filter-controls .custom-dropdown-trigger {
+  width: 100%;
+  min-height: 2.5rem;
+  box-sizing: border-box;
+}
+
+.month-or-range-filter-controls .calendar-btn {
+  width: 100%;
+  min-height: 2.5rem;
+  box-sizing: border-box;
+}
+
+/* Row 2: date range + presets (clock) — date field matches select width above */
+.month-or-range-filter .date-range-picker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--mor-action-width);
+  gap: var(--spacing-sm);
+  align-items: stretch;
+  width: 100%;
+}
+
+.month-or-range-filter .date-range-picker-row {
+  display: contents;
+}
+
+.month-or-range-filter .date-range-picker-trigger {
+  grid-column: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.month-or-range-filter .date-range-picker-presets-wrap {
+  grid-column: 2;
+  width: 100%;
+  min-width: 0;
+}
+
+.month-or-range-filter .date-range-picker-presets-btn {
+  width: 100%;
+  min-height: 2.5rem;
+  height: 100%;
+  box-sizing: border-box;
+}

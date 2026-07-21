@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@aligner-crm/domain": ["packages/domain/src/index.ts"]
+    },
+    "allowJs": true,
+    "checkJs": false
+  },
+  "include": ["src", "vitest.config.ts", "packages/domain/src"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "backend",
+    "src/**/*.{test,spec}.{js,jsx,ts,tsx}"
+  ]
+}

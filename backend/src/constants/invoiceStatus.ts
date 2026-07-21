@@ -1,0 +1,3 @@
+export const INVOICE_STATUS_QUOTE = 1;
+export const INVOICE_STATUS_IN_FABRICATION = 2;
+export const INVOICE_STATUS_PAID = 3;

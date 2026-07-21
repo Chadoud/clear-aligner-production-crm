@@ -1,0 +1,127 @@
+/* List of users – same layout as Overview (dashboard-section + dashboard-section-card) */
+
+.list-of-users-context {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.list-of-users-status-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.list-of-users-status-tab {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid var(--border-default);
+  background: var(--bg-white);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.list-of-users-status-tab:hover {
+  background: var(--bg-muted);
+}
+
+.list-of-users-status-tab.active {
+  background: var(--badge-company);
+  color: var(--bg-white);
+  border-color: var(--badge-company);
+}
+
+.list-of-users-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.list-of-users-loading {
+  min-height: 160px;
+}
+
+.list-of-users-search-input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  min-width: 220px;
+}
+
+/* Table uses shared .dashboard-section-card .data-table from layout.css */
+
+/* Icon-only action – overrides IconButton for compact table cell */
+.user-action-view {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--color-success-muted);
+  color: var(--bg-white);
+  border: none;
+}
+
+.user-action-view:hover:not(:disabled) {
+  background: var(--color-success);
+}
+
+.list-of-users-pagination {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.list-of-users-show-label {
+  display: flex;
+  align-items: center;
+}
+
+.list-of-users-show-select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.list-of-users-pagination .pagination-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.list-of-users-pagination .pagination-buttons button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-default);
+  background: var(--bg-white);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.list-of-users-pagination .pagination-buttons button:hover:not(:disabled) {
+  background: var(--bg-muted);
+}
+
+.list-of-users-pagination .pagination-buttons button.active {
+  background: var(--badge-company);
+  color: var(--bg-white);
+  border-color: var(--badge-company);
+}
+
+.list-of-users-pagination .pagination-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

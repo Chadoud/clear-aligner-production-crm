@@ -1,0 +1,118 @@
+.add-cabinet {
+  max-width: 720px;
+}
+
+.add-cabinet-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.add-cabinet-title i {
+  color: var(--text-muted);
+}
+
+.add-cabinet-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.add-cabinet-error {
+  padding: var(--spacing-md);
+  background: #fef2f2;
+  color: #b91c1c;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.add-cabinet-section {
+  padding: var(--spacing-lg);
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+}
+
+.add-cabinet-section-title {
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.add-cabinet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.add-cabinet-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.add-cabinet-grid label .required {
+  color: #dc2626;
+}
+
+.add-cabinet-grid input,
+.add-cabinet-grid select {
+  padding: 8px 12px;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+}
+
+.add-cabinet-grid input:focus,
+.add-cabinet-grid select:focus {
+  outline: none;
+  border-color: var(--primary-blue, #2563eb);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.add-cabinet-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+}
+
+.add-cabinet-btn {
+  padding: 8px 20px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.add-cabinet-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-cabinet-btn--primary {
+  background: var(--primary-blue, #2563eb);
+  color: #fff;
+  border: none;
+}
+
+.add-cabinet-btn--primary:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.add-cabinet-btn--secondary {
+  background: #fff;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.add-cabinet-btn--secondary:hover:not(:disabled) {
+  background: var(--bg-subtle, #f8fafc);
+  border-color: var(--text-muted);
+}

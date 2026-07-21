@@ -1,0 +1,304 @@
+/* ============================================================
+   Shared styles for all AddNewCase wizard step components.
+   Imported by each step – scoped under .step-content so they
+   never clash with the global forms.css definitions.
+   ============================================================ */
+
+/* ---- Step container ---- */
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.step-heading {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.step-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ---- Field group (override global uppercase label from forms.css) ---- */
+.step-content .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.step-content .form-group > label,
+.step-content .form-group label:not(.step-checkbox-item):not(.step-radio-item) {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+.step-content .required {
+  color: var(--color-danger);
+}
+
+/* ---- Text inputs / textareas (fill full width in form-group) ---- */
+.step-content .form-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  box-sizing: border-box;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.step-content .form-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+.step-content .form-input:read-only {
+  background: var(--bg-muted);
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.step-content .form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ---- SingleDatePicker – match form-input style, width and height ---- */
+.step-content .single-date-picker {
+  width: 100%;
+}
+
+.step-content .single-date-picker-trigger {
+  width: 100%;
+  min-width: 0;
+  min-height: calc(2 * var(--spacing-sm) + 1.5em + 2px);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  box-sizing: border-box;
+}
+
+.step-content .single-date-picker-input {
+  padding: 0;
+}
+
+.step-content
+  .single-date-picker-trigger:not(
+    .single-date-picker-trigger--disabled
+  ):focus-within,
+.step-content .single-date-picker-trigger--open {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+/* ---- CustomSelect – fill form-group width ---- */
+.step-content .custom-dropdown-wrap {
+  width: 100%;
+}
+
+.step-content .custom-dropdown-trigger {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ---- Section label (bold sub-heading within a form-group) ---- */
+.step-content .form-section-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* ---- Textarea ---- */
+.step-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ---- Grid layouts ---- */
+.step-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.step-form-row-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* ---- Treatment checkboxes ---- */
+.step-treatment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xs) var(--spacing-lg);
+}
+
+.step-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-normal);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+.step-checkbox-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary-blue);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ---- Radio group ---- */
+.step-radio-group {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.step-radio-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+.step-radio-item input[type="radio"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary-blue);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ---- Upload grid ---- */
+.step-uploads-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+/* ---- Terms box ---- */
+.step-terms-box {
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  max-height: 240px;
+  overflow-y: auto;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.step-terms-box p {
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.step-terms-box p:last-child {
+  margin-bottom: 0;
+}
+
+.step-terms-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.step-terms-accept {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.step-terms-accept input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-blue);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.step-terms-hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin: 0;
+}
+
+/* ---- Stripping v2 (Add new case – Plan step) ---- */
+.step-content .form-group:has(.dtg-v2-proto) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.step-content .dtg-v2-proto {
+  width: 100%;
+  min-width: min(100%, 920px);
+}
+
+@media (max-width: 900px) {
+  .step-content .dtg-v2-proto {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .step-content .dtg-v2-sidebar {
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    border-bottom: 1px solid var(--border-light);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .step-form-row,
+  .step-form-row-2,
+  .step-treatment-grid,
+  .step-uploads-grid {
+    grid-template-columns: 1fr;
+  }
+}

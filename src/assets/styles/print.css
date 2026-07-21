@@ -1,0 +1,518 @@
+/* Print styles for A4 format */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* Force the browser to print backgrounds and colors (SVG, borders, etc.).
+     Note: User should enable "Background graphics" in the print dialog for best results. */
+  .invoice-preview,
+  .invoice-preview::after,
+  .invoice-preview * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Treatment plan A4 preview: when this class is on body, print only the preview content */
+  /* Remove #root (and any other siblings) from layout — visibility:hidden still reserves
+     width; Chrome then fits the whole document to A4 and the 210mm overlay looks ~50% wide. */
+  body.tp-preview-printing > *:not(.tp-preview-overlay) {
+    display: none !important;
+  }
+  html:has(body.tp-preview-printing) {
+    background: #fff !important;
+  }
+  body.tp-preview-printing {
+    /* Constrain body to A4 width so Chrome's print viewport equals 210mm.
+       Without this, Chrome scales the full browser viewport (e.g. 1536 CSS px)
+       down to A4, making the overlay fill only ~52% of the page on Windows. */
+    width: 210mm !important;
+    max-width: 210mm !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+  body.tp-preview-printing * {
+    visibility: hidden;
+  }
+  body.tp-preview-printing .tp-preview-overlay,
+  body.tp-preview-printing .tp-preview-overlay * {
+    visibility: visible;
+  }
+  body.tp-preview-printing .tp-preview-overlay {
+    /* position: absolute works correctly now that the overlay is a direct child
+       of <body> via React portal — anchors to document origin, not viewport. */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    background: #fff !important;
+    padding: 0 !important;
+  }
+  body.tp-preview-printing .tp-preview-overlay .tp-preview-modal {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    /* Strip modal chrome — box-shadow renders as a white bleed on Windows Chrome,
+       border-radius clips the SVG edges, overflow: hidden cuts content */
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+  }
+  body.tp-preview-printing .tp-preview-overlay .tp-preview-a4,
+  body.tp-preview-printing .tp-preview-overlay .tp-preview-a4 * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  /* End treatment plan print */
+
+  /* Stripping V2 canvas A4 preview (same visibility pattern as treatment plan) */
+  body.sa-stripping-v2-printing > *:not(.sa-v2-preview-overlay) {
+    display: none !important;
+  }
+  /* Avoid gray “gutter” in PDF preview where html peeks past the 210mm body box */
+  html:has(body.sa-stripping-v2-printing) {
+    background: #fff !important;
+  }
+  body.sa-stripping-v2-printing {
+    width: 210mm !important;
+    max-width: 210mm !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+  body.sa-stripping-v2-printing * {
+    visibility: hidden;
+  }
+  body.sa-stripping-v2-printing .sa-v2-preview-overlay,
+  body.sa-stripping-v2-printing .sa-v2-preview-overlay * {
+    visibility: visible;
+  }
+  body.sa-stripping-v2-printing .sa-v2-preview-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    background: #fff !important;
+    padding: 0 !important;
+    border: none !important;
+    box-sizing: border-box !important;
+  }
+  body.sa-stripping-v2-printing .sa-v2-preview-overlay .sa-v2-preview-modal {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fff !important;
+  }
+  /* Print/PDF: only the A4 canvas — no toolbar, backdrop, or modal chrome */
+  body.sa-stripping-v2-printing .sa-v2-preview-backdrop,
+  body.sa-stripping-v2-printing .sa-v2-preview-header {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  /* Fill the physical page: flex chain + scale scene to max 210×297mm (436:680) */
+  body.sa-stripping-v2-printing .sa-v2-preview-overlay .sa-v2-preview-a4 {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 297mm !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    border: none !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body.sa-stripping-v2-printing .sa-v2-preview-overlay .sa-v2-preview-a4 * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body.sa-stripping-v2-printing .sa-v2-preview-zoom-viewport {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 297mm !important;
+    overflow: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #fff !important;
+  }
+  body.sa-stripping-v2-printing .sa-v2-preview-zoom-content {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: none !important;
+  }
+  /* Full chart visible (contain in A4). Strip canvas shadow/radius — they print as a gray edge. */
+  body.sa-stripping-v2-printing .dtg-v2-static-scene {
+    position: relative !important;
+    width: min(210mm, calc(297mm * 436 / 680)) !important;
+    height: min(297mm, calc(210mm * 680 / 436)) !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    outline: none !important;
+    background: #fff !important;
+  }
+  body.sa-stripping-v2-printing .dtg-v2-static-scene .dtg-v2-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  body.sa-stripping-v2-printing .dtg-v2-static-scene .dtg-v2-placed-layer {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+
+  /* Invoice print: hide every body top-level child (e.g. #root, stray overlays). No
+     visibility:hidden cascade — Chromium often paints a blank page when combining
+     visibility + transforms. */
+  body.sa-print-invoice-modal:not(.tp-preview-printing) > *:not(#invoiceModal) {
+    display: none !important;
+  }
+
+  body.sa-print-invoice-modal:not(.tp-preview-printing) html,
+  body.sa-print-invoice-modal:not(.tp-preview-printing) body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Invoice modal: layout for print (modal is direct child of body when open). */
+  body:not(.tp-preview-printing) #invoiceModal.modal,
+  body:not(.tp-preview-printing) #invoiceModal .invoice-modal-content,
+  body:not(.tp-preview-printing) #invoiceModal .modal-content {
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Remove modal chrome from layout for print — visibility:hidden still reserves
+     flex space and pushes the preview down (looks “vertically centered”). */
+  body:not(.tp-preview-printing) #invoiceModal .modal-header,
+  body:not(.tp-preview-printing) #invoiceModal .invoice-modal-summary,
+  body:not(.tp-preview-printing) #invoiceModal .invoice-preview-switch,
+  body:not(.tp-preview-printing) #invoiceModal .invoice-modal-receipt-form,
+  body:not(.tp-preview-printing) #invoiceModal .modal-footer {
+    display: none !important;
+  }
+
+  /* .modal-body on preview pane sets max-height: 80vh — clips page 2 unless reset here */
+  body:not(.tp-preview-printing) .invoice-preview-body.modal-body,
+  body:not(.tp-preview-printing) .modal-body.invoice-preview-body {
+    flex: none !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    padding: 0 !important;
+  }
+
+  /* 3 — Normal flow for the preview wrapper.
+          Do NOT use position:absolute here: Chrome will not split siblings across
+          pages, so invoice + credentials end up on one sheet. Static + break-after
+          on the first .invoice-preview (when :has credentials) forces sheet 2. */
+  body:not(.tp-preview-printing) .invoice-preview-body {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: transparent !important;
+    display: block !important;
+  }
+
+  /* Full-page list preview (no .invoice-preview-body): same two-page rule */
+  body:not(.tp-preview-printing) .invoice-preview-content {
+    display: block !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  body:not(.tp-preview-printing)
+    .invoice-preview-body:has(.invoice-preview--mob-app-credentials)
+    > div
+    > .invoice-preview:not(.invoice-preview--mob-app-credentials),
+  body:not(.tp-preview-printing)
+    .invoice-preview-content:has(.invoice-preview--mob-app-credentials)
+    > .invoice-preview:not(.invoice-preview--mob-app-credentials) {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  /* 4 — Strip the runtime scale-transform set by InvoicePreviewPane */
+  body:not(.tp-preview-printing) .invoice-preview-body > div {
+    transform: none !important;
+    width: 100% !important;
+    transition: none !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* 5 — Invoice width for print. Do NOT set min-height: 297mm here: screen CSS uses
+     flex + margin-top:auto on totals to mimic one A4 sheet in the modal; that same
+     layout in print creates huge vertical gaps, pushes the QR block to the next page,
+     and can yield extra trailing blank pages. Flow naturally; height comes from content. */
+  body:not(.tp-preview-printing) .invoice-preview {
+    width: 210mm !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 30px 40px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Undo “one sheet” flex simulation from invoice.css (flex:1, space-between, margin-top:auto) */
+  body:not(.tp-preview-printing) #invoiceModal .invoice-preview,
+  body:not(.tp-preview-printing) #doctorBillModal .invoice-preview {
+    display: block !important;
+  }
+
+  body:not(.tp-preview-printing) #invoiceModal .invoice-container,
+  body:not(.tp-preview-printing) #doctorBillModal .invoice-container {
+    display: block !important;
+    flex: none !important;
+    min-height: 0 !important;
+  }
+
+  /* Normal document flow for print: totals follow the table. On screen, the same
+     block uses flex + .invoice-vat-section { margin-top: auto } to sit at the
+     bottom of the fake A4 preview — that layout is intentionally not used here. */
+  body:not(.tp-preview-printing) #invoiceModal .invoice-treatment-section,
+  body:not(.tp-preview-printing) #doctorBillModal .invoice-treatment-section {
+    flex: none !important;
+    display: block !important;
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+  }
+
+  body:not(.tp-preview-printing) #invoiceModal .invoice-vat-section,
+  body:not(.tp-preview-printing) #doctorBillModal .invoice-vat-section {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Lab: no QR strip in InvoicePreview — mirror the modal (VAT at bottom of
+     first A4). Direct keeps natural flow so the QR block stays under totals.
+     #doctorBillModal = doctor bill (same HTML preview as patient invoice). */
+  body:not(.tp-preview-printing)
+    #invoiceModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    ),
+  body:not(.tp-preview-printing)
+    #doctorBillModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    ) {
+    min-height: 297mm !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  body:not(.tp-preview-printing)
+    #invoiceModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    )
+    .invoice-container,
+  body:not(.tp-preview-printing)
+    #doctorBillModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    )
+    .invoice-container {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+
+  body:not(.tp-preview-printing)
+    #invoiceModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    )
+    .invoice-treatment-section,
+  body:not(.tp-preview-printing)
+    #doctorBillModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    )
+    .invoice-treatment-section {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+  }
+
+  body:not(.tp-preview-printing)
+    #invoiceModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    )
+    .invoice-vat-section,
+  body:not(.tp-preview-printing)
+    #doctorBillModal
+    .invoice-preview[data-brand="Lab"]:not(
+      .invoice-preview--mob-app-credentials
+    )
+    .invoice-vat-section {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+  }
+
+  body:not(.tp-preview-printing) #invoiceModal .invoice-total,
+  body:not(.tp-preview-printing) #doctorBillModal .invoice-total {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  body:not(.tp-preview-printing) #invoiceModal .invoice-payment-section,
+  body:not(.tp-preview-printing) #doctorBillModal .invoice-payment-section {
+    margin-top: 0 !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  /* Second page: only break-after on main invoice (above); avoid duplicate breaks */
+  body:not(.tp-preview-printing) .invoice-preview--mob-app-credentials {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  body:not(.tp-preview-printing) .invoice-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Allow arrangement table to break across pages; keep signature section together */
+  body:not(.tp-preview-printing) .arrangement-plan-table {
+    page-break-inside: auto;
+  }
+  body:not(.tp-preview-printing) .arrangement-plan-table tr {
+    page-break-inside: avoid;
+  }
+  body:not(.tp-preview-printing) .invoice-signature-section {
+    page-break-before: auto;
+  }
+
+  body:not(.tp-preview-printing) .invoice-payment-section {
+    page-break-inside: avoid;
+  }
+
+  /* Doctor bill modal: portaled to document.body as #doctorBillModal — same as #invoiceModal.
+     display:none on #root removes wide layout from the print canvas (visibility:hidden did not). */
+  body.sa-print-doctor-bill-modal:not(.tp-preview-printing)
+    > *:not(#doctorBillModal) {
+    display: none !important;
+  }
+
+  body.sa-print-doctor-bill-modal:not(.tp-preview-printing) html,
+  body.sa-print-doctor-bill-modal:not(.tp-preview-printing) body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.sa-print-doctor-bill-modal:not(.tp-preview-printing)
+    #doctorBillModal.doctors-billing-modal-overlay,
+  body.sa-print-doctor-bill-modal:not(.tp-preview-printing)
+    #doctorBillModal
+    .doctors-billing-modal {
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.sa-print-doctor-bill-modal:not(.tp-preview-printing)
+    #doctorBillModal
+    .doctors-billing-modal-header,
+  body.sa-print-doctor-bill-modal:not(.tp-preview-printing)
+    #doctorBillModal
+    .doctors-billing-modal-footer {
+    display: none !important;
+  }
+}

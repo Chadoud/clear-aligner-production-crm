@@ -1,0 +1,176 @@
+/**
+ * Calendar single popover – same design as Doctor Billing calendar.
+ */
+
+.calendar-single-popover {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  min-width: 280px;
+}
+
+.calendar-single-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.calendar-single-popover-month {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.calendar-single-popover-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.calendar-single-popover-nav:hover {
+  background: var(--bg-muted);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.calendar-single-popover-grid {
+  margin-bottom: var(--spacing-md);
+}
+
+.calendar-single-days-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.calendar-single-day-header {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--spacing-xs) 0;
+}
+
+.calendar-single-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.calendar-single-cell:hover {
+  background: var(--primary-blue-light);
+  color: var(--primary-blue);
+}
+
+.calendar-single-cell.other-month {
+  color: var(--text-muted);
+}
+
+.calendar-single-cell.other-month:hover {
+  color: var(--primary-blue);
+}
+
+.calendar-single-cell.weekend {
+  color: var(--red-text);
+}
+
+.calendar-single-cell.weekend.other-month {
+  color: var(--text-muted);
+}
+
+.calendar-single-cell.today {
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-blue);
+}
+
+.calendar-single-cell.selected {
+  background: var(--primary-blue);
+  color: white !important;
+}
+
+.calendar-single-cell.selected:hover {
+  background: var(--primary-blue-hover);
+  color: white !important;
+}
+
+.calendar-single-cell.disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.calendar-single-cell.disabled:hover {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.calendar-single-popover-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+  gap: var(--spacing-md);
+}
+
+.calendar-single-popover-link {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary-blue);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.calendar-single-popover-link:hover {
+  color: var(--primary-blue-hover);
+  text-decoration: underline;
+}
+
+.calendar-single-popover-done {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--primary-blue);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.calendar-single-popover-done:hover {
+  background: var(--primary-blue-hover);
+}

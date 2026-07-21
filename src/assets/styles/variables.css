@@ -1,0 +1,131 @@
+/**
+ * Design tokens – single source of truth for the app.
+ * Use var(--*) everywhere; no hardcoded colors/spacing/radius in migrated code.
+ */
+
+:root {
+  /* ----- Brand & sidebar (existing) ----- */
+  --sidebar-dark: #2c3e50;
+  --sidebar-hover: #34495e;
+  --sidebar-active: #34495e;
+  --sidebar-border: #e0e0e0;
+  --primary-blue: #3498db;
+  --primary-blue-hover: #2980b9;
+  --primary-blue-light: #e8f4fc;
+  --brand-navy: #2d3884;
+  --brand-navy-hover: #232d6e;
+  --badge-company: #0ea5e9;
+  --badge-doctor: #8b5cf6;
+
+  /* ----- Semantic colors ----- */
+  --text-primary: #2c3e50;
+  --text-dark: #333333;
+  --text-secondary: #7f8c8d;
+  --text-muted: #94a3b8;
+  --color-danger: #e74c3c;
+  --color-danger-hover: #c0392b;
+  --color-danger-bg: #fef2f2;
+  --color-success: #27ae60;
+  --color-success-muted: #10b981;
+  --color-success-bg: #d1fae5;
+  --color-success-dark: #065f46;
+  --color-success-border-light: #86efac;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #fef3c7;
+  --color-warning-muted-bg: #fffbf0;
+  --color-amber: #d97706;
+  --color-info: #2563eb;
+  --color-info-light: #3b82f6;
+  --color-info-dark: #1d4ed8;
+  --color-info-bg: #eff6ff;
+  --color-info-border: #bfdbfe;
+  --color-orange: #c2410c;
+  --color-orange-bg: #fff7ed;
+  --color-orange-border: #fed7aa;
+  --color-indigo: #6366f1;
+  --blue-text: #3498db;
+  --red-text: #e74c3c;
+
+  /* ----- Backgrounds ----- */
+  --bg-white: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-light: #f8f9fa;
+  --bg-muted: #f1f5f9;
+  --bg-page: #f5f6fa;
+  --bg-hover: #f5f5f5;
+  --bg-hover-alt: #f0f0f0;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+
+  /* ----- Borders ----- */
+  --border-color: #ecf0f1;
+  --border-default: #e0e0e0;
+  --border-input: #d0d0d0;
+  --border-dropdown: #ccc;
+  --border-light: #e2e8f0;
+  --border-danger: #fecaca;
+  --border-focus: var(--primary-blue);
+
+  /* ----- Spacing scale ----- */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
+  --spacing-4xl: 40px;
+
+  /* ----- Border radius ----- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* ----- Typography ----- */
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* ----- Shadows ----- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-sidebar: 2px 0 5px rgba(0, 0, 0, 0.1);
+  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  /* ----- Transitions ----- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* ----- Layout (breakpoints – use in media queries) ----- */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* ----- Layout dimensions ----- */
+  --sidebar-width: 260px;
+  --right-sidebar-width: 260px;
+  --header-height: 60px;
+
+  /* ----- Form controls (inputs, selects, dropdowns) ----- */
+  --input-padding-x: 14px;
+  --input-padding-y: 11px;
+  --input-radius: var(--radius-sm);
+  --input-border: 1px solid var(--border-input);
+  --input-font-size: var(--font-size-base);
+  --input-min-width-sm: 5rem;
+  --input-min-width-md: 10rem;
+  --input-min-width-lg: 14rem;
+}

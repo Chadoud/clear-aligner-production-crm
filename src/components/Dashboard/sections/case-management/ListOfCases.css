@@ -1,0 +1,319 @@
+/* Uses .dashboard-section padding from layout.css for consistent spacing */
+
+/* ── Skeleton shimmer ────────────────────────────────────────────────────── */
+@keyframes loc-shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.loc-skeleton,
+.loc-skeleton-badge {
+  display: inline-block;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-muted, #f1f5f9) 25%,
+    var(--border-light, #e2e8f0) 50%,
+    var(--bg-muted, #f1f5f9) 75%
+  );
+  background-size: 800px 100%;
+  animation: loc-shimmer 1.4s infinite linear;
+}
+
+.loc-skeleton-badge {
+  width: 2rem;
+  height: 1em;
+  vertical-align: middle;
+}
+.loc-skeleton--name {
+  width: 55%;
+  height: 1em;
+}
+.loc-skeleton--id {
+  width: 20%;
+  height: 0.85em;
+}
+.loc-skeleton--meta {
+  width: 30%;
+  height: 0.8em;
+}
+.loc-skeleton--meta-sm {
+  width: 18%;
+  height: 0.8em;
+}
+
+.list-of-cases-card--skeleton {
+  pointer-events: none;
+  opacity: 0.85;
+}
+.list-of-cases {
+  max-width: none;
+}
+
+.list-of-cases-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.list-of-cases-layout {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+}
+
+.list-of-cases-filters {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--bg-muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+}
+
+.list-of-cases-status-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.list-of-cases-status-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.list-of-cases-status-btn:hover {
+  background: var(--bg-muted);
+  border-color: var(--border-default);
+}
+
+.list-of-cases-status-btn.active {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: var(--bg-white);
+}
+
+.list-of-cases-status-badge {
+  min-width: 1.75rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  background: var(--primary-blue-light);
+  color: var(--primary-blue-hover);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}
+
+.list-of-cases-status-btn.active .list-of-cases-status-badge {
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--bg-white);
+}
+
+.list-of-cases-search-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.list-of-cases-search-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.list-of-cases-search-label i {
+  color: var(--text-muted);
+  width: 1rem;
+}
+
+.list-of-cases-search-label input,
+.list-of-cases-search-label select {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.list-of-cases-search-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--primary-blue);
+  color: var(--bg-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  margin-top: var(--spacing-xs);
+}
+
+.list-of-cases-search-btn:hover {
+  background: var(--primary-blue-hover);
+}
+
+.list-of-cases-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.list-of-cases-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.list-of-cases-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+  padding: var(--spacing-2xl);
+  background: var(--bg-muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+}
+
+.list-of-cases-empty {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--bg-muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+}
+
+.list-of-cases-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.list-of-cases-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.list-of-cases-card-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.list-of-cases-card-id {
+  padding: 0.2rem var(--spacing-sm);
+  background: var(--bg-muted);
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+}
+
+.list-of-cases-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.list-of-cases-card-status {
+  color: var(--text-secondary);
+}
+
+.list-of-cases-card-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.list-of-cases-show-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-success-muted);
+  color: var(--bg-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.list-of-cases-show-btn:hover {
+  background: var(--color-success);
+}
+
+.list-of-cases-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-danger-muted, #fef2f2);
+  color: var(--color-danger, #dc2626);
+  border: 1px solid var(--color-danger-muted, #fecaca);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.list-of-cases-delete-btn:hover {
+  background: var(--color-danger, #dc2626);
+  color: var(--bg-white);
+  border-color: var(--color-danger, #dc2626);
+}
+
+.list-of-cases-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .list-of-cases-layout {
+    flex-direction: column;
+  }
+
+  .list-of-cases-filters {
+    flex: none;
+    width: 100%;
+  }
+}

@@ -1,0 +1,154 @@
+/**
+ * Component primitives – shared base styles for cards, inputs, buttons.
+ * Use these as a base; override in component CSS as needed.
+ *
+ * Naming: Shared components use BEM-like pattern (block__element, block--modifier).
+ * Feature styles use scoped prefixes: form-*, case-*, invoice-*, overview-*.
+ */
+
+.card-base {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.input-base {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color var(--transition-base);
+  box-sizing: border-box;
+}
+
+.input-base:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/**
+ * Button system – single source of truth.
+ *
+ * Usage:  className="btn-base btn-base--primary"
+ *         className="btn-base btn-base--cancel"
+ *         etc.
+ *
+ * All layout (flex, gap, padding, font, radius) lives here in .btn-base.
+ * Variants add only color / background overrides.
+ * Never redefine padding/gap/font in component CSS; compose these classes instead.
+ */
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--bg-muted);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    opacity var(--transition-base);
+  white-space: nowrap;
+  line-height: 1;
+  font-family: inherit;
+}
+
+.btn-base:hover {
+  background: var(--border-input);
+}
+
+.btn-base:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* --- Variants ------------------------------------------------------------ */
+
+.btn-base--primary {
+  background: var(--primary-blue);
+  color: var(--bg-white);
+}
+
+.btn-base--primary:hover:not(:disabled) {
+  background: var(--primary-blue-hover);
+}
+
+.btn-base--secondary {
+  background: var(--bg-muted);
+  color: var(--text-primary);
+}
+
+.btn-base--secondary:hover:not(:disabled) {
+  background: var(--border-input);
+}
+
+.btn-base--cancel {
+  background: var(--border-default);
+  color: var(--text-primary);
+}
+
+.btn-base--cancel:hover:not(:disabled) {
+  background: var(--border-input);
+}
+
+.btn-base--print {
+  background: var(--brand-navy);
+  color: var(--bg-white);
+}
+
+.btn-base--print:hover:not(:disabled) {
+  background: var(--brand-navy-hover);
+}
+
+.btn-base--success {
+  background: var(--color-success);
+  color: var(--bg-white);
+}
+
+.btn-base--success:hover:not(:disabled) {
+  background: var(--color-success-muted);
+}
+
+.btn-base--danger {
+  background: var(--color-danger);
+  color: var(--bg-white);
+}
+
+.btn-base--danger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+/* Card grid – shared layout for Overview and GeneratedInvoices */
+.card-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}

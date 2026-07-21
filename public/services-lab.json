@@ -1,0 +1,1341 @@
+[
+  {
+    "code": "911",
+    "service": "Montage crochets boules.crochets fil s/attel.résine"
+  },
+  {
+    "code": "910",
+    "service": "Boule une partie enrobée de résine molle"
+  },
+  {
+    "code": "909",
+    "service": "Boule bourrée deux parties en résine dure"
+  },
+  {
+    "code": "908",
+    "service": "Modèle fermoir boule pr format.topograph.rétentive"
+  },
+  {
+    "code": "907",
+    "service": "Opér. sim. mod. sciés et rep. mise sur socle en condyl."
+  },
+  {
+    "code": "906",
+    "service": "Attelle coulée"
+  },
+  {
+    "code": "905",
+    "service": "Attelle étirée polyméris.froid.réocclus..meulage..."
+  },
+  {
+    "code": "904",
+    "service": "Attelle étirée & faéon y.c.réoclusion.meulage.perfora."
+  },
+  {
+    "code": "903",
+    "service": "Modèle duplicata après mesurage & prépar.modèle"
+  },
+  {
+    "code": "902",
+    "service": "Ajustage d'une attelle fil. par pièce"
+  },
+  {
+    "code": "867",
+    "service": "Montage de 3 élém.& plus (confect.élém.n/compris)"
+  },
+  {
+    "code": "866",
+    "service": "Montage d'1 à 2 éléments"
+  },
+  {
+    "code": "865",
+    "service": "Montage d'une vis simple"
+  },
+  {
+    "code": "864",
+    "service": "Activation av./arr.d'un activateur. monobloc. sciage"
+  },
+  {
+    "code": "863",
+    "service": "Rebasage indirect d'une plaque"
+  },
+  {
+    "code": "862",
+    "service": "Remontage nvelle plaque avec éléments existants"
+  },
+  {
+    "code": "861",
+    "service": "Réparation d'une cassure ou semblable"
+  },
+  {
+    "code": "860",
+    "service": "Plaque en métal pr test allergique"
+  },
+  {
+    "code": "856",
+    "service": "Prolongement d'une grande prothèse"
+  },
+  {
+    "code": "855",
+    "service": "Prolongement d'une petite prothèse"
+  },
+  {
+    "code": "854",
+    "service": "Pour chaque dent ou crochet supplémentaire"
+  },
+  {
+    "code": "853.",
+    "service": "Remontage ancienne dent.montage nvlle dent/crochet"
+  },
+  {
+    "code": "853,",
+    "service": "Remontage ancienne dent.montage nvlle dent/crochet"
+  },
+  {
+    "code": "853",
+    "service": "Remontage ancienne dent.montage nvlle dent/crochet"
+  },
+  {
+    "code": "851",
+    "service": "Démontage et remontage d'une dent"
+  },
+  {
+    "code": "846",
+    "service": "Rétention fil supplémentaire y.c. brasage"
+  },
+  {
+    "code": "845",
+    "service": "Rétention fil façonné y.c.brasage. Position prim."
+  },
+  {
+    "code": "844",
+    "service": "Brasage d'un crochet fil"
+  },
+  {
+    "code": "843",
+    "service": "Réparation d'une fracture de barre y.c.brasage"
+  },
+  {
+    "code": "842",
+    "service": "Réparation d'une fracture de crochet y.c.brasage"
+  },
+  {
+    "code": "841",
+    "service": "Réparation d'une fente ou semblable"
+  },
+  {
+    "code": "835",
+    "service": "Nettoyage d'une prothèse / pont"
+  },
+  {
+    "code": "833",
+    "service": "Rebasage prothèse partielle. 1 à 3 dents"
+  },
+  {
+    "code": "832.",
+    "service": "Prothèse totale sup.ou inf.sans mise en moufle"
+  },
+  {
+    "code": "832",
+    "service": "Prothèse totale sup. ou inf. sans mise en moufle"
+  },
+  {
+    "code": "831",
+    "service": "Prothèse sup. ou inf. avec mise en moufle"
+  },
+  {
+    "code": "827",
+    "service": "Fixation d'un attachement ancien ou nouveau"
+  },
+  {
+    "code": "826",
+    "service": "Réparation d'une fente ou cassure avec renfort"
+  },
+  {
+    "code": "825",
+    "service": "Réparation d'une fente ou cassure"
+  },
+  {
+    "code": "824",
+    "service": "Prolongement d'une grande prothèse"
+  },
+  {
+    "code": "823",
+    "service": "Prolongement d'une petite prothèse"
+  },
+  {
+    "code": "822",
+    "service": "Pour chaque nouvelle dent ou crochet"
+  },
+  {
+    "code": "821",
+    "service": "Prolongement ou montage d'une nouvelle dent ou crochet"
+  },
+  {
+    "code": "816",
+    "service": "Par dent supplémentaire ou crochet"
+  },
+  {
+    "code": "815",
+    "service": "Montage d'une nouvelle dent"
+  },
+  {
+    "code": "813",
+    "service": "Fixation d'une ancienne dent ou crochet"
+  },
+  {
+    "code": "812",
+    "service": "Réparation d'une fente. d'une cassure avec renfort"
+  },
+  {
+    "code": "811B",
+    "service": "RèPARATION D'UNE FENTE OU D'UNE CASSURE"
+  },
+  {
+    "code": "811",
+    "service": "Réparation d'une fente ou d'une cassure"
+  },
+  {
+    "code": "768",
+    "service": "Positionneur + set-up ( forfait )"
+  },
+  {
+    "code": "767",
+    "service": "Epithèse gingivale. dure"
+  },
+  {
+    "code": "766",
+    "service": "Duplication simultanée épithèse gingivale"
+  },
+  {
+    "code": "765",
+    "service": "Epithèse gingivale"
+  },
+  {
+    "code": "764",
+    "service": "Ajuster arc Head-Gear à activateur"
+  },
+  {
+    "code": "763",
+    "service": "Set-up par dent"
+  },
+  {
+    "code": "762",
+    "service": "Plan incliné métal. par dent"
+  },
+  {
+    "code": "761",
+    "service": "Plan incliné résine"
+  },
+  {
+    "code": "759",
+    "service": "Supplément pour ressort intégré"
+  },
+  {
+    "code": "758",
+    "service": "Ajuster arc vestibulaire ou en W préfabriqué"
+  },
+  {
+    "code": "757",
+    "service": "Ajustage d'éléments pr maintenir espace interdentaire"
+  },
+  {
+    "code": "756",
+    "service": "Confect.poussoir interdentaire ou avec expansion"
+  },
+  {
+    "code": "755",
+    "service": "Confect.d'un arc int./ext..arc W.arc vestibulaire"
+  },
+  {
+    "code": "754",
+    "service": "Brasage d'un fermoir ou semblable"
+  },
+  {
+    "code": "753",
+    "service": "Pointage d'un fermoir ou semblable"
+  },
+  {
+    "code": "752",
+    "service": "Anneau d'ancrage. cape d'encrage coulé"
+  },
+  {
+    "code": "751",
+    "service": "Anneau d'ancrage façonné"
+  },
+  {
+    "code": "749",
+    "service": "Retainer fil"
+  },
+  {
+    "code": "748",
+    "service": "Plaque TT. en résine molle"
+  },
+  {
+    "code": "747",
+    "service": "Positionneur"
+  },
+  {
+    "code": "746",
+    "service": "Bionator. appareil de base avec arc"
+  },
+  {
+    "code": "745",
+    "service": "Châssis Crozat. brasé avec 2 crochets molaires"
+  },
+  {
+    "code": "744",
+    "service": "Propulseur d'après Mühlemann"
+  },
+  {
+    "code": "743",
+    "service": "Activateur Fränkel. appareil base sans éléments de fil"
+  },
+  {
+    "code": "742",
+    "service": "Plaque vestibulaire"
+  },
+  {
+    "code": "741",
+    "service": "Gouttière de Brückli"
+  },
+  {
+    "code": "736",
+    "service": "Ajuster attachement Herbst. sans brasage"
+  },
+  {
+    "code": "735",
+    "service": "Ressort coffin (barre liaison palatinale)"
+  },
+  {
+    "code": "734",
+    "service": "Placer tube Head-Gear (par paire)"
+  },
+  {
+    "code": "733",
+    "service": "Ajuster vis pour expansion forcée"
+  },
+  {
+    "code": "732",
+    "service": "Montage d'une vis compliquée"
+  },
+  {
+    "code": "731",
+    "service": "Montage vis simple"
+  },
+  {
+    "code": "729",
+    "service": "Arc vestibulaire circonférentiel"
+  },
+  {
+    "code": "728",
+    "service": "Anti-langue"
+  },
+  {
+    "code": "727",
+    "service": "Pointe guidage double plaque (Muller) y.c montage"
+  },
+  {
+    "code": "726",
+    "service": "Ressort de protrusion croisé"
+  },
+  {
+    "code": "725",
+    "service": "Ressort protrusion simple. Torquing Spring"
+  },
+  {
+    "code": "724",
+    "service": "Crochet flèche double. Adams ou autre/extent. avec fil"
+  },
+  {
+    "code": "723",
+    "service": "Crochet simple un bras. crochet flèche simple"
+  },
+  {
+    "code": "722",
+    "service": "Arc vestibulaire avec boucle"
+  },
+  {
+    "code": "721",
+    "service": "Arc vestibulaire sans boucle"
+  },
+  {
+    "code": "717",
+    "service": "résine sur arc, sur exp.forcée, lipbumper"
+  },
+  {
+    "code": "716",
+    "service": "Supplément pour polymérisation à chaud"
+  },
+  {
+    "code": "715",
+    "service": "Activateur ou monobloc scié"
+  },
+  {
+    "code": "714",
+    "service": "Activateur ou monobloc non scié"
+  },
+  {
+    "code": "713",
+    "service": "Supplément pour surélévation latérale"
+  },
+  {
+    "code": "712",
+    "service": "Suppl.surélévation frontale.anti-langue en résine"
+  },
+  {
+    "code": "711",
+    "service": "Plaque supérieure ou inférieure"
+  },
+  {
+    "code": "710",
+    "service": "Demi-plaque surélévation antérieure"
+  },
+  {
+    "code": "648",
+    "service": "Supplément montage dents s/pce précision ou barre"
+  },
+  {
+    "code": "647",
+    "service": "Remontage de dents dans prothèse terminée.par dent"
+  },
+  {
+    "code": "646",
+    "service": "Remontage en cire pour essai. par dent"
+  },
+  {
+    "code": "642",
+    "service": "Montage d'une dent avec résine blanche"
+  },
+  {
+    "code": "641",
+    "service": "Supplément pour dent caractérisée dans prothèse"
+  },
+  {
+    "code": "634",
+    "service": "Base en résine molle"
+  },
+  {
+    "code": "631",
+    "service": "Palais transparent"
+  },
+  {
+    "code": "625",
+    "service": "Mise en place couronne télescopique ou semblable"
+  },
+  {
+    "code": "624",
+    "service": "Montage d'un matériel pr alourdir la prothèse"
+  },
+  {
+    "code": "623",
+    "service": "Confection montage d'une rétention pr dent isolée"
+  },
+  {
+    "code": "622",
+    "service": "Ajustage montage renfort ou barre de renfort"
+  },
+  {
+    "code": "621",
+    "service": "Ajustage montage renfort treillis ou perlon"
+  },
+  {
+    "code": "616",
+    "service": "Onglet ou bouton"
+  },
+  {
+    "code": "615",
+    "service": "Point de soudure pour crochet"
+  },
+  {
+    "code": "612",
+    "service": "Crochet fil double ou triple"
+  },
+  {
+    "code": "611.",
+    "service": "Crochet fil simple"
+  },
+  {
+    "code": "611,",
+    "service": "Crochet fil simple"
+  },
+  {
+    "code": "611",
+    "service": "Crochet fil simple"
+  },
+  {
+    "code": "546",
+    "service": "Finition prothèses totales. sup. et inférieure"
+  },
+  {
+    "code": "545",
+    "service": "Finition prothèse 10 dents et plus (sans montage)"
+  },
+  {
+    "code": "544",
+    "service": "Finition prothèse 7-9 dents (sans montage)"
+  },
+  {
+    "code": "543",
+    "service": "Finition prothèse 4-6 dents (sans montage)"
+  },
+  {
+    "code": "542",
+    "service": "Finition prothèse 2-3 dents (sans montage)"
+  },
+  {
+    "code": "541",
+    "service": "Finition prothèse 1 dent (sans montage)"
+  },
+  {
+    "code": "535",
+    "service": "Montage prothèse 10 dents & plus (sans finition)"
+  },
+  {
+    "code": "534",
+    "service": "Montage de prothèse 7-9 dents (sans finition)"
+  },
+  {
+    "code": "533",
+    "service": "Montage de prothèse 4-6 dents (sans finition)"
+  },
+  {
+    "code": "532",
+    "service": "Montage de prothèse 2-3 dents (sans finition)"
+  },
+  {
+    "code": "531",
+    "service": "Montage de prothèse 1 dent (sans finition)"
+  },
+  {
+    "code": "525",
+    "service": "Prothèse sans essai 10 dents et plus"
+  },
+  {
+    "code": "524",
+    "service": "Prothèse sans essai 7-9 dents"
+  },
+  {
+    "code": "523",
+    "service": "Prothèse sans essai 4-6 dents"
+  },
+  {
+    "code": "522",
+    "service": "Prothèse sans essai 2-3 dents"
+  },
+  {
+    "code": "521.",
+    "service": "Prothèse sans essi 1 dent"
+  },
+  {
+    "code": "521",
+    "service": "Prothèse sans essai 1 dent"
+  },
+  {
+    "code": "514",
+    "service": "7-9 dents"
+  },
+  {
+    "code": "513",
+    "service": "4-6 dents"
+  },
+  {
+    "code": "512",
+    "service": "2-3 dents"
+  },
+  {
+    "code": "511",
+    "service": "1 dent"
+  },
+  {
+    "code": "429",
+    "service": "Préparation pr adhérence d'une liaison en bouche"
+  },
+  {
+    "code": "428",
+    "service": "Préparation pr adhérence d'une liaison au labo. grande"
+  },
+  {
+    "code": "427",
+    "service": "Préparation pr adhérence d'une liaison au labo. petite"
+  },
+  {
+    "code": "419",
+    "service": "Liaison métallique sans soudure"
+  },
+  {
+    "code": "418",
+    "service": "Collage pièce de précision dans prothèse"
+  },
+  {
+    "code": "417",
+    "service": "Point de brasage pour crochet"
+  },
+  {
+    "code": "416",
+    "service": "Brasage pour chassis métallique"
+  },
+  {
+    "code": "414",
+    "service": "Brasage sans mise en revêtement"
+  },
+  {
+    "code": "413",
+    "service": "Brasage supplémentaire à pos.412"
+  },
+  {
+    "code": "335",
+    "service": "Ligne américaine rebasable"
+  },
+  {
+    "code": "334",
+    "service": "Montage d'une charnière"
+  },
+  {
+    "code": "333",
+    "service": "Dent coulée"
+  },
+  {
+    "code": "332",
+    "service": "Sertissage métal d'une dent crampon-platine"
+  },
+  {
+    "code": "331",
+    "service": "Contre-plaque pr incrustation résine individuelle"
+  },
+  {
+    "code": "327",
+    "service": "Rétention avec collet prolongé"
+  },
+  {
+    "code": "326",
+    "service": "Rétention pour une dent, rétention avec pivot"
+  },
+  {
+    "code": "324",
+    "service": "Manchette"
+  },
+  {
+    "code": "322",
+    "service": "Montage crochet. raccordement au crochet"
+  },
+  {
+    "code": "313",
+    "service": "Plaque grillagée. supérieure ou inférieure"
+  },
+  {
+    "code": "284",
+    "service": "Montage d'une griffe"
+  },
+  {
+    "code": "283",
+    "service": "Courber et souder rétention s/partie précision"
+  },
+  {
+    "code": "282",
+    "service": "Modeler et souder rétention s/partie précision"
+  },
+  {
+    "code": "281",
+    "service": "Rétention sur partie secondaire"
+  },
+  {
+    "code": "277",
+    "service": "Dispositif de vissage. par pièce"
+  },
+  {
+    "code": "276",
+    "service": "Dispositif verrouillage avec splint ou semblable"
+  },
+  {
+    "code": "193",
+    "service": "Appui sur dent voisine"
+  },
+  {
+    "code": "192",
+    "service": "Paralleliser une couronne pour crochet"
+  },
+  {
+    "code": "186",
+    "service": "Caractériser une dent. par dent"
+  },
+  {
+    "code": "174",
+    "service": "Elément de pont en porcelaine pleine"
+  },
+  {
+    "code": "167",
+    "service": "Ajustage & fixation en résine d'une dent préfabriquée"
+  },
+  {
+    "code": "166",
+    "service": "Montage gencive ou papille artificielle résine"
+  },
+  {
+    "code": "165",
+    "service": "Liaison entre deux éléments résine"
+  },
+  {
+    "code": "164",
+    "service": "Elément de pont en résine"
+  },
+  {
+    "code": "159",
+    "service": "Support pr pont collé, par dent"
+  },
+  {
+    "code": "138",
+    "service": "Rétention pr résine s/base existante"
+  },
+  {
+    "code": "1212",
+    "service": "Traitement Orthodontie"
+  },
+  {
+    "code": "121",
+    "service": "Dent à pivot pr incrustation résine"
+  },
+  {
+    "code": "116MS",
+    "service": "Réalisation d'une mésio-structure en or"
+  },
+  {
+    "code": "113",
+    "service": "Surface de mastication coulée sur anneau de couronne"
+  },
+  {
+    "code": "112",
+    "service": "Anneau pour couronne d'après modèle"
+  },
+  {
+    "code": "111",
+    "service": "Anneau pour couronne d'après mesure"
+  },
+  {
+    "code": "1101",
+    "service": "Transf.proth.totale en hybride sup/inf (résine)"
+  },
+  {
+    "code": "1041.1",
+    "service": "Brasage sur implant par liaison"
+  },
+  {
+    "code": "1041",
+    "service": "Soudage au laser en cas d'implant par liaison"
+  },
+  {
+    "code": "103A",
+    "service": "essai"
+  },
+  {
+    "code": "1029",
+    "service": "Préparer l'individualisation d'un moignon préfabriqué"
+  },
+  {
+    "code": "1028",
+    "service": "Modification du pilier préfabriqué"
+  },
+  {
+    "code": "1027.1",
+    "service": "Vissage de l'él.de constr pour couronnes/ponts sur impl"
+  },
+  {
+    "code": "1027",
+    "service": "Vissage de l'él de constr/ barre sur l'implant,par élém"
+  },
+  {
+    "code": "1022",
+    "service": "Sciage d'un él.de constr, ajust à l'implant par liaison"
+  },
+  {
+    "code": "1021.1",
+    "service": "Ajust. régl. de la friction de la suprastructure par él"
+  },
+  {
+    "code": "1021",
+    "service": "Conf.d'un moignon pour cour.télé.et/ou conique, par él."
+  },
+  {
+    "code": "1017.3",
+    "service": "Incrustation pour applic.de la sur un implant"
+  },
+  {
+    "code": "1017.2",
+    "service": "Incrustation résine sur implant"
+  },
+  {
+    "code": "1017.1",
+    "service": "Incrustation d'un moignon"
+  },
+  {
+    "code": "1017",
+    "service": "Couronne sur implant en"
+  },
+  {
+    "code": "1016.0*",
+    "service": "Couronne sur implant en composite"
+  },
+  {
+    "code": "1014",
+    "service": "Support de cuisson individuel, par élément"
+  },
+  {
+    "code": "1013.1",
+    "service": "Moignon individuel coulé, avec élément de construction"
+  },
+  {
+    "code": "1013",
+    "service": "Moignon individuel avec base calcinable"
+  },
+  {
+    "code": "1011.5",
+    "service": "Montage sur implant en"
+  },
+  {
+    "code": "1011.4",
+    "service": "Elément intermédiaire pour implant"
+  },
+  {
+    "code": "1011.3",
+    "service": "Elément de construction coulé sur support d'implant"
+  },
+  {
+    "code": "1011.2",
+    "service": "Coiffe coulée sur pilier d'implant pour barre"
+  },
+  {
+    "code": "1011.1",
+    "service": "Elément de construction coulé sur support d'implant"
+  },
+  {
+    "code": "1011",
+    "service": "Armature sur support d'implant avec base calcinable"
+  },
+  {
+    "code": "1010.2",
+    "service": "Duppliquer une prothèse (7 et plus)"
+  },
+  {
+    "code": "1010.1",
+    "service": "Duppliquer une prothèse (4 à 6 )"
+  },
+  {
+    "code": "1010",
+    "service": "Duppliquer une prothèse (1 à 3 )"
+  },
+  {
+    "code": "1009.5",
+    "service": "Maquette de perçage chirurgical (7 et plus)"
+  },
+  {
+    "code": "1009.4",
+    "service": "Maquette de perçage chirurgical (4 à 6 )"
+  },
+  {
+    "code": "1009.3",
+    "service": "Maquette de perçage chirurgical (1 à 3 )"
+  },
+  {
+    "code": "1009.2",
+    "service": "Maquette radiographique (7 et plus)"
+  },
+  {
+    "code": "1009.1",
+    "service": "Maquette radiographique (4 à 6 )"
+  },
+  {
+    "code": "1009",
+    "service": "Maquette radiographique (1 à 3 )"
+  },
+  {
+    "code": "1008.1",
+    "service": "Couronne provisoire sur implant, vissée"
+  },
+  {
+    "code": "1008",
+    "service": "Couronne provisoire sur implant, cimentée"
+  },
+  {
+    "code": "1006",
+    "service": "Porte-empreinte individuel pour implant"
+  },
+  {
+    "code": "1005",
+    "service": "Montage d'un él. de constr.sur une maquette occlusion"
+  },
+  {
+    "code": "1004",
+    "service": "Sélection de piliers sur le modèle"
+  },
+  {
+    "code": "1002",
+    "service": "Modification de l'implant de manipulation"
+  },
+  {
+    "code": "1001",
+    "service": "Modèle maître pour implant"
+  },
+  {
+    "code": "099",
+    "service": "Obturateur"
+  },
+  {
+    "code": "098",
+    "service": "Attelle de surélévation"
+  },
+  {
+    "code": "097",
+    "service": "Attelle Michigan"
+  },
+  {
+    "code": "096",
+    "service": "Attelle provisoire d'articulation"
+  },
+  {
+    "code": "095",
+    "service": "Plaque de pansement"
+  },
+  {
+    "code": "094",
+    "service": "Gouttière de surélévation ou protection résine molle"
+  },
+  {
+    "code": "093",
+    "service": "Gouttière de surélévation en résine"
+  },
+  {
+    "code": "092",
+    "service": "Attelle de Drum épaisse"
+  },
+  {
+    "code": "091",
+    "service": "Attelle de Drum mince",
+    "vpt": 5.55,
+    "points": 13.5
+  },
+  {
+    "code": "09",
+    "service": "TRAITEMENT CONSERVATEUR DES FRACTURES"
+  },
+  {
+    "code": "086",
+    "service": "Plaque en métal pour test allergique"
+  },
+  {
+    "code": "085",
+    "service": "Plaque en résine pr test allergique"
+  },
+  {
+    "code": "084",
+    "service": "Renfort pr pont provisoire par 1 à 3 éléments suppl."
+  },
+  {
+    "code": "0835.1*",
+    "service": "Nettoyage d'une prothèse / pont"
+  },
+  {
+    "code": "0834.1*",
+    "service": "Mise en moufle totale remplacement de toute la résine"
+  },
+  {
+    "code": "083",
+    "service": "Renfort pr pont provisoire jusqu'à 3 dents"
+  },
+  {
+    "code": "082",
+    "service": "Elément intermédiaire provisoire y.c.liaisons"
+  },
+  {
+    "code": "081",
+    "service": "Couronne provisoire. y.c.liaisons éventuelles"
+  },
+  {
+    "code": "08",
+    "service": "REPARATIONS. TRANSFORMATIONS ET REBASAGES"
+  },
+  {
+    "code": "072",
+    "service": "Cape de report en métal"
+  },
+  {
+    "code": "071",
+    "service": "Cape de report en résine"
+  },
+  {
+    "code": "07",
+    "service": "PROTHESES ORTHODONTIQUES"
+  },
+  {
+    "code": "0644.1*",
+    "service": "Fixation d'une facette or (sans confection)"
+  },
+  {
+    "code": "0641.4*",
+    "service": "Caractériser une dent préfabriquée ()"
+  },
+  {
+    "code": "0641.3*",
+    "service": "Modification d'une dent préfabriquée ()"
+  },
+  {
+    "code": "0641.2*",
+    "service": "Modification d'une dent préfabriquée (résine)"
+  },
+  {
+    "code": "0641.1*",
+    "service": "Teinture d'une dent préfabriquée (résine)"
+  },
+  {
+    "code": "064",
+    "service": "Gencive amovible s/modèle de travail. dès 4 dents"
+  },
+  {
+    "code": "0636.1*",
+    "service": "Vitrification d'une grande prothèse"
+  },
+  {
+    "code": "0635.1*",
+    "service": "Vitrification d'une petite prothèse"
+  },
+  {
+    "code": "0634.1*",
+    "service": "Base en résine molle"
+  },
+  {
+    "code": "0633.1*",
+    "service": "Teinter superficiellement la surface de la base"
+  },
+  {
+    "code": "0632.1*",
+    "service": "Base plusieurs teintes"
+  },
+  {
+    "code": "0631.2*",
+    "service": "Palais respectant l'anatomie du patient"
+  },
+  {
+    "code": "0631.1*",
+    "service": "Palais transparent"
+  },
+  {
+    "code": "063",
+    "service": "Gencive amovible s/mod.de travail. 1-3 dents"
+  },
+  {
+    "code": "062.",
+    "service": "Porte-empreinte ind.en resine autopolymerisante"
+  },
+  {
+    "code": "062",
+    "service": "Porte-empreinte indiv.en résine autopolymérisante"
+  },
+  {
+    "code": "061",
+    "service": "Porte-empreinte indiv.en plaque base ou résine"
+  },
+  {
+    "code": "06",
+    "service": "CONFECTION DE PROTHESES AMOVIBLES EN RESINE"
+  },
+  {
+    "code": "055",
+    "service": "Confect.cupule indiv.résine. guidage incisif/condylien"
+  },
+  {
+    "code": "054",
+    "service": "Plaque d'enregistrement compliquée. par pièce"
+  },
+  {
+    "code": "053",
+    "service": "Confect.plaque d'enregistrement.avec plaque/pivot. pce"
+  },
+  {
+    "code": "052;",
+    "service": "Maquette d'occlusion en cire.ou resine s/plaque base"
+  },
+  {
+    "code": "052.",
+    "service": "Maquette d'occlusion en cire.ou resine s/plaque base"
+  },
+  {
+    "code": "052",
+    "service": "Maquette d'occlusion en cire. ou résine s/plaque base"
+  },
+  {
+    "code": "051",
+    "service": "Maquette d'occlusion en cire. métal. base existante"
+  },
+  {
+    "code": "05",
+    "service": "MONTAGE & FINITION PROTHESES RESINE OU METALLIQUES"
+  },
+  {
+    "code": "049",
+    "service": "Meulage avec analyse du modèle"
+  },
+  {
+    "code": "048",
+    "service": "Correct.model.cire/dépl.dents en plâtre. par dent"
+  },
+  {
+    "code": "047",
+    "service": "Préparation modèles pr appar.orthodontiques. y.c étude"
+  },
+  {
+    "code": "046",
+    "service": "Etude conception plaque sur modèle de situation"
+  },
+  {
+    "code": "045",
+    "service": "Analyse fonctionnelle du modèle"
+  },
+  {
+    "code": "044",
+    "service": "Etudes différentes"
+  },
+  {
+    "code": "043",
+    "service": "Planification d'un travail prothétique"
+  },
+  {
+    "code": "0426.1*",
+    "service": "d'une couronne ou d'un élément de pont"
+  },
+  {
+    "code": "0425.1*",
+    "service": "des rétentions"
+  },
+  {
+    "code": "0424.1*",
+    "service": "d'une grande pièce métallique"
+  },
+  {
+    "code": "0423.1*",
+    "service": "d'une pièce moyenne (>1cm2)"
+  },
+  {
+    "code": "0422.1*",
+    "service": "d'une petite pièce (<1cm2)"
+  },
+  {
+    "code": "042",
+    "service": "Devis détaillé"
+  },
+  {
+    "code": "041;",
+    "service": "Conseil ou choix de la teinte au laboratoire"
+  },
+  {
+    "code": "041.",
+    "service": "Conseil ou choix de la teinte au laboratoire"
+  },
+  {
+    "code": "041",
+    "service": "Conseil ou choix de la teinte au laboratoire"
+  },
+  {
+    "code": "04",
+    "service": "SOUDAGE. ASSEMBLAGE. S"
+  },
+  {
+    "code": "035",
+    "service": "Suppl.pr mise en articulateur à l'aide d'arc facial"
+  },
+  {
+    "code": "034",
+    "service": "Modèles en articulateur/articulateur indiv.compliqué"
+  },
+  {
+    "code": "0334.1*",
+    "service": "Charnière"
+  },
+  {
+    "code": "032",
+    "service": "Modèles en articulateur / articulateur indiv.simple"
+  },
+  {
+    "code": "031",
+    "service": "Modèles en occluseur"
+  },
+  {
+    "code": "027",
+    "service": "Valeur moyenne carotte pour cas AS"
+  },
+  {
+    "code": "025",
+    "service": "Positionner carotte ou anneau de couronne"
+  },
+  {
+    "code": "022",
+    "service": "Carotte plâtre. résine y c.position dans empreinte"
+  },
+  {
+    "code": "0184.1*",
+    "service": "Ajouter sur dent préfabriquée"
+  },
+  {
+    "code": "017",
+    "service": "Modèle spécial"
+  },
+  {
+    "code": "0161.1*",
+    "service": "Incrustation en résine /composite"
+  },
+  {
+    "code": "016",
+    "service": "Modèles orthodontiques sup. et inf."
+  },
+  {
+    "code": "0158.1*",
+    "service": "Inlay sur dent préfabriquée"
+  },
+  {
+    "code": "0154.1*",
+    "service": "Inlay pr l'application de la"
+  },
+  {
+    "code": "0153.1*",
+    "service": "Onlay galvanisé pr application de la"
+  },
+  {
+    "code": "015",
+    "service": "Confection ou tailler socle sur modèle livré"
+  },
+  {
+    "code": "0145.1*",
+    "service": "Elément de pont non métal ni céram pour dent préfabriqu Elements de pont"
+  },
+  {
+    "code": "014",
+    "service": "Modèle empreinte mordue. deux parties"
+  },
+  {
+    "code": "013",
+    "service": "Modèle duplicata"
+  },
+  {
+    "code": "012",
+    "service": "Modèle en plâtre dur",
+    "vpt": 5.55,
+    "points": 4,
+    "costPrice": 0.30
+  },
+  {
+    "code": "0118.1*",
+    "service": "Facette or pour prothèse"
+  },
+  {
+    "code": "0112.1*",
+    "service": "Armature pour couronne non céram.ni métal./ex:composite"
+  },
+  {
+    "code": "0111.2*",
+    "service": "Cape galvanisée pour incrust résine / appl. porcelaine"
+  },
+  {
+    "code": "0111.1*",
+    "service": "Cape galvanisée"
+  },
+  {
+    "code": "011",
+    "service": "Modèle en plâtre"
+  },
+  {
+    "code": "00LIV.",
+    "service": "Livraisons"
+  },
+  {
+    "code": "0099",
+    "service": "Obturateur"
+  },
+  {
+    "code": "0094.2*",
+    "service": "Protège-dents pour le sport avec mordu"
+  },
+  {
+    "code": "0092.2*",
+    "service": "Gouttière de blanchiment avec réservoir"
+  },
+  {
+    "code": "0092.1*",
+    "service": "Gouttière de blanchiment"
+  },
+  {
+    "code": "0054.1*",
+    "service": "Plaque d'enregistrement compliquée. par pièce"
+  },
+  {
+    "code": "0048.3*",
+    "service": "Set up par dent"
+  },
+  {
+    "code": "0048.1*",
+    "service": "Correction de dents ou facettes ou wax up"
+  },
+  {
+    "code": "0042.1*",
+    "service": "Devis détaillé écrit"
+  },
+  {
+    "code": "003",
+    "service": "Taxe travaux 1.5"
+  },
+  {
+    "code": "002",
+    "service": "Taxe travaux 1"
+  },
+  {
+    "code": "001a",
+    "service": "Modele d'etude Modèles"
+  },
+  {
+    "code": "001P",
+    "service": "Potionneur selon temp"
+  },
+  {
+    "code": "001B",
+    "service": "001 taxe par quart  d'heure"
+  },
+  {
+    "code": "001A",
+    "service": "Taxe par quart d'heure"
+  },
+  {
+    "code": "001",
+    "service": "Taxe travaux"
+  },
+  {
+    "code": "0001",
+    "service": "Controle au cabinet dentaire"
+  },
+  {
+    "code": "0091.1",
+    "service": "Attelle de Drum / masque pour Bracket jusqu'à 1mm",
+    "vpt": 1,
+    "points": 94.7
+  },
+  {
+    "code": "0013.1",
+    "service": "Modèle duplicata (y compris éventuel moulage)",
+    "vpt": 1,
+    "points": 45.8
+  },
+  {
+    "code": "0.1",
+    "service": "Laboratory service",
+    "vpt": 1
+    
+  },
+  {
+    "code": "4.8490",
+    "service": "Contention en fil métallique, collée, indirect",
+    "vpt": 1,
+    "points": 126
+  },
+  {
+    "code": "4.8720",
+    "service": "Collage, par point de collage",
+    "vpt": 1,
+    "points": 15
+  }
+]

@@ -1,0 +1,172 @@
+/* TabStripping – step journey, treatment plan summary, visual */
+
+.tab-stripping-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.tab-stripping-section {
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+}
+
+.sub-section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.sub-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.sub-section-title i {
+  color: var(--primary-blue);
+}
+
+.tab-stripping-empty {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Step journey & todo list */
+.tab-stripping-journey {
+  background: var(--bg-white);
+  border-color: var(--border-default);
+}
+
+.tab-stripping-todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.tab-stripping-todo-item {
+  margin: 0;
+}
+
+.tab-stripping-todo-item--disabled .tab-stripping-todo-segment {
+  opacity: 0.6;
+}
+
+.tab-stripping-todo-item--disabled
+  .tab-stripping-todo-segment:not(.tab-stripping-todo-segment--done)
+  .tab-stripping-todo-checkbox {
+  cursor: not-allowed;
+}
+
+.tab-stripping-todo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-base);
+}
+
+.tab-stripping-todo-row.tab-stripping-todo-hovered {
+  background: rgba(124, 58, 237, 0.08);
+  box-shadow: inset 3px 0 0 #7c3aed;
+}
+
+.tab-stripping-todo-done {
+  color: var(--text-muted);
+}
+
+.tab-stripping-todo-done .tab-stripping-todo-step {
+  color: var(--text-muted);
+}
+
+.tab-stripping-todo-checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-blue);
+}
+
+.tab-stripping-todo-step {
+  flex-shrink: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.tab-stripping-todo-segments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm) var(--spacing-md);
+  flex: 1;
+}
+
+.tab-stripping-todo-segment {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+}
+
+.tab-stripping-todo-segment:hover {
+  background: var(--bg-light);
+}
+
+.tab-stripping-todo-segment-wrap {
+  display: inline-flex;
+  align-items: center;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.tab-stripping-todo-segment--done {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.tab-stripping-todo-segment--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.tab-stripping-todo-segment--disabled .tab-stripping-todo-checkbox {
+  cursor: not-allowed;
+}
+
+.tab-stripping-todo-sep {
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+.tab-stripping-todo-striping {
+  font-size: var(--font-size-xs);
+  color: var(--primary-blue);
+  background: rgba(37, 99, 235, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* Treatment plan visual – inherit from DentalToothGrid */
+.tab-stripping-section .tp-visual {
+  margin: 0;
+}
+
+.tab-stripping-section .tp-schema-card {
+  margin-top: 0;
+}

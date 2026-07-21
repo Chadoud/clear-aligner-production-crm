@@ -1,0 +1,78 @@
+.shared-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  position: relative;
+}
+
+/* Filter-state dot indicator ──────────────────────────────────────────── */
+.shared-card-dot {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-default, #cbd5e1);
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Selection border only — amount stays primary text (semantic colors use
+   .shared-card--left / --received / --pending, which follow in this file). */
+.shared-card--highlight .shared-card-value {
+  color: var(--text-primary);
+}
+
+.shared-card--clickable {
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  border: 1px solid var(--border-light);
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.shared-card--clickable:hover {
+  background: var(--primary-blue-light);
+  border-color: var(--primary-blue);
+}
+
+.shared-card-icon {
+  color: var(--text-muted);
+  font-size: 1.25rem;
+}
+
+.shared-card-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.shared-card-value {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.shared-card-sublabel {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.shared-card--received .shared-card-value {
+  color: var(--color-success-muted);
+}
+
+.shared-card--left .shared-card-value {
+  color: var(--color-warning);
+}
+
+.shared-card--pending .shared-card-value {
+  color: var(--primary-blue, #6366f1);
+}

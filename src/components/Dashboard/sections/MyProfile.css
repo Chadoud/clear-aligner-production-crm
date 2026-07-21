@@ -1,0 +1,138 @@
+/* My profile – tokenized */
+
+.my-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.my-profile-error {
+  color: var(--color-danger);
+  margin: 0;
+}
+
+.my-profile-saved {
+  color: var(--color-success-muted);
+  margin: 0;
+}
+
+.my-profile-saving {
+  color: var(--color-text-muted, #6b7280);
+  margin: 0;
+}
+
+.my-profile-field label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.my-profile-field input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+.my-profile-email {
+  background: var(--bg-muted);
+  color: var(--text-muted);
+}
+
+.my-profile-field-hint {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-top: var(--spacing-xs);
+}
+
+.my-profile-field-row {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.my-profile-field-row .my-profile-field {
+  flex: 1;
+}
+
+/* CustomSelect + SingleDatePicker — match my-profile inputs */
+.my-profile-field--select .custom-dropdown-wrap,
+.my-profile-field--date .single-date-picker {
+  width: 100%;
+}
+
+.my-profile-field--select .custom-dropdown-trigger {
+  width: 100%;
+  min-height: calc(2 * var(--spacing-sm) + 1.5em + 2px);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface, #fff);
+  box-sizing: border-box;
+}
+
+.my-profile-field--date .single-date-picker-trigger {
+  width: 100%;
+  min-height: calc(2 * var(--spacing-sm) + 1.5em + 2px);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  box-sizing: border-box;
+}
+
+.my-profile-field--date .single-date-picker-input {
+  padding: 0;
+}
+
+.my-profile-field--select .custom-dropdown-trigger:focus-visible,
+.my-profile-field--select
+  .custom-dropdown-wrap[aria-expanded="true"]
+  .custom-dropdown-trigger,
+.my-profile-field--date .single-date-picker-trigger:focus-within,
+.my-profile-field--date .single-date-picker-trigger--open {
+  outline: none;
+  border-color: var(--border-focus, #3498db);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+.my-profile-actions {
+  margin-top: var(--spacing-sm);
+}
+
+.my-profile-context-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-muted, rgba(0, 0, 0, 0.02));
+}
+
+.my-profile-context-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+.my-profile-context-hint {
+  margin: calc(-1 * var(--spacing-sm)) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+@media (max-width: 992px) {
+  .my-profile-field-row {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-profile-context-block {
+    padding: var(--spacing-md);
+  }
+}
+
+/* .my-profile-actions button uses btn-base btn-base--primary from components.css */

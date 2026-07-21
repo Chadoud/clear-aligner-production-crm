@@ -1,0 +1,118 @@
+/* Sidebar – tokenized; main layout in layout.css */
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--spacing-md);
+}
+
+.sidebar-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.sidebar-logo {
+  display: block;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-logo img {
+  filter: brightness(0) invert(1);
+  min-width: 52px;
+  min-height: 16px;
+}
+
+.sidebar-logo-svg {
+  display: block;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.sidebar-header-badge {
+  font-size: 8px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.sidebar-header-badge-company {
+  color: var(--badge-company);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.sidebar-header-badge-doctor {
+  color: var(--badge-doctor);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.sidebar-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding: var(--spacing-md) var(--spacing-xl) var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-footer-text {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0.02em;
+}
+
+/* Mobile: language switcher at bottom of sidebar so header search can expand */
+.sidebar-language {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .sidebar-language {
+    display: block;
+  }
+
+  .sidebar-language .language-dropdown-wrapper {
+    width: 100%;
+  }
+
+  .sidebar-language .language-dropdown-trigger {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .sidebar-language .language-dropdown-trigger:hover,
+  .sidebar-language .language-dropdown-trigger-open {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .sidebar-language .language-dropdown-trigger i {
+    color: rgba(255, 255, 255, 0.65);
+  }
+}

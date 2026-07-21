@@ -1,0 +1,228 @@
+.voice-message-player {
+  --vmp-accent: var(--primary-blue, #2563eb);
+  --vmp-accent-soft: rgba(37, 99, 235, 0.14);
+  --vmp-surface: var(--bg-white, #fff);
+  --vmp-track: rgba(15, 23, 42, 0.1);
+  --vmp-text: var(--text-muted, #64748b);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--vmp-surface);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-sizing: border-box;
+}
+
+.voice-message-player audio {
+  display: none;
+}
+
+.voice-message-player__play {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--vmp-accent);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.28);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.voice-message-player__play:hover:not(:disabled) {
+  transform: scale(1.04);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.34);
+}
+
+.voice-message-player__play:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.voice-message-player__play:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.voice-message-player__play-icon--offset {
+  margin-left: 2px;
+}
+
+.voice-message-player__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.voice-message-player__track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.voice-message-player__track:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.voice-message-player__track-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--vmp-track);
+}
+
+.voice-message-player__track-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--vmp-accent), #60a5fa);
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+.voice-message-player__thumb {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--vmp-accent);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
+  pointer-events: none;
+  transition: left 0.08s linear;
+}
+
+.voice-message-player__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.voice-message-player__wave {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+  opacity: 0.45;
+}
+
+.voice-message-player__wave span {
+  display: block;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--vmp-accent);
+  height: 6px;
+}
+
+.voice-message-player__wave span:nth-child(2) {
+  height: 10px;
+}
+
+.voice-message-player__wave span:nth-child(3) {
+  height: 8px;
+}
+
+.voice-message-player__wave span:nth-child(4) {
+  height: 12px;
+}
+
+.voice-message-player--playing .voice-message-player__wave {
+  opacity: 1;
+}
+
+.voice-message-player--playing .voice-message-player__wave span {
+  animation: voice-wave 0.9s ease-in-out infinite;
+}
+
+.voice-message-player--playing .voice-message-player__wave span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.voice-message-player--playing .voice-message-player__wave span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.voice-message-player--playing .voice-message-player__wave span:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+@keyframes voice-wave {
+  0%,
+  100% {
+    transform: scaleY(0.55);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.voice-message-player__times {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--vmp-text);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.voice-message-player__time-current {
+  color: var(--vmp-accent);
+  font-weight: 600;
+}
+
+.voice-message-player__time-sep {
+  opacity: 0.5;
+}
+
+.voice-message-player__error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.voice-message-player--error {
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .voice-message-player {
+    gap: 10px;
+    padding: 9px 10px;
+  }
+
+  .voice-message-player__play {
+    width: 36px;
+    height: 36px;
+  }
+}

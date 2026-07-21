@@ -1,0 +1,148 @@
+/**
+ * Utility classes using design tokens.
+ * Use for one-off alignment, spacing, and text treatment.
+ */
+
+/* Text */
+.u-text-primary {
+  color: var(--text-primary);
+}
+.u-text-secondary {
+  color: var(--text-secondary);
+}
+.u-text-muted {
+  color: var(--text-muted);
+}
+.u-text-danger {
+  color: var(--color-danger);
+}
+.u-text-success {
+  color: var(--color-success-muted);
+}
+.u-font-medium {
+  font-weight: var(--font-weight-medium);
+}
+.u-font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Spacing (margin) */
+.u-mt-sm {
+  margin-top: var(--spacing-sm);
+}
+.u-mt-md {
+  margin-top: var(--spacing-md);
+}
+.u-mt-lg {
+  margin-top: var(--spacing-lg);
+}
+.u-mb-sm {
+  margin-bottom: var(--spacing-sm);
+}
+.u-mb-md {
+  margin-bottom: var(--spacing-md);
+}
+.u-mb-lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Spacing (padding) */
+.u-p-sm {
+  padding: var(--spacing-sm);
+}
+.u-p-md {
+  padding: var(--spacing-md);
+}
+.u-p-lg {
+  padding: var(--spacing-lg);
+}
+
+/* Borders */
+.u-radius-md {
+  border-radius: var(--radius-md);
+}
+.u-radius-lg {
+  border-radius: var(--radius-lg);
+}
+.u-border-default {
+  border: 1px solid var(--border-default);
+}
+
+/* Backgrounds */
+.u-bg-white {
+  background: var(--bg-white);
+}
+.u-bg-light {
+  background: var(--bg-light);
+}
+.u-bg-muted {
+  background: var(--bg-muted);
+}
+
+/* Layout – flex */
+.u-flex {
+  display: flex;
+}
+.u-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.u-flex-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+.u-flex-row-sm {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+.u-flex-row-lg {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+.u-flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+.u-flex-col-sm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.u-flex-col-lg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Gap only */
+.u-gap-sm {
+  gap: var(--spacing-sm);
+}
+.u-gap-md {
+  gap: var(--spacing-md);
+}
+.u-gap-lg {
+  gap: var(--spacing-lg);
+}
+.u-gap-xl {
+  gap: var(--spacing-xl);
+}
+
+/* Padding scale (explicit names for component use) */
+.u-padding-sm {
+  padding: var(--spacing-sm);
+}
+.u-padding-md {
+  padding: var(--spacing-md);
+}
+.u-padding-lg {
+  padding: var(--spacing-lg);
+}
+.u-padding-xl {
+  padding: var(--spacing-xl);
+}

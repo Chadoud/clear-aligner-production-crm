@@ -1,0 +1,80 @@
+/* Tabs Navigation – single pattern for .tabs and .tabs-navigation */
+.tabs,
+.tabs-navigation {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--border-default);
+  overflow-x: visible;
+  overflow-y: visible;
+  background: var(--bg-white);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition:
+    color var(--transition-base),
+    background var(--transition-base),
+    border-color var(--transition-base);
+  font-weight: var(--font-weight-normal);
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  text-align: center;
+}
+
+.tab-item:hover {
+  color: var(--text-primary);
+  background: var(--bg-light);
+}
+
+.tab-item.active {
+  color: var(--primary-blue);
+  border-bottom-color: var(--primary-blue);
+  font-weight: var(--font-weight-medium);
+  background: transparent;
+}
+
+.tab-item i {
+  font-size: var(--font-size-base);
+  flex-shrink: 0;
+}
+
+.tab-item > span:not(.discussion-unread-badge) {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Desktop: Allow tabs to wrap naturally */
+@media (min-width: 1201px) {
+  .tabs,
+  .tabs-navigation {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .tab-item {
+    flex: 0 1 auto;
+    min-width: fit-content;
+    max-width: none;
+  }
+}

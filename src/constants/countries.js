@@ -1,0 +1,16 @@
+export const COUNTRIES = [
+  { value: "", label: "—" },
+  { value: "CH", label: "Switzerland" },
+  { value: "FR", label: "France" },
+  { value: "DE", label: "Germany" },
+  { value: "IT", label: "Italy" },
+  { value: "AT", label: "Austria" },
+  { value: "BE", label: "Belgium" },
+  { value: "LU", label: "Luxembourg" },
+  { value: "ES", label: "Spain" },
+  { value: "PT", label: "Portugal" },
+  { value: "GB", label: "United Kingdom" },
+  { value: "US", label: "United States" },
+  { value: "CA", label: "Canada" },
+  { value: "OTHER", label: "Other" },
+];

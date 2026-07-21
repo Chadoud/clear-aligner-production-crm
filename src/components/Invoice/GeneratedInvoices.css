@@ -1,0 +1,658 @@
+.generated-invoices-container {
+  padding: var(--spacing-xl);
+  background: var(--bg-white);
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .generated-invoices-container {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .invoices-overview {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .invoices-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .invoices-header h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .invoice-item {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+  }
+
+  .invoice-item:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .invoice-item-info {
+    width: 100%;
+  }
+
+  .invoice-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .invoice-item-actions {
+    gap: var(--spacing-md);
+  }
+
+  .invoice-item-buttons {
+    width: 100%;
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .invoice-item-buttons button {
+    flex: 1;
+    min-width: 100px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+@media (max-width: 480px) {
+  .generated-invoices-container {
+    padding: var(--spacing-sm);
+  }
+
+  .invoices-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .invoices-header h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .invoice-item {
+    padding: var(--spacing-sm);
+  }
+
+  .invoice-item-header {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .invoice-client-name {
+    font-size: var(--font-size-base);
+  }
+
+  .invoice-date {
+    font-size: var(--font-size-xs);
+  }
+}
+
+.invoices-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.invoices-header h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Overview: paid / unpaid / left to pay – uses .card-grid + Card */
+.invoices-overview {
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--bg-muted) 0%, var(--bg-light) 100%);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+}
+
+.overview-receipt-hint {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.overview-receipt-hint i {
+  color: var(--primary-blue);
+}
+
+.invoices-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.invoice-item {
+  display: flex;
+  gap: var(--spacing-xl);
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.invoice-item:hover {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.invoice-item.invoice-paid,
+.invoice-item.invoice-item--paid {
+  background: var(--color-success-bg);
+  border-color: var(--color-success-muted);
+}
+
+.invoice-item.invoice-item--partial {
+  background: var(--color-warning-muted-bg);
+  border-color: var(--color-warning);
+}
+
+.invoice-item.invoice-item--unpaid {
+  background: var(--bg-white);
+  border-color: var(--border-default);
+}
+
+.invoice-item.invoice-item--quote {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning);
+}
+
+.invoice-item.invoice-item--in_treatment {
+  background: var(--color-info-bg);
+  border-color: var(--color-info-light);
+}
+
+.invoice-status.status-in_treatment {
+  background: var(--color-info-bg);
+  color: var(--color-info-light);
+}
+
+.invoice-item-info {
+  flex: 1;
+}
+
+.invoice-item-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.invoice-item-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.invoice-ref {
+  font-family: monospace;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.invoice-brand {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--primary-blue-light);
+  color: var(--primary-blue);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.invoice-status {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.invoice-status.status-paid {
+  background: var(--color-success-bg);
+  color: var(--color-success-muted);
+}
+
+.invoice-status.status-partial {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.invoice-status.status-unpaid {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.invoice-status.status-quote {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.invoice-billing-stage {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid transparent;
+}
+
+.invoice-billing-stage--to_bill {
+  background: var(--color-info-bg);
+  color: var(--color-info-dark);
+  border-color: var(--color-info-border);
+}
+
+.invoice-billing-stage--billed {
+  background: var(--color-orange-bg);
+  color: var(--color-orange);
+  border-color: var(--color-orange-border);
+}
+
+.invoice-billing-stage--paid {
+  background: var(--color-success-bg);
+  color: var(--color-success-muted);
+  border-color: var(--color-success-border-light);
+}
+
+.invoice-item-details {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.invoice-item-details span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.invoice-payment-line {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Monthly plan: which months paid / pending */
+.invoice-monthly-overview {
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.invoice-monthly-overview-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.invoice-monthly-overview-label i {
+  margin-right: 4px;
+  color: var(--primary-blue);
+}
+
+.invoice-monthly-overview-months {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.invoice-month-badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  border: none;
+  background: inherit;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s ease;
+}
+
+.invoice-month-badge:hover {
+  opacity: 0.9;
+}
+
+.invoice-month-badge.month-paid {
+  background: var(--color-success-bg);
+  color: var(--color-success-muted);
+}
+
+.invoice-month-badge.month-pending {
+  background: var(--bg-muted);
+  color: var(--text-muted);
+}
+
+.invoice-month-badge.month-partial {
+  --paid-pct: 0%;
+  background: linear-gradient(
+    to right,
+    var(--color-success-bg) 0%,
+    var(--color-success-bg) var(--paid-pct),
+    var(--bg-muted) var(--paid-pct),
+    var(--bg-muted) 100%
+  );
+  color: var(--text-muted);
+  border: 1px solid var(--border-light, #e2e8f0);
+}
+
+/* Paid toggle for invoices without monthly plan (e.g. Lab) */
+.invoice-paid-toggle-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-light);
+}
+
+.invoice-paid-toggle-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.invoice-paid-toggle-text {
+  flex: 0 0 auto;
+}
+
+.invoice-item-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/*
+ * btn-view, btn-download, btn-delete, btn-back:
+ * Layout/font come from .btn-base (components.css); only colors defined here.
+ * These class names are kept as stable aliases for existing JSX.
+ */
+.btn-view,
+.btn-download,
+.btn-delete,
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  transition: background var(--transition-base);
+}
+
+.btn-view {
+  background: var(--primary-blue);
+  color: var(--bg-white);
+}
+
+.btn-view:hover {
+  background: var(--primary-blue-hover);
+}
+
+.btn-download {
+  background: var(--color-success);
+  color: var(--bg-white);
+}
+
+.btn-download:hover {
+  background: var(--color-success-muted);
+}
+
+.btn-delete {
+  background: var(--color-danger);
+  color: var(--bg-white);
+}
+
+.btn-delete:hover {
+  background: var(--color-danger-hover);
+}
+
+.btn-back {
+  background: var(--text-secondary);
+  color: var(--bg-white);
+  margin-bottom: var(--spacing-lg);
+}
+
+.btn-back:hover {
+  background: var(--text-muted);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-state i {
+  font-size: 64px;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.empty-state-cta {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.empty-state-cta strong {
+  color: var(--text-primary);
+}
+
+.invoice-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.invoice-preview-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.invoice-preview-content {
+  background: var(--bg-light);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.invoice-preview-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Delete Confirmation Modal */
+.payment-received-modal__label {
+  display: block;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary, #64748b);
+}
+
+.payment-received-modal__input {
+  width: 100%;
+  max-width: 12rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+}
+
+.payment-received-modal__error {
+  margin-top: var(--spacing-sm);
+  color: var(--color-danger, #b91c1c);
+  font-size: var(--font-size-sm);
+}
+
+.payment-received-modal__preview {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-muted, #f8fafc);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light, #e2e8f0);
+}
+
+.payment-received-modal__preview-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-secondary, #64748b);
+}
+
+.payment-received-modal__preview-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary, #334155);
+}
+
+.delete-confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10100;
+}
+
+.delete-confirm-content {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--shadow-md);
+}
+
+.delete-confirm-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.delete-confirm-header i {
+  font-size: 24px;
+  color: var(--color-danger);
+}
+
+.delete-confirm-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.delete-confirm-body {
+  margin-bottom: 24px;
+}
+
+.delete-confirm-body p {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.delete-warning {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.delete-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/*
+ * Delete-confirm dialog buttons: layout via shared btn-base pattern,
+ * only semantic colors defined here.
+ */
+.btn-confirm-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  transition: background var(--transition-base);
+  background: var(--color-danger);
+  color: var(--bg-white);
+}
+
+.btn-confirm-delete:hover {
+  background: var(--color-danger-hover);
+}

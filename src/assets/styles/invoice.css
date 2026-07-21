@@ -1,0 +1,604 @@
+/* Invoice Preview Modal */
+.invoice-modal-content {
+  max-width: 1200px;
+  width: 95%;
+  height: calc(100vh - 40px);
+  max-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  transition: all 0.3s ease;
+}
+
+.invoice-preview-body {
+  padding: 10px;
+  overflow: hidden;
+  background: var(--bg-hover);
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.invoice-preview-body:hover {
+  background: var(--bg-hover-alt);
+}
+
+.invoice-preview-body::before {
+  content: "Click to zoom";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.invoice-preview-body:hover::before {
+  opacity: 1;
+}
+
+.invoice-preview-body.zoomed {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.invoice-zoomed {
+  cursor: zoom-out !important;
+}
+
+.invoice-preview {
+  background: var(--bg-white);
+  padding: 30px 40px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  height: auto;
+  max-width: 210mm;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: visible;
+  transform-origin: top center;
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-preview::after {
+  content: none;
+  display: none;
+}
+
+.invoice-container {
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--bg-white);
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  box-sizing: border-box;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.invoice-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.invoice-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 32px;
+}
+
+.invoice-logo {
+  position: relative;
+  min-width: 0;
+}
+
+.logo-image {
+  height: 30px;
+  width: auto;
+  display: block;
+  max-width: 240px;
+}
+
+/* Lab: same box as `.logo-image` (Direct); --lab hooks PDF clone (doctorBillHtmlToPdf) */
+.invoice-preview .invoice-logo .logo-image.logo-image--lab {
+  line-height: 0;
+}
+
+.invoice-preview .invoice-logo .logo-image.logo-image--lab img,
+.invoice-preview .invoice-logo .logo-image.logo-image--lab svg {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.invoice-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  color: var(--brand-color, #51a1ab);
+  margin: 0;
+  letter-spacing: 0px;
+  line-height: 1.1;
+  text-align: left;
+  -moz-osx-font-smoothing: grayscale;
+  clear: both;
+}
+
+.invoice-id {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--brand-color, #51a1ab);
+  font-weight: normal;
+  text-align: right;
+  line-height: 1.2;
+}
+
+.invoice-info-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.invoice-info-section--three-cols {
+  gap: 12px;
+}
+
+.invoice-info-section--three-cols .invoice-from,
+.invoice-info-section--three-cols .invoice-bill-to,
+.invoice-info-section--three-cols .invoice-patient {
+  flex: 1;
+  min-width: 0;
+}
+
+.invoice-from {
+  width: 48%;
+}
+
+.invoice-bill-to {
+  width: 48%;
+}
+
+.invoice-patient h3,
+.invoice-from h3,
+.invoice-bill-to h3 {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--brand-color, #51a1ab);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: none;
+}
+
+.invoice-from p,
+.invoice-bill-to p,
+.invoice-patient p {
+  font-size: 9px;
+  margin: 3px 0;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.invoice-from p:empty,
+.invoice-bill-to p:empty,
+.invoice-patient p:empty {
+  display: none;
+}
+
+.invoice-treatment-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.invoice-treatment-section h3 {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 0;
+  color: var(--brand-color, #51a1ab);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top: 1px solid var(--brand-color, #51a1ab);
+  border-bottom: 1px solid var(--brand-color, #51a1ab);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.treatment-duration-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px;
+  margin-bottom: 0;
+  font-size: 9px;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+}
+
+.duration-label {
+  font-weight: 500;
+}
+
+.duration-value {
+  font-weight: normal;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  font-size: 10px;
+  border: none;
+  table-layout: fixed;
+}
+
+/* Patient 7-column services table only — doctor bills use .invoice-table--doctor */
+.invoice-table.invoice-table--patient thead th:nth-child(1),
+.invoice-table.invoice-table--patient tbody td:nth-child(1) {
+  width: 10%;
+}
+.invoice-table.invoice-table--patient thead th:nth-child(2),
+.invoice-table.invoice-table--patient tbody td:nth-child(2) {
+  width: 9%;
+}
+.invoice-table.invoice-table--patient thead th:nth-child(3),
+.invoice-table.invoice-table--patient tbody td:nth-child(3) {
+  width: 30%;
+}
+.invoice-table.invoice-table--patient thead th:nth-child(4),
+.invoice-table.invoice-table--patient tbody td:nth-child(4) {
+  width: 5%;
+}
+.invoice-table.invoice-table--patient thead th:nth-child(5),
+.invoice-table.invoice-table--patient tbody td:nth-child(5) {
+  width: 10%;
+}
+.invoice-table.invoice-table--patient thead th:nth-child(6),
+.invoice-table.invoice-table--patient tbody td:nth-child(6) {
+  width: 15%;
+}
+.invoice-table.invoice-table--patient thead th:nth-child(7),
+.invoice-table.invoice-table--patient tbody td:nth-child(7) {
+  width: 13%;
+}
+
+.invoice-table thead {
+  background: var(--bg-white);
+}
+
+.invoice-table thead th {
+  padding: 12px 8px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand-color, #51a1ab);
+  border: none;
+  border-bottom: 1px solid var(--brand-color, #51a1ab);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--bg-white);
+  vertical-align: middle;
+}
+
+/* Align numeric columns to the right (patient 7-col table) */
+.invoice-table.invoice-table--patient thead th:nth-child(4),
+.invoice-table.invoice-table--patient thead th:nth-child(5),
+.invoice-table.invoice-table--patient thead th:nth-child(6),
+.invoice-table.invoice-table--patient thead th:nth-child(7) {
+  text-align: right;
+}
+
+.invoice-table.invoice-table--patient tbody td:nth-child(4),
+.invoice-table.invoice-table--patient tbody td:nth-child(5),
+.invoice-table.invoice-table--patient tbody td:nth-child(6),
+.invoice-table.invoice-table--patient tbody td:nth-child(7) {
+  text-align: right;
+}
+
+.invoice-table tbody {
+  background: var(--bg-white);
+}
+
+.invoice-table tbody td {
+  padding: 5px 8px;
+  font-size: 10px;
+  color: #000;
+  border: none;
+  border-bottom: none;
+  font-weight: normal;
+  background: var(--bg-white);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  vertical-align: middle;
+}
+
+/* Compact arrangement table when many monthly payments (>15) to avoid overflow */
+.arrangement-plan-table--compact tbody td {
+  padding: 1px 8px;
+}
+
+.invoice-table.invoice-table--patient tbody td:nth-child(3) {
+  font-size: var(--service-font-size, clamp(8px, 1vw, 10px));
+  line-height: 1.2;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.invoice-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.invoice-table.invoice-table--patient .price-crossed {
+  position: relative;
+  display: inline-block;
+}
+
+.invoice-table.invoice-table--patient .price-crossed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background-color: var(--brand-color, #51a1ab);
+  transform: translateY(-50%);
+}
+
+.invoice-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 4rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-color, #51a1ab);
+  border-bottom: 1px solid var(--brand-color, #51a1ab);
+  border-top: 1px solid var(--brand-color, #51a1ab);
+  line-height: 1.2;
+}
+
+[data-brand="Direct"] .invoice-total {
+  margin-bottom: 0;
+}
+
+.invoice-total-right {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.invoice-ttc {
+  font-size: 9px;
+  font-weight: normal;
+  color: var(--text-dark);
+}
+
+.invoice-payment-section {
+  padding-top: 20px;
+  padding-bottom: 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+  min-height: fit-content;
+  z-index: 3;
+}
+
+.qr-code-section-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+
+.payment-receipt,
+.payment-section {
+  flex: 1;
+  font-size: 7px;
+  position: relative;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.payment-receipt {
+  border-right: 1px solid #000;
+  padding-right: 12px;
+}
+
+.payment-section {
+  padding-left: 12px;
+}
+
+.payment-receipt h3 {
+  font-size: 9px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.payment-section h3 {
+  font-size: 9px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.payment-label {
+  font-size: 7px;
+  margin: 5px 0 3px 0;
+  color: #000;
+  line-height: 1.3;
+  font-weight: normal;
+}
+
+.payment-iban,
+.payment-name,
+.payment-address {
+  font-size: 7.5px;
+  margin: 1px 0;
+  color: #000;
+  line-height: 1.3;
+  font-weight: normal;
+}
+
+.payment-reference-empty {
+  margin: 4px 0 8px 0;
+  min-height: 10px;
+}
+
+.payment-deposit {
+  font-size: 7px;
+  margin-top: 15px;
+  margin-bottom: 4px;
+  text-align: center;
+  color: #000;
+}
+
+.qr-code-container {
+  text-align: center;
+  margin: 4px 0 8px 0;
+  width: 100%;
+}
+
+.qr-code-image {
+  width: 100%;
+  max-width: 110px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+.payment-field-box {
+  position: relative;
+  width: 100%;
+  min-height: 45px;
+  margin: 3px 0 8px 0;
+  border: 1px solid #000;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.corner-bracket {
+  position: absolute;
+  font-size: 9px;
+  color: #000;
+  font-family: "Courier New", monospace;
+  line-height: 1;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.corner-bracket.corner-tl {
+  top: -4px;
+  left: -4px;
+}
+
+.corner-bracket.corner-tr {
+  top: -4px;
+  right: -4px;
+}
+
+.corner-bracket.corner-bl {
+  bottom: -4px;
+  left: -4px;
+}
+
+.corner-bracket.corner-br {
+  bottom: -4px;
+  right: -4px;
+}
+
+.payment-field-box.reference-box {
+  min-height: 8px;
+  margin: 3px 0 8px 0;
+}
+
+.payment-field-box.payer-box {
+  min-height: 40px;
+  margin: 3px 0 8px 0;
+}
+
+.payment-field-box.deposit-box {
+  min-height: 8px;
+  margin: 3px auto 0 auto;
+  width: 70%;
+}
+
+.payment-field-box.small.amount-box {
+  min-height: 20px;
+  margin: 3px 0 0 0;
+}
+
+.payment-amount-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 6px;
+  align-items: flex-start;
+}
+
+.payment-amount-col {
+  flex: 1;
+}
+
+.payment-amount-col:first-child {
+  flex: 0 0 auto;
+  min-width: 30px;
+}
+
+.payment-currency {
+  font-size: 7.5px;
+  margin: 1px 0;
+  color: #000;
+  line-height: 1.3;
+}
+
+.invoice-container {
+  position: relative;
+  z-index: 1;
+}

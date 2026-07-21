@@ -1,0 +1,115 @@
+.profile-image-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-align: center;
+}
+
+.profile-image-field-label {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.profile-image-field-avatar-wrap {
+  position: relative;
+}
+
+.profile-image-field-avatar-btn {
+  display: block;
+  border: none;
+  padding: 0;
+  background: transparent;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--border-light);
+  cursor: pointer;
+}
+
+.profile-image-field-avatar-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.profile-image-field-avatar-btn--round {
+  border-radius: 9999px;
+}
+
+.profile-image-field-img {
+  width: 160px;
+  height: 160px;
+  display: block;
+  object-fit: cover;
+}
+
+.profile-image-field-initials {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-blue-light, rgba(99, 102, 241, 0.15));
+  color: var(--badge-company, #2563eb);
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.profile-image-field-saving {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--badge-company, #2563eb);
+}
+
+.profile-image-field-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.profile-image-field-btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  cursor: pointer;
+}
+
+.profile-image-field-btn--primary {
+  background: var(--badge-company, #2563eb);
+  color: #fff;
+}
+
+.profile-image-field-btn--secondary {
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+}
+
+.profile-image-field-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.profile-image-field-hint {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  max-width: 18rem;
+}
+
+.profile-image-field-error {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger, #dc2626);
+}
+
+.profile-image-field-hidden-input {
+  display: none;
+}

@@ -1,0 +1,70 @@
+.data-table-wrap {
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.data-table th {
+  background: #0ea5e9;
+  color: #fff;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  font-weight: 600;
+}
+
+.data-table-th-sort {
+  white-space: nowrap;
+}
+
+.data-table-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.data-table-sort-btn:hover {
+  opacity: 0.9;
+}
+
+.data-table-sort-icons {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0;
+  margin-left: 0.15rem;
+  line-height: 0.5;
+}
+
+.data-table-sort-icon {
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 0.6;
+}
+
+.data-table-sort-icon.data-table-sort-active {
+  color: #fff;
+}
+
+.data-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.data-table tbody tr:hover {
+  background: #f8fafc;
+}

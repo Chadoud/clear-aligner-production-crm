@@ -1,0 +1,9 @@
+export { default as TabPossibleTreatment } from "./TabPossibleTreatment";
+export { default as TabTreatmentPlan } from "./TabTreatmentPlan";
+export { default as TabFollowUp } from "./TabFollowUp";
+export { default as TabDiscussion } from "./TabDiscussion";
+export { default as TabNotes } from "./TabNotes";
+export { default as TabStripping } from "./TabStripping";
+export { default as TabDocsPrives } from "./TabDocsPrives";
+export { default as TabDocCategory } from "./TabDocCategory";
+export { default as TabDossierPatient } from "./TabDossierPatient";

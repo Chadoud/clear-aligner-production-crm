@@ -1,0 +1,1056 @@
+/* Quotation Form */
+.form-section {
+  padding: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+  flex: 1;
+  background: var(--bg-white);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.quotation-form-container {
+  padding: var(--spacing-xl);
+  flex: 1;
+  background: var(--bg-white);
+}
+
+.quotation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.form-group-full-width {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.form-left-column,
+.form-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+/* Services Section - Full Width */
+.form-services-section {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Duration and Price Row - Side by Side */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.form-group-inline {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Total price (left) + Amount per month (right) on same row */
+.form-total-monthly-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px 28px;
+  grid-column: 1 / -1;
+}
+
+.form-total-monthly-row .form-group {
+  flex: 1;
+  min-width: 140px;
+  max-width: 280px;
+}
+
+.form-total-monthly-row .monthly-amount-box {
+  cursor: default;
+  user-select: none;
+  min-height: 2.5rem;
+  display: flex;
+}
+
+/* Scan Consultation + Monthly Payment toggles on same row (override .form-group column) */
+.form-group.form-toggles-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+}
+
+.form-group.form-toggles-row .toggle-label {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+/* ----- Filter row (shared layout for billing filters, etc.) ----- */
+.form-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.form-filter-group label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+/* Control width modifiers – use on .form-input or on CustomSelect wrapper */
+.form-control-width-sm {
+  min-width: var(--input-min-width-sm);
+}
+.form-control-width-md {
+  min-width: var(--input-min-width-md);
+}
+.form-control-width-lg {
+  min-width: var(--input-min-width-lg);
+}
+
+.form-select,
+.form-input {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  font-size: var(--input-font-size);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  width: fit-content;
+  max-width: 100%;
+  font-family: inherit;
+  transition: border-color var(--transition-base);
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.form-input {
+  width: auto;
+  min-width: 0;
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input[size] {
+  width: auto;
+}
+
+/* Number input spinner styling - match dropdown chevron style */
+.form-input[type="number"] {
+  padding-right: 40px;
+  position: relative;
+}
+
+.form-input[type="number"]::-webkit-inner-spin-button,
+.form-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  height: 20px;
+  width: 24px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 5l4-4 4 4'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position:
+    center top 0,
+    center bottom 0;
+  background-size:
+    10px 6px,
+    10px 6px;
+}
+
+.form-input[type="number"]::-moz-number-spin-box {
+  display: none;
+}
+
+.duration-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.input-suffix {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Make treatment duration input match total price input width */
+.duration-input-wrapper .form-input,
+.price-input-wrapper .form-input {
+  width: auto;
+  min-width: 0;
+}
+
+.form-select {
+  cursor: pointer;
+  padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid var(--border-input);
+  transition: all 0.2s ease;
+}
+
+.form-select:hover {
+  border-color: #b0b0b0;
+}
+
+.form-select:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.price-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Duration: narrow select + "months" suffix outside the box */
+.duration-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.duration-input-wrapper .custom-dropdown-wrap {
+  overflow: visible;
+}
+
+/* Number input with up/down arrows (like amount paid input) – treatment duration, payment plan */
+.number-input-with-arrows {
+  display: inline-flex;
+  align-items: stretch;
+  min-width: 6rem;
+  width: 6rem;
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--bg-white);
+  overflow: hidden;
+}
+
+.number-input-with-arrows:focus-within {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.number-input-with-arrows .number-input-with-arrows-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  background: transparent;
+  box-shadow: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Hide native number spin buttons (only our custom arrows on the right stay) */
+.number-input-with-arrows
+  .number-input-with-arrows-input::-webkit-inner-spin-button,
+.number-input-with-arrows
+  .number-input-with-arrows-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.number-input-arrows {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border-input, #e5e7eb);
+}
+
+.number-input-with-arrows .number-arrow-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 14px;
+  width: 24px;
+  padding: 0 4px;
+  border: none;
+  background: var(--bg-white);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.number-input-with-arrows .number-arrow-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  color: var(--text-primary);
+}
+
+.number-input-with-arrows .number-arrow-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.number-input-with-arrows .number-arrow-down {
+  border-top: 1px solid var(--border-input, #e5e7eb);
+}
+
+/* Currency fields (amount paid, total price) need more width */
+.number-input-with-arrows--currency {
+  min-width: 8rem;
+  width: 8rem;
+}
+
+.duration-select {
+  min-width: 6rem;
+  width: 6rem;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Number select input (duration / payment plan): type + arrows + dropdown list */
+.number-select-input-wrap {
+  display: flex;
+  align-items: center;
+  min-width: 6rem;
+  width: 6rem;
+  padding: 0;
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  background: var(--bg-white);
+  overflow: hidden;
+}
+
+.number-select-input-wrap:focus-within {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.number-select-input-wrap .number-select-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: var(--input-padding-y) 6px var(--input-padding-y)
+    var(--input-padding-x);
+  background: transparent;
+  box-shadow: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Hide native number spin buttons (keyboard arrows still work) */
+.number-select-input-wrap .number-select-input::-webkit-inner-spin-button,
+.number-select-input-wrap .number-select-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.number-select-input-wrap .number-select-chevron {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+}
+
+.number-select-input-wrap .number-select-chevron:hover {
+  color: var(--text-primary);
+}
+
+.number-select-chevron-open {
+  transform: rotate(180deg);
+}
+
+.duration-input-wrapper .number-select-input-wrap {
+  overflow: visible;
+}
+
+/* Custom dropdown (no arrow, page style) – duration, date, etc. */
+.custom-dropdown-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* When wrapper has form-select, don't add a second border (trigger has its own) */
+.custom-dropdown-wrap.form-select {
+  border: none;
+  padding: 0;
+  background: transparent;
+  background-image: none;
+}
+
+/* Pagination, list "show", overview billing, company billing, width modifiers: no double wrapper – style only the trigger */
+.custom-dropdown-wrap.pagination-select,
+.custom-dropdown-wrap.list-show-select,
+.custom-dropdown-wrap.overview-payment-month-select,
+.custom-dropdown-wrap.overview-payment-month-filter,
+.custom-dropdown-wrap.company-billing-filter-select,
+.custom-dropdown-wrap.form-control-width-sm,
+.custom-dropdown-wrap.form-control-width-md,
+.custom-dropdown-wrap.form-control-width-lg {
+  border: none;
+  padding: 0;
+  background: transparent;
+  background-image: none;
+}
+
+.custom-dropdown-no-arrow .custom-dropdown-trigger {
+  appearance: none;
+  background-image: none;
+}
+
+/* So duration dropdown menu is not clipped by form grid */
+.form-group-duration-dropdown {
+  overflow: visible;
+}
+
+.custom-dropdown-chevron {
+  flex-shrink: 0;
+  margin-left: 8px;
+  color: #666;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.custom-dropdown-chevron svg {
+  display: block;
+}
+
+.custom-dropdown-chevron-open {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown-trigger {
+  width: 100%;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+  font-size: var(--input-font-size);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-dropdown-trigger-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-dropdown-trigger:hover {
+  border-color: #b0b0b0;
+}
+
+.custom-dropdown-trigger:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--bg-white);
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+/* Portal-rendered menu (position set by JS via inline style) */
+.custom-dropdown-menu-portal {
+  min-width: 120px;
+  /* Outer container must not scroll — only the inner list scrolls.
+     Prevents the inner scrollbar from stealing horizontal space and
+     triggering a horizontal scrollbar on the outer container. */
+  max-height: none;
+  overflow: visible;
+}
+
+.custom-dropdown-item {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  background: transparent;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+  font-family: inherit;
+}
+
+.custom-dropdown-item:hover {
+  background: #f1f5f9;
+}
+
+.custom-dropdown-item--selected {
+  background: #e8f4f8;
+  color: var(--primary-blue);
+  font-weight: 500;
+}
+
+.custom-dropdown-item--selected:hover {
+  background: #d6eaf8;
+}
+
+/* Search box inside dropdown */
+.custom-dropdown-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-white);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.custom-dropdown-search-icon {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.custom-dropdown-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.custom-dropdown-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.custom-dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.custom-dropdown-no-results {
+  padding: 10px 14px;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.preset-checkboxes {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.preset-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid var(--border-input);
+  border-radius: 4px;
+  background: var(--bg-white);
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.preset-checkbox:hover {
+  background: var(--bg-light);
+  border-color: var(--primary-blue);
+}
+
+.preset-checkbox input[type="radio"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.preset-checkbox input[type="radio"]:checked + span {
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.preset-checkbox:has(input[type="radio"]:checked) {
+  background: #e8f4f8;
+  border-color: var(--primary-blue);
+}
+
+.preset-treatment-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.preset-treatment-block .preset-section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+}
+
+.preset-treatment-block .preset-checkboxes {
+  margin-top: 0;
+}
+
+.brand-selection {
+  display: flex;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+.brand-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px 16px;
+  border: 1px solid var(--border-input);
+  border-radius: 4px;
+  background: var(--bg-white);
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.brand-option:hover {
+  background: var(--bg-light);
+  border-color: var(--primary-blue);
+}
+
+.brand-option input[type="radio"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.brand-option input[type="radio"]:checked + span {
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+.brand-option:has(input[type="radio"]:checked) {
+  background: #e8f4f8;
+  border-color: var(--primary-blue);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Toggle Switch Styles */
+.toggle-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.toggle-label-text {
+  flex: 1;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--border-dropdown);
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle-input:checked + .toggle-slider {
+  background-color: var(--primary-blue);
+}
+
+.toggle-input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+.toggle-input:focus + .toggle-slider {
+  box-shadow: 0 0 1px var(--primary-blue);
+}
+
+.form-description {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+.selected-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-x: hidden;
+  margin-top: 8px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hide empty list so it doesn't look like an extra input frame */
+.selected-services-list:empty {
+  display: none;
+}
+
+/* Scrollbar styles removed - services list is now fully visible without scrolling */
+
+.selected-service-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border-default);
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.selected-service-item:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.15);
+}
+
+.selected-service-item .service-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.selected-service-item .service-text {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.service-attributes {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.service-attr {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.service-quantity-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quantity-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Qty dropdown: style only the trigger (CustomSelect), not the wrapper – no double box, quantity visible */
+.custom-dropdown-wrap.service-quantity-select {
+  width: 80px;
+  min-width: 80px;
+  border: none;
+  padding: 0;
+  background: transparent;
+  background-image: none;
+}
+
+.service-quantity-select .custom-dropdown-trigger {
+  padding: 6px 26px 6px 10px;
+  font-size: 14px;
+  min-height: 32px;
+}
+
+.service-quantity-select .custom-dropdown-trigger-text {
+  color: var(--text-primary);
+}
+
+.service-quantity-input {
+  width: 70px;
+  padding: 6px 8px;
+  border: 1px solid var(--border-input);
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  background: var(--bg-white);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.service-quantity-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.remove-service-btn {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-service-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.service-input {
+  flex: 1;
+}
+
+.service-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-default);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-settings,
+.btn-generate {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: 13px 28px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.btn-settings {
+  background: #2c3e50;
+  color: white;
+}
+
+.btn-settings:hover {
+  background: #34495e;
+}
+
+.btn-generate {
+  background: var(--primary-blue);
+  color: white;
+}
+
+.btn-generate:hover {
+  background: var(--primary-blue-hover);
+}
