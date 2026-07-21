@@ -58,7 +58,11 @@ const ServicesSelector = ({
         aria-label={t("quotation.servicesAddAria")}
         options={selectOptions}
       />
-      <div id="selectedServicesList" className="selected-services-list">
+      <div
+        id="selectedServicesList"
+        className="selected-services-list"
+        data-testid="quotation-selected-services"
+      >
         {displayableServices.map((service, index) => (
           <SelectedServiceItem
             key={`${service.code}-${service.quantity}-${index}`}

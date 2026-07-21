@@ -35,6 +35,7 @@ export default function NumberInputWithArrows({
   placeholder = "Select",
   id,
   "aria-label": ariaLabel,
+  "data-testid": dataTestId,
   className = "",
   disabled = false,
   onBlur,
@@ -130,6 +131,7 @@ export default function NumberInputWithArrows({
         disabled={disabled}
         aria-label={ariaLabel}
         id={id}
+        data-testid={dataTestId}
       />
       <div className="number-input-arrows" aria-hidden>
         <button

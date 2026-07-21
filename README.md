@@ -26,6 +26,15 @@
 
 ## Product demos
 
+After `npm run db:setup`, walk these paths as `lab@example.com` (seed supports each surface):
+
+| Demo            | Seed path                                                                                                        |
+| --------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Dashboard       | `/app` — cases DEMO-1001…1005                                                                                    |
+| Invoicing       | Case **Jordan Martin** → Create invoice → treatment presets (`/app/company/case-management/id/1001?tab=invoice`) |
+| Doctors billing | `/app/company/doctors-billing/all` — open invoice **INV-DEMO-1003** + paid **INV-DEMO-1005**                     |
+| Stripping       | Case **Taylor Bernard** (DEMO-1002) — checkbox + v2 stubs                                                        |
+
 **Dashboard** — every active case, its follow-up status, and revenue at a glance. Filters and statuses mirror how a lab actually triages the day.
 
 <img src="docs/screenshots/videos/dashboard-overview.gif" alt="Dashboard overview" width="800" />

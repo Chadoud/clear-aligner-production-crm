@@ -192,9 +192,9 @@ INSERT INTO tbl_invoices (
     3500.00,
     0,
     0,
-    1,
+    2,
     DATE_FORMAT(NOW(), '%Y-%m-%d'),
-    'Q-DEMO-1003',
+    'INV-DEMO-1003',
     '[{"code":"ALIGN-FULL","service":"Full clear aligner treatment","qty":1,"unitPrice":3500,"total":3500}]',
     0,
     0.0810

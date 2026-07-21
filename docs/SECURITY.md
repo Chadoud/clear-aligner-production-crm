@@ -48,6 +48,19 @@ Fastify is wired with Helmet, CORS (`CORS_ORIGIN` required in prod), global rate
 
 Copy from `backend/.env.example`. Rotate anything that ever leaked in an old repo history.
 
+### Secret rotation checklist (ops)
+
+If this tree (or the private twin) ever held real credentials in git or chat, rotate **all** of:
+
+1. MySQL password / `SOURCE_DB_URL`
+2. `JWT_SECRET`, `MOBILE_JWT_SECRET`
+3. `SMTP_PASSWORD` / mailbox credentials
+4. `API_KEY`, `CRON_SECRET`, `MOBILE_INTERNAL_API_KEY`
+5. SFTP / SSH deploy keys (private VPS only)
+6. Any third-party API tokens copied into `.env`
+
+Public template defaults are placeholders only. Production values never belong in this repo.
+
 ## Data
 
 Don’t commit dumps, patient exports, or upload trees. Dev against the API or a local anonymised DB. Case documents and profile images are stored on the API host (`UPLOADS_DIR` / `PROFILE_DIR`) and served by this CRM.

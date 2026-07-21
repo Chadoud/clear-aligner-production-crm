@@ -35,7 +35,10 @@ const PresetSelector = ({ presetConfig, onPresetChange, brand }) => {
     });
 
   return (
-    <div className="form-group form-group-full-width">
+    <div
+      className="form-group form-group-full-width"
+      data-testid="quotation-presets"
+    >
       <label>{t("quotation.presetServicesLabel")}</label>
       <div className="preset-checkboxes">
         {regularPresets.map((preset) => (
@@ -48,6 +51,7 @@ const PresetSelector = ({ presetConfig, onPresetChange, brand }) => {
               type="radio"
               name="preset"
               value={preset.id}
+              data-testid={`quotation-preset-${preset.id}`}
               checked={presetConfig === preset.id}
               onChange={(e) => onPresetChange(e.target.value)}
             />
@@ -73,6 +77,7 @@ const PresetSelector = ({ presetConfig, onPresetChange, brand }) => {
                   type="radio"
                   name="preset"
                   value={preset.id}
+                  data-testid={`quotation-preset-${preset.id}`}
                   checked={presetConfig === preset.id}
                   onChange={(e) => onPresetChange(e.target.value)}
                 />

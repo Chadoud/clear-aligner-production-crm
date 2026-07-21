@@ -434,7 +434,11 @@ const QuotationForm = ({ patient, onGenerateInvoice, onOpenSettings }) => {
                 <i className="fas fa-cog"></i>
                 {t("quotation.settings")}
               </button>
-              <button type="submit" className="btn-generate">
+              <button
+                type="submit"
+                className="btn-generate"
+                data-testid="quotation-preview"
+              >
                 <i className="fas fa-file-pdf"></i>
                 {t("quotation.previewInvoice")}
               </button>

@@ -45,6 +45,7 @@ export default function QuotationFormServicesSection({
           <div className="price-input-wrapper">
             <NumberInputWithArrows
               id="totalPrice"
+              data-testid="quotation-total-price"
               className="number-input-with-arrows--currency"
               value={totalInvoiceFree ? "0" : totalPrice}
               onChange={onPriceChange}
