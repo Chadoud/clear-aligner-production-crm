@@ -26,10 +26,15 @@
     "resetInvalidLink": "Ce lien de réinitialisation est invalide ou a expiré.",
     "resetPasswordTooShort": "Le mot de passe doit contenir au moins 6 caractères.",
     "resetPasswordMismatch": "Les mots de passe ne correspondent pas.",
-    "resetSuccess": "Votre mot de passe a été mis à jour. Vous pouvez vous connecter."
+    "resetSuccess": "Votre mot de passe a été mis à jour. Vous pouvez vous connecter.",
+    "demoTitle": "Comptes démo locaux",
+    "demoBody": "Utilisez les utilisateurs seed du template — pas un e-mail CRM de production.",
+    "demoUseLab": "Remplir compte labo",
+    "demoUseDoctor": "Remplir compte médecin"
   },
   "errors": {
     "invalidCredentials": "E-mail ou mot de passe invalide.",
+    "invalidCredentialsDemo": "E-mail ou mot de passe invalide. Utilisez lab@example.com / Doctor123! (ou Remplir compte labo).",
     "tooManyAttempts": "Trop de tentatives. Réessayez dans une minute.",
     "generic": "Une erreur s'est produite. Veuillez réessayer.",
     "emailRequired": "Veuillez saisir votre adresse e-mail.",

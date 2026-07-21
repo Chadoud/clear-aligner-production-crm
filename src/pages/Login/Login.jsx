@@ -5,10 +5,23 @@ import { useAuth } from "../../context/AuthContext";
 import { login as loginService } from "../../services/authService";
 import AuthPageShell from "../auth/AuthPageShell";
 
+const DEMO_LAB = {
+  email: "lab@example.com",
+  password: "Doctor123!",
+};
+const DEMO_DOCTOR = {
+  email: "doctor@example.com",
+  password: "Doctor123!",
+};
+
 export default function Login() {
   const { t } = useTranslation();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(
+    import.meta.env.DEV ? DEMO_LAB.email : ""
+  );
+  const [password, setPassword] = useState(
+    import.meta.env.DEV ? DEMO_LAB.password : ""
+  );
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,6 +30,7 @@ export default function Login() {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/app";
+  const showDemoHints = import.meta.env.DEV;
 
   useEffect(() => {
     const resetFromQuery =
@@ -26,6 +40,12 @@ export default function Login() {
       navigate("/login", { replace: true, state: {} });
     }
   }, [location.search, location.state, navigate, t]);
+
+  const fillDemo = (account) => {
+    setEmail(account.email);
+    setPassword(account.password);
+    setError("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +58,11 @@ export default function Login() {
       navigate(from, { replace: true });
     } catch (err) {
       if (err?.status === 401) {
-        setError(t("errors.invalidCredentials"));
+        setError(
+          showDemoHints
+            ? t("errors.invalidCredentialsDemo")
+            : t("errors.invalidCredentials")
+        );
       } else if (err?.status === 429) {
         setError(t("errors.tooManyAttempts"));
       } else {
@@ -52,6 +76,34 @@ export default function Login() {
   return (
     <AuthPageShell>
       <form className="login-form" onSubmit={handleSubmit} noValidate>
+        {showDemoHints && (
+          <aside className="login-demo" aria-label={t("auth.demoTitle")}>
+            <p className="login-demo-title">{t("auth.demoTitle")}</p>
+            <p className="login-demo-body">{t("auth.demoBody")}</p>
+            <div className="login-demo-actions">
+              <button
+                type="button"
+                className="login-demo-btn"
+                onClick={() => fillDemo(DEMO_LAB)}
+                disabled={loading}
+              >
+                {t("auth.demoUseLab")}
+              </button>
+              <button
+                type="button"
+                className="login-demo-btn"
+                onClick={() => fillDemo(DEMO_DOCTOR)}
+                disabled={loading}
+              >
+                {t("auth.demoUseDoctor")}
+              </button>
+            </div>
+            <p className="login-demo-creds">
+              <code>{DEMO_LAB.email}</code> / <code>{DEMO_LAB.password}</code>
+            </p>
+          </aside>
+        )}
+
         <div className="login-field">
           <label htmlFor="email" className="login-label">
             {t("auth.email")}

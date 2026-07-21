@@ -1,6 +1,11 @@
 -- Anonymized demo seed for local template evaluation.
 -- Password for both users: Doctor123!
 -- bcrypt hash generated with bcryptjs cost 10.
+--
+-- ACL note: nav matches tbl_sidebar.sidebar_name_en to rightName in
+-- src/components/Dashboard/Sidebar/config/navSections.js.
+-- Lab user gets NO user_rights rows → full company nav (admin bypass).
+-- Doctor user gets the doctor-facing rights below.
 
 SET NAMES utf8mb4;
 
@@ -43,22 +48,32 @@ ON DUPLICATE KEY UPDATE
   idx_client = VALUES(idx_client),
   user_is_superadmin = VALUES(user_is_superadmin);
 
+-- Clear prior ACL so re-seed is deterministic (db:setup without reset).
+DELETE FROM user_rights;
+DELETE FROM tbl_sidebar;
+
+-- sidebar_name_en MUST match navSections.js rightName / rightNames exactly.
 INSERT INTO tbl_sidebar (
   sidebar_id, sidebar_identify, sidebar_name_en, sidebar_name_fr,
   sidebar_parent, sidebar_has_children, sidebar_order
 ) VALUES
-  (1, 'dashboard', 'Dashboard', 'Tableau de bord', 0, 0, 10),
-  (2, 'cases', 'Cases', 'Cas', 0, 0, 20),
-  (3, 'invoices', 'Invoices', 'Factures', 0, 0, 30),
-  (4, 'doctors_billing', 'Doctors billing', 'Facturation médecins', 0, 0, 40),
-  (5, 'settings', 'Settings', 'Paramètres', 0, 0, 50)
-ON DUPLICATE KEY UPDATE
-  sidebar_name_en = VALUES(sidebar_name_en);
+  (1,  'home',              'Home',              'Accueil',                 0, 0, 10),
+  (2,  'last_cases',        'Last Cases',        'Derniers cas',            0, 0, 20),
+  (3,  'list_cabinets',     'List of cabinets',  'Liste des cabinets',      0, 0, 30),
+  (4,  'add_cabinet',       'Add new cabinet',   'Ajouter un cabinet',      0, 0, 40),
+  (5,  'list_cases',        'List of cases',     'Liste des cas',           0, 0, 50),
+  (6,  'add_case',          'Add new case',      'Ajouter un cas',          0, 0, 60),
+  (7,  'crm_doctors_billing','Doctors Billing',  'Facturation médecins',    0, 0, 70),
+  (8,  'list_users',        'List of users',     'Liste des utilisateurs',  0, 0, 80),
+  (9,  'add_user',          'Add new user',      'Ajouter un utilisateur',  0, 0, 90);
 
+-- Lab (company): no user_rights → full nav (see useFilteredNavSections).
+-- Doctor: grant overview + case management rights.
 INSERT INTO user_rights (user_idx, rights_idx) VALUES
-  (1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
-  (2, 1), (2, 2)
-ON DUPLICATE KEY UPDATE user_idx = VALUES(user_idx);
+  (2, 1),
+  (2, 2),
+  (2, 5),
+  (2, 6);
 
 INSERT INTO tbl_case (
   case_id, case_ref, cabinet_idx, case_title, case_prenom, case_nom,

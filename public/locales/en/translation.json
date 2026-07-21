@@ -26,10 +26,15 @@
     "resetInvalidLink": "This reset link is invalid or has expired.",
     "resetPasswordTooShort": "Password must be at least 6 characters.",
     "resetPasswordMismatch": "Passwords do not match.",
-    "resetSuccess": "Your password has been updated. You can sign in now."
+    "resetSuccess": "Your password has been updated. You can sign in now.",
+    "demoTitle": "Local demo accounts",
+    "demoBody": "Use the seeded template users — not a production CRM email.",
+    "demoUseLab": "Fill lab account",
+    "demoUseDoctor": "Fill doctor account"
   },
   "errors": {
     "invalidCredentials": "Invalid email or password.",
+    "invalidCredentialsDemo": "Invalid email or password. Use lab@example.com / Doctor123! (or Fill lab account above).",
     "tooManyAttempts": "Too many attempts. Please try again in a minute.",
     "generic": "An error occurred. Please try again.",
     "emailRequired": "Please enter your email address.",

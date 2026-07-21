@@ -119,14 +119,22 @@ npm run dev:all
 | API     | http://localhost:4000 (`/health`, `/health/ready`) |
 | Mailpit | http://localhost:8025                              |
 
-**Demo logins** (from seed):
+**Demo logins** (from seed — these are the only accounts that exist locally):
 
 | Email                 | Password     | Role   |
 | --------------------- | ------------ | ------ |
 | `lab@example.com`     | `Doctor123!` | Lab    |
 | `doctor@example.com`  | `Doctor123!` | Doctor |
 
-Reset the database anytime with `npm run db:reset`.
+In local dev the login screen shows these credentials and can fill them for you. Production emails from another CRM will return **Invalid email or password**.
+
+If you already ran an older seed, refresh data with:
+
+```bash
+npm run db:reset
+```
+
+Then hard-refresh the browser (or clear site data for `localhost:3000`) so a stale session is not kept.
 
 <details>
 <summary>Connecting to a remote MySQL over SSH instead of Compose?</summary>

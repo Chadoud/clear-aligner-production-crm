@@ -21,7 +21,11 @@ npm run db:reset              # drop/recreate database, then setup
 
 | Email | Password | Role |
 | --- | --- | --- |
-| `lab@example.com` | `Doctor123!` | Lab (`company`) |
-| `doctor@example.com` | `Doctor123!` | Doctor |
+| `lab@example.com` | `Doctor123!` | Lab (`company`) — full nav (no `user_rights` rows) |
+| `doctor@example.com` | `Doctor123!` | Doctor — overview + case rights |
+
+`tbl_sidebar.sidebar_name_en` values must match `rightName` strings in `src/components/Dashboard/Sidebar/config/navSections.js`. Wrong names + non-empty `user_rights` hide the entire sidebar.
 
 `SOURCE_DB_URL` defaults in `backend/.env.example` match Compose MySQL.
+
+After changing seed SQL, run `npm run db:reset` (plain `db:setup` re-applies seed deletes for ACL, but a full reset is safest).
