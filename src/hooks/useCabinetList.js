@@ -2,6 +2,8 @@
  * Hook: useCabinetList
  *
  * Loads the cabinet/doctor list from the live API.
+ * Shares an in-module cache — do not invalidate on every mount (that causes
+ * refetch storms and empty dropdowns when the global rate limit returns 429).
  *
  * @module hooks/useCabinetList
  */
@@ -28,15 +30,20 @@ export function refreshCabinetList() {
  */
 export function useCabinetList() {
   const { user, isDoctor } = useAuth();
-  const [cabinets, setCabinets] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [cabinets, setCabinets] = useState(() => getCabinetsList());
+  const [loading, setLoading] = useState(() => getCabinetsList().length === 0);
   const [error, setError] = useState(null);
   const userId = user?.id;
 
   useEffect(() => {
     let cancelled = false;
-    invalidateCabinetCache();
-    setLoading(true);
+    const cached = getCabinetsList();
+    if (cached.length > 0) {
+      setCabinets(cached);
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
 
     loadCabinetsFromApi()
       .then(() => {
@@ -48,7 +55,14 @@ export function useCabinetList() {
       .catch((err) => {
         if (!cancelled) {
           safeLogError(err, "useCabinetList");
-          setError(err?.message ?? "Failed to load cabinets");
+          // Keep any previously loaded cabinets; only surface error if none.
+          const existing = getCabinetsList();
+          if (existing.length > 0) {
+            setCabinets(existing);
+            setError(null);
+          } else {
+            setError(err?.message ?? "Failed to load cabinets");
+          }
         }
       })
       .finally(() => {

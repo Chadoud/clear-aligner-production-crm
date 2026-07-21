@@ -14,6 +14,7 @@ INSERT INTO tbl_cabinet (
   cabinet_website, cabinet_fax, cabinet_adresse_num, cabinet_adresse,
   cabinet_adresse_npa, cabinet_adresse_ville, cabinet_adresse_pays
 ) VALUES
+  -- id=1 lab org (logged-in company user). id=2 doctor practice — pick this when creating cases.
   (1, 'Demo Align Lab', 'Demo Align Lab SA', '+41 00 000 00 01', 'lab@example.com',
    'https://www.example.com', '', '1', 'Lab Street',
    '1000', 'Lausanne', 'Switzerland'),

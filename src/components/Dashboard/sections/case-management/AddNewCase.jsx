@@ -37,7 +37,7 @@ export default function AddNewCase() {
     }
     return getAvailableCabinets(scope, actor);
   }, [scope, actor, apiCabinets]);
-  // Doctors: always use actor.cabinet (even with no patients). Company: prefer Direct when in list.
+  // Doctors: always use actor.cabinet. Company: prefer a doctor clinic over the lab org name.
   const defaultCabinet = useMemo(() => {
     if (scope === "doctor" && actor?.cabinet) {
       return actor.cabinet;
@@ -47,7 +47,11 @@ export default function AddNewCase() {
         .toLowerCase()
         .includes("direct")
     );
-    return direct ?? cabinets[0] ?? "";
+    if (direct) return direct;
+    const clinic = cabinets.find((c) =>
+      /clinic|cabinet|dental|doctor/i.test(String(c ?? ""))
+    );
+    return clinic ?? cabinets[0] ?? "";
   }, [cabinets, scope, actor?.cabinet]);
 
   const [currentStep, setCurrentStep] = useState(0);

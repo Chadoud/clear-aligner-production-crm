@@ -15,7 +15,8 @@ export async function registerHttpPlugins(app: FastifyInstance): Promise<void> {
   await app.register(helmet);
   await app.register(rateLimit, {
     global: true,
-    max: 300,
+    // Dev dashboards refetch many lists; keep prod tighter.
+    max: process.env.NODE_ENV === "production" ? 300 : 2000,
     timeWindow: "1 minute",
     skipOnError: false,
     keyGenerator: (req) => clientIp(req),

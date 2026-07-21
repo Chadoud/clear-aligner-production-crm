@@ -81,8 +81,12 @@ export async function loadCabinetsFromApi() {
       );
     } catch (e) {
       console.error("Cabinets API load failed:", e);
-      cabinetListCache = [];
-      cabinetBySlugCache = new Map();
+      // Keep a prior successful cache (e.g. transient 429). Only clear if empty.
+      if (cabinetListCache == null) {
+        cabinetListCache = [];
+        cabinetBySlugCache = new Map();
+      }
+      throw e;
     }
   })();
 
